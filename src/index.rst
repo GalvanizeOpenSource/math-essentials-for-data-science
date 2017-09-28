@@ -40,7 +40,8 @@ matrices and vectors **makes things easier**.
 
    introduction
    matrix-operations
-   norms
+   linear-algebra-1
+   linear-algebra-2
    matrix-decomposition
    pca-and-svd
 

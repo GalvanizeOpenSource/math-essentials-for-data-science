@@ -1,75 +1,271 @@
 .. probability lecture
 
-Thinking in terms of vectors and matrics
+Thinking in terms of vectors and matrices
 ============================================
 
-A probability distribution is a mathematical formalization that describes a 
-particular type of random process. 
+Learning objectives:
+
+  1. Become familiar with linear algebra's basic data structures: **scalar**, **vector**, **matrix**, **tensor**
+  2. Create, manipulate, and generally begin to get comfortable with NumPy arrays
 
 
-Properties of Distributions
------------------------------
+So you may be asking why?
+---------------------------
 
-Probability Distributions are classified into two categories:
+.. figure:: xkcd_ml_and_la.png
+   :scale: 35%
+   :align: center
+   :alt: xkcd-1838
+   :figclass: align-center
 
-* **discrete** -- producing outcomes that can be mapped to the *integers* (such as 1, 2, ...) 
+`https://xkcd.com/1838 <https://xkcd.com/1838>`_
 
-* **continuous** -- producing *real-valued* outcomes (such as 3.14... or 2.71...)
+One of the most important parts of the modeling process is model inference
+     
+Scalars, vectors, matrices and tensors
+------------------------------------------
 
-**Discrete distributions** are specified using 
-**probability mass functions** 
-often indicated as :math:`Pr(X=x)` 
-while **continuous distributions** 
-are specified using **probability density functions**
-often indicated as :math:`f(X=x)`.
+Without knowing anything about vectors or matrices there is already a
+good chance that you have some intuition for these concepts. Think of
+a spreadsheet with rows and columns.  Within a give cell there exists
+some value---lets call it a `scalar
+<https://en.wikipedia.org/wiki/Scalar_(mathematics)>`_; scalars are
+the contents of vectors and matrices.  If we think of the idea of a
+column and the elements contained therein we now have a basis for the
+concept of a `vector
+<https://en.wikipedia.org/wiki/Row_and_column_vectors>`_.  More
+specifically, this is referred to as a **column vector**.  The
+elements of a row are accordingly referred to as a **row vector**.
 
-**Discrete distributions** specify probabilities of observing outcome :math:`x`
-from a **discrete** random variable :math:`X` directly, 
-while **continuous distributions** specify 
-the behavior of realizations :math:`x` of a **continuous** random variable :math:`X`
-in a retaliative rather than absolute manner.
-For example, 
-if :math:`f(X=x_1) = 2f(X=x_2)` then in the long-run 
-:math:`x_2` will occur *twice as frequently* as :math:`x_1`.
-
-Regardless of whether or not a 
-random variable :math:`X` is discete or continuous,
-if it is distributed according to a distribution named :math:`XYZ` with 
-parameters :math:`\alpha` and :math:`\beta`, and so on, 
-then we write 
-
-.. math::
-   X \sim XYZ(\alpha, \beta, ...)
-
-and if 
-a collection of :math:`n` random variables :math:`X_i, \; i=1, 2, \cdots n`
-are **identically and independently distributed (i.i.d)**
----i.e., the random variables have *the same distribution*
-and the realization of one *does not influence* the
-realization of another--- then we write
-
-.. math::
-   X_i \overset{\small i.i.d.}{\sim} XYZ(\alpha, \beta, ...), \; i=1,2,\cdots n
-
-..
-
+The spreadsheet analogy only works if all rows have the same number of
+elements and all of the columns have the same number of elements.  We
+collectively refer to the columns and rows as a
+`https://en.wikipedia.org/wiki/Matrix_(mathematics) <matrix>`_.
 
 .. note::
+    A matrix with :math:`m` rows and :math:`n` columns is a :math:`m \times n` matrix and we refer to :math:`m` and :math:`n` as **dimensions**.
 
-   **CLASS DISCUSSION**
+If a matrix is a two dimensional representation of data then a `tensor
+<https://en.wikipedia.org/wiki/Tensor>`_ is the generalization of that
+representation to any number of dimensions.  Lets say we copied our
+spreadsheet and created several new tabs then we are now working with a tensor.
+
++------------------+-----------------------------------+---------------------------------------------------+
+| Machine Learning | Notation                          | Description                                       |
++==================+===================================+===================================================+
+| **Scaler**       | :math:`x`                         | a single real number (ints, floats etc)           |
++------------------+-----------------------------------+---------------------------------------------------+
+| **Vector**       | :math:`X` or :math:`X^{T}`        | a 1D array of numbers (real, binary, integer etc) |
++------------------+-----------------------------------+---------------------------------------------------+
+| **Matrix**       | :math:`\textbf{X}_{(n \times p)}` | a 2D array of numbers                             |
++------------------+-----------------------------------+---------------------------------------------------+
+| **Tensor**       | :math:`\hat{f}`                   | an array generalized to n dimensions              |
++------------------+-----------------------------------+---------------------------------------------------+
+
+Matrices are also tensors.  If we were working with a :math:`4 \times
+4` matrix it can be described as a tensor of rank 2.  The `rank
+<https://en.wikipedia.org/wiki/Rank_(linear_algebra)>`_ is
+the formal term for the number of dimensions.
+
+.. admonition:: Questions
+
+    1. So what are the dimensions of the following matrix
+
+    .. math::
+
+        x =
+        \begin{pmatrix}
+        0 & 0 & 1 & 0 \\
+        1 & 2 & 0 & 1 \\
+        1 & 0 & 0 & 1
+        \end{pmatrix} 
+ 
+    .. container:: toggle
+
+        .. container:: header
+
+            **ANSWER**
+
+        The matrix dimensions are :math:`3 \times 4`
+
+    |
+	
+    2. Given a spreadsheet that has 3 tabs and each tab has 10 rows with 5 columns how might we represent that data with a tensor?
+
+    .. container:: toggle
+
+        .. container:: header
+
+            **ANSWER**
+
+        The tensor would be of rank 3 and have the following dimensions :math:`10 \times 5 \times 3`
+      
+|
+
+An introduction to NumPy and Arrays
+-----------------------------------------
+
+Sometimes we need to write concepts on paper or see them in action
+through code before it we have solid understanding.  We will be using
+the numeric computing library from Python as a tool to help bring to
+life some of these concepts.
+
+`NumPy <numpy.scipy.org>`_ is the *de facto* standard for numerical
+computing in Python.  It is `highly optimized
+<http://www.scipy.org/PerformancePython>`_ and extremely useful for
+working with matrices.  The standard matrix class in NumPy is called
+an `array
+<http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html>`_.
+We will first get comfortable with working with arrays the we will
+cover a number of useful functions.  Then we will touch on the linear
+algebra capabilities of NumPy and finally we will use a few examples
+to tie together key concepts.
+
+Arrays
+^^^^^^^^^
+
+The main object in NumPy is the *homogeneous*, *multidimensional* array.  An 
+`array <http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html>`_ is 
+a table of elements.  An example is a matrix :math:`x`  
+
+.. math::
+
+    x =
+    \begin{pmatrix}
+    1 & 2 & 3  \\
+    4 & 5 & 6  \\
+    7 & 8 & 9
+    \end{pmatrix} 
+ 
+can be represented as
+
+>>> import numpy as np
+>>> x = np.array([[1,2,3],[4,5,6],[7,8,9]])
+>>> x
+array([[1, 2, 3],
+       [4, 5, 6],
+       [7, 8, 9]])
+>>> x.shape
+(3, 3)
+
+The array :math:`x` has 2 dimensions.  The number of dimensions is
+referred to as **rank**.  The ndim is the same as the number of axes or the
+length of the output of x.shape
+
+>>> x.ndim
+2
+
+>>> x.size
+9
+
+Arrays are especially convenient because of built-in methods.
+
+>>> x.sum(axis=0)
+array([12, 15, 18])
+>>> x.sum(axis=1)
+array([ 6, 15, 24]) 
+
+>>> x.mean(axis=0)
+array([ 4.,  5.,  6.])
+>>> x.mean(axis=1)
+array([ 2.,  5.,  8.])
+
+But arrays are also useful because they interact with other NumPy functions as 
+well as being the main data structure in so many other Python packages. To make a sequence of numbers, 
+similar to *range* in the Python standard library, we use 
+`arange <http://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html>`_.
+
+>>> np.arange(10)
+array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+>>> np.arange(5,10)
+array([5, 6, 7, 8, 9])
+>>> np.arange(5,10,0.5)
+array([ 5. ,  5.5,  6. ,  6.5,  7. ,  7.5,  8. ,  8.5,  9. ,  9.5])
+
+Also we can recreate the first matrix by **reshaping** the output of arange.
+
+>>> x = np.arange(1,10).reshape(3,3)
+>>> x
+array([[1, 2, 3],
+       [4, 5, 6],
+       [7, 8, 9]])
+
+Another similar function to arange is `linspace <http://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html>`_
+which fills a vector with evenly spaced variables for a specified interval.
+
+>>> x = np.linspace(0,5,5)
+>>> x
+array([ 0.  ,  1.25,  2.5 ,  3.75,  5.  ])
+
+As a reminder you may access the Python documentation at anytime from the command line using
+
+.. code-block:: none
+
+    ~$ pydoc numpy.linspace
+
+Visualizing linspace...
+
+.. plot:: linspace-example.py
+   :include-source:
+
+Arrays may be made of different types of data.
+
+>>> x = np.array([1,2,3])
+>>> x.dtype
+dtype('int64')
+>>> x = np.array([0.1,0.2,0.3])
+>>> x
+array([ 0.1,  0.2,  0.3])
+>>> x.dtype
+dtype('float64')
+>>> x = np.array([1,2,3],dtype='float64')
+>>> x.dtype
+dtype('float64')
+
+There are several convenience functions for making arrays that are worth mentioning:
+    * `zeros <http://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros.html>`_
+    * `ones <http://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html>`_
+
+>>> x = np.zeros([3,4])
+>>> x
+array([[ 0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.]])
+>>> x = np.ones([3,4])
+>>> x
+array([[ 1.,  1.,  1.,  1.],
+       [ 1.,  1.,  1.,  1.],
+       [ 1.,  1.,  1.,  1.]])
+
+.. admonition:: Exercise
+
+    1. Create the following array (1 line)
+
+    .. math::
+
+        a =
+        \begin{pmatrix}
+        1       & 2      & \cdots & 10      \\
+        11      & 12     & \cdots & 20      \\
+        \vdots  & \ddots & \ddots & \vdots  \\
+        91      & 92     & \cdots & 100 
+        \end{pmatrix}
+
+    2. Use the array object to get the number of elements, rows and columns
+    3. Get the mean of the rows and columns
+    4. What do you get when you do this?
+    
+        >>> a[4,:]
+    5. [extra] If you have time you can get familiar try 
+        * np.log(a) 
+        * np.cumsum(a)
+        * np.power(a,2)
+
+    6. [extra] How do you create a vector that has exactly 50 points and spans the range 11 to 23?
    
-   Let's say that I polled all first graders in the state of
-   colorado and asked the question do you like/dislike your teacher.
-   The answers are discrete values and the distribution of those
-   answers could be modeled with a Bernoulli model. What are some other examples?
+More resources
+^^^^^^^^^^^^^^^^^^^^^^
 
-Check out this `khan academy video on the Bernoulli distribution
-<https://www.khanacademy.org/math/statistics-probability/sampling-distributions-library/sample-proportions/v/mean-and-variance-of-bernoulli-distribution-example>`_
-if you need some further intuition about Bernoulli distributions.
-
-Breakout session
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Okay we are finished with unit-1
-
-  * :download:`The first breakout session <breakout-1.ipynb>`
+   * `NumPy homepage <numpy.scipy.org>`_
+   * `Official NumPy tutorial <http://scipy.org/NumPy_Tutorial>`_
+   * `NumPy for MATLAB users <http://www.scipy.org/NumPy_for_Matlab_Users>`_
