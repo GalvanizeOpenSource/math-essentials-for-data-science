@@ -1,4 +1,4 @@
-Properties of matrices
+Norms
 =============================
 
 Learning objectives
@@ -7,8 +7,8 @@ Learning objectives
   2. matrix inversions and determinants 
 
 
-transposes, dot products, determinants, and inverses
------------------------------------------------------
+transpose, dot products,identity matrices
+-----------------------------------------
 
 Basic properties of matrices
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

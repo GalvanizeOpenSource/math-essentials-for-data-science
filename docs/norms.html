@@ -1,0 +1,472 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Norms &mdash; Linear algebra 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Linear algebra 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Matrix Decomposition" href="matrix-decomposition.html"/>
+        <link rel="prev" title="Matrix Operations" href="matrix-operations.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Linear algebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Thinking in terms of vectors and matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-operations.html">Matrix Operations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Norms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#transpose-dot-products-identity-matrices">transpose, dot products,identity matrices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-properties-of-matrices">Basic properties of matrices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#properties-of-a-transpose">Properties of a transpose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dot-products">Dot products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrix-determinant">Matrix determinant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrix-inverse">Matrix inverse</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#properties-of-inverse">Properties of Inverse</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-decomposition.html">Matrix Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pca-and-svd.html">PCA and SVD</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendices:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="references.html">Works cited</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Linear algebra</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Norms</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/norms.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="norms">
+<h1>Norms<a class="headerlink" href="#norms" title="Permalink to this headline">¶</a></h1>
+<p>Learning objectives</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>transpose, dot products, inverse matrices</li>
+<li>matrix inversions and determinants</li>
+</ol>
+</div></blockquote>
+<div class="section" id="transpose-dot-products-identity-matrices">
+<h2>transpose, dot products,identity matrices<a class="headerlink" href="#transpose-dot-products-identity-matrices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basic-properties-of-matrices">
+<h3>Basic properties of matrices<a class="headerlink" href="#basic-properties-of-matrices" title="Permalink to this headline">¶</a></h3>
+<p>It is convention to represent vectors as column matrices.  Think of
+everything as a feature matrix a single <span class="math">\(x\)</span> is then a slice of
+that matrix.</p>
+<p>A <strong>column matrix</strong> in NumPy.</p>
+<div class="math">
+\[\begin{split}x =
+\begin{pmatrix}
+3  \\
+4  \\
+5  \\
+6
+\end{pmatrix}\end{split}\]</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+<p>A <strong>row matrix</strong> in NumPy.</p>
+<div class="math">
+\[x =
+\begin{pmatrix}
+3 &amp; 4 &amp; 5 &amp; 6
+\end{pmatrix}\]</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>General matrices like you saw <a class="reference internal" href="matrix-operations.html"><span class="doc">working with NumPy</span></a>.</p>
+<div class="math">
+\[\begin{split} A_{m,n} =
+\begin{pmatrix}
+ a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n} \\
+ a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,n} \\
+ \vdots  &amp; \vdots  &amp; \ddots &amp; \vdots  \\
+ a_{m,1} &amp; a_{m,2} &amp; \cdots &amp; a_{m,n}
+\end{pmatrix}\end{split}\]</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In order to multiply two matrices, they must be
+<strong>conformable</strong> such that the number of columns of the first
+matrix must be the same as the number of rows of the second
+matrix.</p>
+</div>
+<p>A <span class="math">\(1 \times N\)</span> dimensional vector <span class="math">\(x\)</span></p>
+<div class="math">
+\[\begin{split}x =
+\begin{pmatrix}
+x_{1}  \\
+x_{2}  \\
+\vdots \\
+x_{N}
+\end{pmatrix}\end{split}\]</div>
+<p>and its transpose <span class="math">\(\mathbf{x}^{T} = (x_{1}, x_{2},\ldots,x_{N})\)</span> can be expressed in python as</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xt</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(3, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xt</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(1, 3)</span>
+</pre></div>
+</div>
+<p>The transpose of a <span class="math">\(n \times p\)</span> matrix is a <span class="math">\(p \times n\)</span> matrix with rows and columns interchanged</p>
+<div class="math">
+\[\begin{split}X^T =
+\begin{bmatrix}
+x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1n} \\
+x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+x_{p1} &amp; x_{p2} &amp; \cdots &amp; x_{pn}
+\end{bmatrix}\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="properties-of-a-transpose">
+<h2>Properties of a transpose<a class="headerlink" href="#properties-of-a-transpose" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Let <span class="math">\(X\)</span> be an <span class="math">\(n \times p\)</span> matrix and <span class="math">\(a\)</span> a real number, then</p>
+<div class="math">
+\[(cX)^T = cX^T\]</div>
+</li>
+<li><p class="first">Let <span class="math">\(X\)</span> and <span class="math">\(Y\)</span> be <span class="math">\(n \times p\)</span> matrices, then</p>
+<div class="math">
+\[(X \pm Y)^T = X^T \pm Y^T\]</div>
+</li>
+<li><p class="first">Let <span class="math">\(X\)</span> be an <span class="math">\(n \times k\)</span> matrix and <span class="math">\(Y\)</span> be a <span class="math">\(k \times p\)</span> matrix, then</p>
+<div class="math">
+\[(XY)^T = Y^TX^T\]</div>
+</li>
+</ol>
+</div>
+<div class="section" id="dot-products">
+<h2>Dot products<a class="headerlink" href="#dot-products" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Adding a constant to a vector adds the constant to each element</p>
+<div class="math">
+\[a + \mathbf{x} = [a + x_1, a + x_2, \ldots, a + x_n]\]</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">[5 6 7 8]</span>
+</pre></div>
+</div>
+<p>Multiplying a vector by a constant multiplies each term by the constant</p>
+<div class="math">
+\[a \mathbf{x} = [ax_1, ax_2, \ldots, ax_n]\]</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">[ 4  8 12 16]</span>
+</pre></div>
+</div>
+<p>If we have two vectors <span class="math">\(\mathbf{x}\)</span> and <span class="math">\(\mathbf{y}\)</span>
+of the same length <span class="math">\(n\)</span>, then the <strong>dot product</strong> is give by</p>
+<div class="math">
+\[\mathbf{x} \cdot \mathbf{y} = x_1 y_1 + x_2 y_2 + \cdots + x_ny_n\]</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="go">20</span>
+</pre></div>
+</div>
+<p>If <span class="math">\(\mathbf{x} \cdot \mathbf{y} = 0\)</span> then <span class="math">\(x\)</span> and <span class="math">\(y\)</span> are <strong>orthogonal</strong> (aligns with the intuitive notion of perpindicular)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+<p>If we have two vectors <span class="math">\(\mathbf{x}\)</span> and <span class="math">\(\mathbf{y}\)</span> of the
+same length <span class="math">\(n\)</span>, then the <strong>dot product</strong> is give by matrix multiplication</p>
+<div class="math">
+\[\begin{split}\mathbf{x}^T \mathbf{y} =
+\begin{bmatrix} x_1&amp; x_2 &amp; \ldots &amp; x_n \end{bmatrix}
+\begin{bmatrix}
+y_{1}\\
+y_{2}\\
+\vdots\\
+y_{n}
+\end{bmatrix}  =
+x_1y_1 + x_2y_2 + \cdots + x_ny_n\end{split}\]</div>
+</div>
+<div class="section" id="matrix-determinant">
+<h2>Matrix determinant<a class="headerlink" href="#matrix-determinant" title="Permalink to this headline">¶</a></h2>
+<p>The determinant of a 2-D array [[a, b], [c, d]] is ad - bc:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">-2.0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="matrix-inverse">
+<h2>Matrix inverse<a class="headerlink" href="#matrix-inverse" title="Permalink to this headline">¶</a></h2>
+<p>The inverse of a square <span class="math">\(n \times n\)</span> matrix <span class="math">\(X\)</span> is an <span class="math">\(n \times n\)</span> matrix <span class="math">\(X^{-1}\)</span> such that</p>
+<div class="math">
+\[X^{-1}X = XX^{-1} = I\]</div>
+<p>Where <span class="math">\(I\)</span> is the identity matrix, an <span class="math">\(n \times n\)</span> diagonal matrix with 1’s along the diagonal.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If such a matrix exists, then <span class="math">\(X\)</span> is said to be
+<strong>invertible</strong> or <strong>nonsingular</strong> otherwise <span class="math">\(X\)</span> is
+said to be <strong>noninvertible</strong> or <strong>singular</strong></p>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">array([[-4, -2],</span>
+<span class="go">       [ 5,  5]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invA</span>
+<span class="go">array([[-0.5, -0.2],</span>
+<span class="go">       [ 0.5,  0.4]])</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">invA</span><span class="p">))</span>
+<span class="go">array([[ 1.,  0.],</span>
+<span class="go">       [ 0.,  1.]])</span>
+</pre></div>
+</div>
+<p>Because <span class="math">\(AA^{-1} = A^{-1}A = I\)</span>.</p>
+<div class="section" id="properties-of-inverse">
+<h3>Properties of Inverse<a class="headerlink" href="#properties-of-inverse" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">If <span class="math">\(X\)</span> is invertible, then <span class="math">\(X^{-1}\)</span> is invertible and</p>
+<div class="math">
+\[(X^{-1})^{-1} = X\]</div>
+</li>
+<li><p class="first">If <span class="math">\(X\)</span> and <span class="math">\(Y\)</span> are both <span class="math">\(n \times n\)</span> invertible
+matrices, then <span class="math">\(XY\)</span> is invertible and</p>
+<div class="math">
+\[(XY)^{-1} = Y^{-1}X^{-1}\]</div>
+</li>
+<li><p class="first">If <span class="math">\(X\)</span> is invertible, then <span class="math">\(X^T\)</span> is invertible and</p>
+<div class="math">
+\[(X^T)^{-1} = (X^{-1})^T\]</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="matrix-decomposition.html" class="btn btn-neutral float-right" title="Matrix Decomposition" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="matrix-operations.html" class="btn btn-neutral" title="Matrix Operations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Galvanize DSI.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
