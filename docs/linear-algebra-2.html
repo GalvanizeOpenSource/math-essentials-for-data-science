@@ -102,7 +102,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#norms-and-other-special-matrices">Norms and other special matrices</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#special-matrices">Special matrices</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-of-equations">System of equations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#eigendecomposition">Eigendecomposition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#additional-properties-of-matrices">Additional Properties of Matrices</a></li>
 </ul>
 </li>
@@ -186,7 +185,7 @@
 <blockquote>
 <div><ol class="arabic simple">
 <li>Norms and other special matrices</li>
-<li>Eigendecomposition</li>
+<li>Orthogonal Matrices</li>
 </ol>
 </div></blockquote>
 <div class="section" id="norms-and-other-special-matrices">
@@ -263,27 +262,6 @@ a_{m1}x_1 + \cdots + a_{mn}x_n &amp;= b_m
 <p>and hence, has solution</p>
 <div class="math">
 \[\mathbf{x} = A^{-1}\mathbf{b}\]</div>
-</div>
-<div class="section" id="eigendecomposition">
-<h3>Eigendecomposition<a class="headerlink" href="#eigendecomposition" title="Permalink to this headline">¶</a></h3>
-<p>Let <span class="math">\(A\)</span> be an <span class="math">\(n \times n\)</span> matrix and <span class="math">\(\mathbf{x}\)</span> be an <span class="math">\(n \times 1\)</span> nonzero vector. An <strong>eigenvalue</strong> of <span class="math">\(A\)</span> is a number <span class="math">\(\lambda\)</span> such that</p>
-<div class="math">
-\[A \boldsymbol{x} = \lambda \boldsymbol{x}\]</div>
-<p>A vector <span class="math">\(\mathbf{x}\)</span> satisfying this equation is called an <strong>eigenvector</strong> associated with <span class="math">\(\lambda\)</span></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
-<span class="go">array([[1, 0, 0],</span>
-<span class="go">       [0, 2, 0],</span>
-<span class="go">       [0, 0, 3]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="p">;</span><span class="n">v</span>
-<span class="go">array([ 1.,  2.,  3.])</span>
-<span class="go">array([[ 1.,  0.,  0.],</span>
-<span class="go">       [ 0.,  1.,  0.],</span>
-<span class="go">       [ 0.,  0.,  1.]])</span>
-</pre></div>
-</div>
-<p>Eigenvectors and eigenvalues will play a huge roll in matrix methods later in the course (PCA, SVD, NMF).</p>
 </div>
 <div class="section" id="additional-properties-of-matrices">
 <h3>Additional Properties of Matrices<a class="headerlink" href="#additional-properties-of-matrices" title="Permalink to this headline">¶</a></h3>

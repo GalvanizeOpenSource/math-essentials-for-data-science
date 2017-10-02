@@ -38,7 +38,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Linear algebra 0.1 documentation" href="index.html"/>
-        <link rel="next" title="Norms" href="norms.html"/>
+        <link rel="next" title="Properties of matrices" href="linear-algebra-1.html"/>
         <link rel="prev" title="Thinking in terms of vectors and matrices" href="introduction.html"/> 
 
   
@@ -97,6 +97,7 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Thinking in terms of vectors and matrices</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Matrix Operations</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#quick-reference">Quick reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dimensional-requirements-for-matrix-multiplication">Dimensional requirements for matrix multiplication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#basic-operations">Basic operations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#arithmetic-operators-in-numpy-work-elementwise">Arithmetic operators in NumPy work <strong>elementwise</strong>.</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#special-addition-and-multiplication-operators">Special addition and multiplication operators</a></li>
@@ -118,7 +119,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="norms.html">Norms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-1.html">Properties of matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-2.html">Cosine similarity and special matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix-decomposition.html">Matrix Decomposition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pca-and-svd.html">PCA and SVD</a></li>
 </ul>
@@ -193,14 +195,15 @@
 <p>Learning objectives:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Understand the dimensional requirements for matrix multiplication and be able to whiteboard a simple example</li>
-<li>Become more familiar with NumPy and the common functions</li>
+<li>Understand the dimensional requirements for matrix multiplication</li>
+<li>Understand and be able to execute <strong>elementwise</strong> arithmetric operators in NumPy</li>
+<li>Be familiar with the commonly encountered matrix operations: slicing, masking and concatenation</li>
+<li>Be able to recall the output of vector-vector, matrix-vector, and matrix-matrix products</li>
 </ol>
 </div></blockquote>
 <div class="section" id="quick-reference">
 <h2>Quick reference<a class="headerlink" href="#quick-reference" title="Permalink to this headline">¶</a></h2>
-<p>Here we provide a quick reference guide to the commonly used functions from the NumPy package along with
-several frequently encountered examples.</p>
+<p>Here we provide a summary the commands that will be introduced in this section.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="36%" />
@@ -241,6 +244,14 @@ several frequently encountered examples.</p>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="dimensional-requirements-for-matrix-multiplication">
+<h2>Dimensional requirements for matrix multiplication<a class="headerlink" href="#dimensional-requirements-for-matrix-multiplication" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">In order for the matrix product (<span class="math">\(A \times B\)</span>) to exist, the number of columns in <span class="math">\(A\)</span> must equal the number of rows in <span class="math">\(B\)</span>.</p>
+</div>
+<p>more more more</p>
 </div>
 <div class="section" id="basic-operations">
 <h2>Basic operations<a class="headerlink" href="#basic-operations" title="Permalink to this headline">¶</a></h2>
@@ -590,7 +601,7 @@ entire gene chip.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="norms.html" class="btn btn-neutral float-right" title="Norms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="linear-algebra-1.html" class="btn btn-neutral float-right" title="Properties of matrices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="introduction.html" class="btn btn-neutral" title="Thinking in terms of vectors and matrices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

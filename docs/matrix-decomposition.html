@@ -39,7 +39,7 @@
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Linear algebra 0.1 documentation" href="index.html"/>
         <link rel="next" title="PCA and SVD" href="pca-and-svd.html"/>
-        <link rel="prev" title="Linear algebra - part 2" href="linear-algebra-2.html"/> 
+        <link rel="prev" title="Cosine similarity and special matrices" href="linear-algebra-2.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -96,9 +96,12 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Thinking in terms of vectors and matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix-operations.html">Matrix Operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-1.html">Norms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-2.html">Linear algebra - part 2</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Matrix Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-1.html">Properties of matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-2.html">Cosine similarity and special matrices</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Matrix Decomposition</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#eigendecomposition">Eigendecomposition</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="pca-and-svd.html">PCA and SVD</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendices:</span></p>
@@ -170,7 +173,28 @@
   <div class="section" id="matrix-decomposition">
 <h1>Matrix Decomposition<a class="headerlink" href="#matrix-decomposition" title="Permalink to this headline">¶</a></h1>
 <p>The idea of <strong>Matrix decomposition</strong> also known as <strong>matrix factorization</strong> is that</p>
-<p>Not complete</p>
+<p>more more</p>
+<div class="section" id="eigendecomposition">
+<h2>Eigendecomposition<a class="headerlink" href="#eigendecomposition" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math">\(A\)</span> be an <span class="math">\(n \times n\)</span> matrix and <span class="math">\(\mathbf{x}\)</span> be an <span class="math">\(n \times 1\)</span> nonzero vector. An <strong>eigenvalue</strong> of <span class="math">\(A\)</span> is a number <span class="math">\(\lambda\)</span> such that</p>
+<div class="math">
+\[A \boldsymbol{x} = \lambda \boldsymbol{x}\]</div>
+<p>A vector <span class="math">\(\mathbf{x}\)</span> satisfying this equation is called an <strong>eigenvector</strong> associated with <span class="math">\(\lambda\)</span></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[1, 0, 0],</span>
+<span class="go">       [0, 2, 0],</span>
+<span class="go">       [0, 0, 3]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="p">;</span><span class="n">v</span>
+<span class="go">array([ 1.,  2.,  3.])</span>
+<span class="go">array([[ 1.,  0.,  0.],</span>
+<span class="go">       [ 0.,  1.,  0.],</span>
+<span class="go">       [ 0.,  0.,  1.]])</span>
+</pre></div>
+</div>
+<p>Eigenvectors and eigenvalues will play a huge roll in matrix methods later in the course (PCA, SVD, NMF).</p>
+</div>
 </div>
 
 
@@ -186,7 +210,7 @@
         <a href="pca-and-svd.html" class="btn btn-neutral float-right" title="PCA and SVD" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="linear-algebra-2.html" class="btn btn-neutral" title="Linear algebra - part 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="linear-algebra-2.html" class="btn btn-neutral" title="Cosine similarity and special matrices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

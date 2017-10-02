@@ -6,7 +6,6 @@ Learning objectives
   1. transpose, dot products, inverse matrices
   2. matrix inversions and determinants 
 
-
 transposes, dot products, determinants, and inverses
 -----------------------------------------------------
 

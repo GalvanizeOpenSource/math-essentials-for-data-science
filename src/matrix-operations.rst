@@ -5,15 +5,17 @@ Matrix Operations
 
 Learning objectives:
 
-  1. Understand the dimensional requirements for matrix multiplication and be able to whiteboard a simple example
-  2. Become more familiar with NumPy and the common functions
+  1. Understand the dimensional requirements for matrix multiplication
+  2. Understand and be able to execute **elementwise** arithmetric operators in NumPy
+  3. Be familiar with the commonly encountered matrix operations: slicing, masking and concatenation
+  4. Be able to recall the output of vector-vector, matrix-vector, and matrix-matrix products
+
 
 
 Quick reference
 ---------------------
 
-Here we provide a quick reference guide to the commonly used functions from the NumPy package along with
-several frequently encountered examples.
+Here we provide a summary the commands that will be introduced in this section.
 
 +-----------------------------------+-------------------------------------------------------------+
 | NumPy command                     | Note                                                        |
@@ -37,6 +39,15 @@ several frequently encountered examples.
 | argsort(a)                        | returns the sorted indices of an input array                | 
 +-----------------------------------+-------------------------------------------------------------+
 
+
+Dimensional requirements for matrix multiplication
+----------------------------------------------------
+
+.. important:: In order for the matrix product (:math:`A \times B`) to exist, the number of columns in :math:`A` must equal the number of rows in :math:`B`.
+
+
+more more more
+	  
 Basic operations
 --------------------
 
