@@ -46,6 +46,60 @@ Dimensional requirements for matrix multiplication
 .. important:: In order for the matrix product (:math:`A \times B`) to exist, the number of columns in :math:`A` must equal the number of rows in :math:`B`.
 
 
+Basic properties of matrices
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is convention to represent vectors as column matrices.  Think of
+everything as a feature matrix a single :math:`x` is then a slice of
+that matrix.
+
+
+A **column matrix** in NumPy.
+
+.. math::
+    
+    x =
+    \begin{pmatrix}
+    3  \\
+    4  \\
+    5  \\
+    6  
+    \end{pmatrix}
+
+>>> x = np.array([[3,4,5,6]]).T
+
+A **row matrix** in NumPy.
+
+.. math::
+
+    x =
+    \begin{pmatrix}
+    3 & 4 & 5 & 6
+    \end{pmatrix}
+
+>>> x = np.array([[3,4,5,6]])
+
+General matrices like you saw :doc:`working with NumPy <matrix-operations>`.
+
+.. math::
+
+     A_{m,n} =
+    \begin{pmatrix}
+     a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+     a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+     \vdots  & \vdots  & \ddots & \vdots  \\
+     a_{m,1} & a_{m,2} & \cdots & a_{m,n}
+    \end{pmatrix}
+
+    
+.. note:: In order to multiply two matrices, they must be
+          **conformable** such that the number of columns of the first
+          matrix must be the same as the number of rows of the second
+          matrix.
+
+
+
+	       
 more more more
 	  
 Basic operations

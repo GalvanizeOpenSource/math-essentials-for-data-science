@@ -26,7 +26,7 @@ Scalars, vectors, matrices and tensors
 
 Without knowing anything about vectors or matrices there is already a
 good chance that you have some intuition for these concepts. Think of
-a spreadsheet with rows and columns.  Within a give cell there exists
+a spreadsheet with rows and columns.  Within a given cell there exists
 some value---lets call it a `scalar
 <https://en.wikipedia.org/wiki/Scalar_(mathematics)>`_; scalars are
 the contents of vectors and matrices.  If we think of the idea of a
@@ -36,10 +36,8 @@ concept of a `vector
 specifically, this is referred to as a **column vector**.  The
 elements of a row are accordingly referred to as a **row vector**.
 
-The spreadsheet analogy only works if all rows have the same number of
-elements and all of the columns have the same number of elements.  We
-collectively refer to the columns and rows as a
-`https://en.wikipedia.org/wiki/Matrix_(mathematics) <matrix>`_.
+We collectively refer to the columns and rows as `matrix
+<https://en.wikipedia.org/wiki/Matrix_(mathematics)>`_.
 
 .. note::
     A matrix with :math:`m` rows and :math:`n` columns is a :math:`m \times n` matrix and we refer to :math:`m` and :math:`n` as **dimensions**.
@@ -105,27 +103,55 @@ An introduction to NumPy and Arrays
 -----------------------------------------
 
 Sometimes we need to write concepts on paper or see them in action
-through code before it we have solid understanding.  We will be using
-the numeric computing library from Python as a tool to help bring to
-life some of these concepts.
+through code before we can effectively strengthen our understanding.
+We will be learning the through a widely used Python package called
+`NumPy <numpy.scipy.org>`_ to help bring to life essentials of linear
+algebra.
 
-`NumPy <numpy.scipy.org>`_ is the *de facto* standard for numerical
-computing in Python.  It is `highly optimized
-<http://www.scipy.org/PerformancePython>`_ and extremely useful for
-working with matrices.  The standard matrix class in NumPy is called
-an `array
+In order to get the most out of this resource and to ensure that you
+can actively follow along it is easiest if you install a working
+Python environment.
+
+    :doc:`Python installation guide <install-python>`
+
+.. important:: Familiarity with the Python language is not a
+               prerequisite for this primer.  The included code blocks
+               are minimal and you should be able to follow even
+               without prior experience in Python.
+
+
+	       
+Once Python is installed you can start an interactive Python
+environment by typing the command `ipython` into a terminal.  `NumPy
+<numpy.scipy.org>`_ is the *de facto* standard for numerical computing
+in Python and it comes installed as part of the Conda bundle.  It is
+`highly optimized <http://www.scipy.org/PerformancePython>`_ and
+extremely useful for working with matrices.  The standard matrix class
+in NumPy is called an `array
 <http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html>`_.
-We will first get comfortable with working with arrays the we will
-cover a number of useful functions.  Then we will touch on the linear
-algebra capabilities of NumPy and finally we will use a few examples
-to tie together key concepts.
+We will first get comfortable working with arrays then we will ease
+our way into the essential concepts of linear algebra.  NumPy will
+provide you with a tool explore all concepts presented here.
+
+The standard syntax for importing the package NumPy into a Python environment is
+
+>>> import numpy as np
+
+.. note:: Examples of code (like the import statement above) are line
+          by line, where each line begins with `>>>`.  This means that
+          you can copy the code that comes after the line indicator
+          directly into your interpreter
 
 Arrays
 ^^^^^^^^^
 
-The main object in NumPy is the *homogeneous*, *multidimensional* array.  An 
-`array <http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html>`_ is 
-a table of elements.  An example is a matrix :math:`x`  
+Python is an `object-oriented
+<https://en.wikipedia.org/wiki/Object-oriented_programming>`_
+programming language.  The main object in NumPy is the *homogeneous*,
+*multidimensional* array.  An `array
+<http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html>`_
+is our programmatic way to represent vectors and matrices.  An example
+is a matrix :math:`x`
 
 .. math::
 

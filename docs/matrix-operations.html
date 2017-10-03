@@ -97,7 +97,10 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Thinking in terms of vectors and matrices</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Matrix Operations</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#quick-reference">Quick reference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dimensional-requirements-for-matrix-multiplication">Dimensional requirements for matrix multiplication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dimensional-requirements-for-matrix-multiplication">Dimensional requirements for matrix multiplication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-properties-of-matrices">Basic properties of matrices</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#basic-operations">Basic operations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#arithmetic-operators-in-numpy-work-elementwise">Arithmetic operators in NumPy work <strong>elementwise</strong>.</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#special-addition-and-multiplication-operators">Special addition and multiplication operators</a></li>
@@ -251,7 +254,50 @@
 <p class="first admonition-title">Important</p>
 <p class="last">In order for the matrix product (<span class="math">\(A \times B\)</span>) to exist, the number of columns in <span class="math">\(A\)</span> must equal the number of rows in <span class="math">\(B\)</span>.</p>
 </div>
+<div class="section" id="basic-properties-of-matrices">
+<h3>Basic properties of matrices<a class="headerlink" href="#basic-properties-of-matrices" title="Permalink to this headline">¶</a></h3>
+<p>It is convention to represent vectors as column matrices.  Think of
+everything as a feature matrix a single <span class="math">\(x\)</span> is then a slice of
+that matrix.</p>
+<p>A <strong>column matrix</strong> in NumPy.</p>
+<div class="math">
+\[\begin{split}x =
+\begin{pmatrix}
+3  \\
+4  \\
+5  \\
+6
+\end{pmatrix}\end{split}\]</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+<p>A <strong>row matrix</strong> in NumPy.</p>
+<div class="math">
+\[x =
+\begin{pmatrix}
+3 &amp; 4 &amp; 5 &amp; 6
+\end{pmatrix}\]</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>General matrices like you saw <a class="reference internal" href="#"><span class="doc">working with NumPy</span></a>.</p>
+<div class="math">
+\[\begin{split} A_{m,n} =
+\begin{pmatrix}
+ a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n} \\
+ a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,n} \\
+ \vdots  &amp; \vdots  &amp; \ddots &amp; \vdots  \\
+ a_{m,1} &amp; a_{m,2} &amp; \cdots &amp; a_{m,n}
+\end{pmatrix}\end{split}\]</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In order to multiply two matrices, they must be
+<strong>conformable</strong> such that the number of columns of the first
+matrix must be the same as the number of rows of the second
+matrix.</p>
+</div>
 <p>more more more</p>
+</div>
 </div>
 <div class="section" id="basic-operations">
 <h2>Basic operations<a class="headerlink" href="#basic-operations" title="Permalink to this headline">¶</a></h2>

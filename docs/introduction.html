@@ -112,6 +112,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Appendices:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="install-python.html">Python Installation Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">Works cited</a></li>
 </ul>
 
@@ -197,17 +198,14 @@
 <h2>Scalars, vectors, matrices and tensors<a class="headerlink" href="#scalars-vectors-matrices-and-tensors" title="Permalink to this headline">¶</a></h2>
 <p>Without knowing anything about vectors or matrices there is already a
 good chance that you have some intuition for these concepts. Think of
-a spreadsheet with rows and columns.  Within a give cell there exists
+a spreadsheet with rows and columns.  Within a given cell there exists
 some value—lets call it a <a class="reference external" href="https://en.wikipedia.org/wiki/Scalar_(mathematics)">scalar</a>; scalars are
 the contents of vectors and matrices.  If we think of the idea of a
 column and the elements contained therein we now have a basis for the
 concept of a <a class="reference external" href="https://en.wikipedia.org/wiki/Row_and_column_vectors">vector</a>.  More
 specifically, this is referred to as a <strong>column vector</strong>.  The
 elements of a row are accordingly referred to as a <strong>row vector</strong>.</p>
-<p>The spreadsheet analogy only works if all rows have the same number of
-elements and all of the columns have the same number of elements.  We
-collectively refer to the columns and rows as a
-<a class="reference external" href="matrix">https://en.wikipedia.org/wiki/Matrix_(mathematics)</a>.</p>
+<p>We collectively refer to the columns and rows as <a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_(mathematics)">matrix</a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">A matrix with <span class="math">\(m\)</span> rows and <span class="math">\(n\)</span> columns is a <span class="math">\(m \times n\)</span> matrix and we refer to <span class="math">\(m\)</span> and <span class="math">\(n\)</span> as <strong>dimensions</strong>.</p>
@@ -285,22 +283,49 @@ the formal term for the number of dimensions.</p>
 <div class="section" id="an-introduction-to-numpy-and-arrays">
 <h2>An introduction to NumPy and Arrays<a class="headerlink" href="#an-introduction-to-numpy-and-arrays" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes we need to write concepts on paper or see them in action
-through code before it we have solid understanding.  We will be using
-the numeric computing library from Python as a tool to help bring to
-life some of these concepts.</p>
-<p><a class="reference external" href="numpy.scipy.org">NumPy</a> is the <em>de facto</em> standard for numerical
-computing in Python.  It is <a class="reference external" href="http://www.scipy.org/PerformancePython">highly optimized</a> and extremely useful for
-working with matrices.  The standard matrix class in NumPy is called
-an <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html">array</a>.
-We will first get comfortable with working with arrays the we will
-cover a number of useful functions.  Then we will touch on the linear
-algebra capabilities of NumPy and finally we will use a few examples
-to tie together key concepts.</p>
+through code before we can effectively strengthen our understanding.
+We will be learning the through a widely used Python package called
+<a class="reference external" href="numpy.scipy.org">NumPy</a> to help bring to life essentials of linear
+algebra.</p>
+<p>In order to get the most out of this resource and to ensure that you
+can actively follow along it is easiest if you install a working
+Python environment.</p>
+<blockquote>
+<div><a class="reference internal" href="install-python.html"><span class="doc">Python installation guide</span></a></div></blockquote>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Familiarity with the Python language is not a
+prerequisite for this primer.  The included code blocks
+are minimal and you should be able to follow even
+without prior experience in Python.</p>
+</div>
+<p>Once Python is installed you can start an interactive Python
+environment by typing the command <cite>ipython</cite> into a terminal.  <a class="reference external" href="numpy.scipy.org">NumPy</a> is the <em>de facto</em> standard for numerical computing
+in Python and it comes installed as part of the Conda bundle.  It is
+<a class="reference external" href="http://www.scipy.org/PerformancePython">highly optimized</a> and
+extremely useful for working with matrices.  The standard matrix class
+in NumPy is called an <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html">array</a>.
+We will first get comfortable working with arrays then we will ease
+our way into the essential concepts of linear algebra.  NumPy will
+provide you with a tool explore all concepts presented here.</p>
+<p>The standard syntax for importing the package NumPy into a Python environment is</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Examples of code (like the import statement above) are line
+by line, where each line begins with <cite>&gt;&gt;&gt;</cite>.  This means that
+you can copy the code that comes after the line indicator
+directly into your interpreter</p>
+</div>
 <div class="section" id="arrays">
 <h3>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">¶</a></h3>
-<p>The main object in NumPy is the <em>homogeneous</em>, <em>multidimensional</em> array.  An
-<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html">array</a> is
-a table of elements.  An example is a matrix <span class="math">\(x\)</span></p>
+<p>Python is an <a class="reference external" href="https://en.wikipedia.org/wiki/Object-oriented_programming">object-oriented</a>
+programming language.  The main object in NumPy is the <em>homogeneous</em>,
+<em>multidimensional</em> array.  An <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html">array</a>
+is our programmatic way to represent vectors and matrices.  An example
+is a matrix <span class="math">\(x\)</span></p>
 <div class="math">
 \[\begin{split}x =
 \begin{pmatrix}

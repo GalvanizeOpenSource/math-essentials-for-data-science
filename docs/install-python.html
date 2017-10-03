@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Linear Algebra Essentials &mdash; Linear algebra 0.1 documentation</title>
+  <title>Python Installation Guide &mdash; Linear algebra 0.1 documentation</title>
   
 
   
@@ -37,8 +37,9 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Linear algebra 0.1 documentation" href="#"/>
-        <link rel="next" title="Thinking in terms of vectors and matrices" href="introduction.html"/> 
+    <link rel="top" title="Linear algebra 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Works cited" href="references.html"/>
+        <link rel="prev" title="PCA and SVD" href="pca-and-svd.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -57,7 +58,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> Linear algebra
+            <a href="index.html" class="icon icon-home"> Linear algebra
           
 
           
@@ -101,8 +102,17 @@
 <li class="toctree-l1"><a class="reference internal" href="pca-and-svd.html">PCA and SVD</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendices:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="install-python.html">Python Installation Guide</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#on-ubuntu">On Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#on-osx">On OSX</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#then-run-this-to-create-a-working-python-2-environment">Then run this to create a working python 2 environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#then-ensure-you-can-run-jupyter-with-py2">Then ensure you can run Jupyter with Py2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keeping-conda-up-to-date">Keeping conda up-to-date</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">Works cited</a></li>
 </ul>
 
@@ -118,7 +128,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">Linear algebra</a>
+          <a href="index.html">Linear algebra</a>
         
       </nav>
 
@@ -146,15 +156,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">Docs</a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Linear Algebra Essentials</li>
+      <li>Python Installation Guide</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/install-python.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,45 +177,71 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="align-center figure">
-<a class="reference internal image-reference" href="_images/galvanize-logo.png"><img alt="galvanize-logo" src="_images/galvanize-logo.png" style="width: 669.55px; height: 167.64999999999998px;" /></a>
+  <div class="section" id="python-installation-guide">
+<h1>Python Installation Guide<a class="headerlink" href="#python-installation-guide" title="Permalink to this headline">¶</a></h1>
+<p>The programming language Python has a number of packages associated
+with it and we recommend installing the <a class="reference external" href="https://conda.io/docs/">Conda</a> package management system to help maintain
+your Python environment.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">these install instructions will install a Python3 default environment with a Python2 backup.</p>
 </div>
-<div class="section" id="linear-algebra-essentials">
-<h1>Linear Algebra Essentials<a class="headerlink" href="#linear-algebra-essentials" title="Permalink to this headline">¶</a></h1>
-<p>If we use a transportation metaphor we might say that statistics and
-<a class="reference external" href="https://en.wikipedia.org/wiki/Machine_learning">machine learning</a>
-are the vehicles that take us to both new and familiar places.
-We could also think of programming and <a class="reference external" href="https://en.wikipedia.org/wiki/Software_engineering">software engineering</a> as the roads
-and infrastructure necessary to make travel even possible.  Linear
-algebra on the other hand aligns well with the motors and engines that
-propel our vehicles.</p>
-<div class="align-center figure">
-<a class="reference internal image-reference" href="_images/car-trunk.png"><img alt="galvanize-logo" src="_images/car-trunk.png" style="width: 224.35px; height: 109.89999999999999px;" /></a>
+<p>If there is an old version of anaconda you can remove it with</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ rm -rf ~/anaconda*
+</pre></div>
 </div>
-<p>Most of us seldom think about <em>what is under the hood</em> as we hum
-steadily along a nicely paved road, but success as a data scientist
-requires at least a fundamental understanding.  Here we present the
-essentials of <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_algebra">linear algebra</a> with the goal that
-you become prepared for an educational experience in data science.
-You may even come to believe that viewing math through the lens of
-matrices and vectors <strong>makes things easier</strong>.</p>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Thinking in terms of vectors and matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrix-operations.html">Matrix Operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-1.html">Properties of matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-2.html">Cosine similarity and special matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrix-decomposition.html">Matrix Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pca-and-svd.html">PCA and SVD</a></li>
-</ul>
+<p>Download the image or install script from <a class="reference external" href="https://www.continuum.io/downloads">https://www.continuum.io/downloads</a></p>
+<div class="section" id="on-ubuntu">
+<h2>On Ubuntu<a class="headerlink" href="#on-ubuntu" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>install via the command line</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ bash ~/Downloads/Anaconda3-4.3.1-Linux-x86_64.sh
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Appendices:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="install-python.html">Python Installation Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">Works cited</a></li>
-</ul>
+<p>Answer yes to the path adding question</p>
+<ol class="arabic simple" start="2">
+<li>Restart terminal</li>
+</ol>
+</div>
+<div class="section" id="on-osx">
+<h2>On OSX<a class="headerlink" href="#on-osx" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Run the installer on the downloaded image</li>
+</ol>
+<p>Answer yes to the path adding question</p>
+<ol class="arabic simple" start="2">
+<li>restart terminal</li>
+</ol>
+<div class="section" id="then-run-this-to-create-a-working-python-2-environment">
+<h3>Then run this to create a working python 2 environment<a class="headerlink" href="#then-run-this-to-create-a-working-python-2-environment" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ conda create -n py2 <span class="nv">python</span><span class="o">=</span><span class="m">2</span> anaconda
+</pre></div>
+</div>
+<p>To activate the python 2 environment</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ <span class="nb">source</span> activate py2
+</pre></div>
+</div>
+<p>To toggle back to a Python3 environment</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ <span class="nb">source</span> deactivate py2
+</pre></div>
+</div>
+</div>
+<div class="section" id="then-ensure-you-can-run-jupyter-with-py2">
+<h3>Then ensure you can run Jupyter with Py2<a class="headerlink" href="#then-ensure-you-can-run-jupyter-with-py2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ <span class="nb">source</span> activate py2
+~$ conda install notebook ipykernel
+~$ ipython kernel install --user
+</pre></div>
+</div>
+</div>
+<div class="section" id="keeping-conda-up-to-date">
+<h3>Keeping conda up-to-date<a class="headerlink" href="#keeping-conda-up-to-date" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ conda update conda
+~$ conda updata --all
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -219,8 +255,10 @@ matrices and vectors <strong>makes things easier</strong>.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="introduction.html" class="btn btn-neutral float-right" title="Thinking in terms of vectors and matrices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="references.html" class="btn btn-neutral float-right" title="Works cited" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="pca-and-svd.html" class="btn btn-neutral" title="PCA and SVD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

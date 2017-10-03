@@ -51,4 +51,5 @@ matrices and vectors **makes things easier**.
    :maxdepth: 1
    :caption: Appendices:
 
+   install-python	     
    references
