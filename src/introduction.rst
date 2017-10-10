@@ -3,11 +3,16 @@
 Thinking in terms of vectors and matrices
 ============================================
 
-Learning objectives:
+|
 
-  1. Become familiar with linear algebra's basic data structures: **scalar**, **vector**, **matrix**, **tensor**
-  2. Create, manipulate, and generally begin to get comfortable with NumPy arrays
-
++----+----------------------------------------------------------------------------------------------------------------------------+
+| **Learning Objectives**                                                                                                         |
++====+============================================================================================================================+
+| 1  |  Become familiar with linear algebra's basic data structures: **scalar**, **vector**, **matrix**, **tensor**               |
++----+----------------------------------------------------------------------------------------------------------------------------+
+| 2  | Create, manipulate, and generally begin to get comfortable with NumPy arrays                                               |
++----+----------------------------------------------------------------------------------------------------------------------------+
+     
 So you may be asking why?
 ---------------------------
 
@@ -19,7 +24,12 @@ So you may be asking why?
 
 `https://xkcd.com/1838 <https://xkcd.com/1838>`_
 
-One of the most important parts of the modeling process is model inference
+
+Here are just a few reasons why a solid understanding of linear algebra is **crutial** for a practicing data scientist
+
+  * linear models can concisly be written in vector notation
+  * `Regularization <https://en.wikipedia.org/wiki/Regularization_(mathematics)>`_ often makes use of matrix norms 
+  * Matrix decompsitions are commonly used in recommender systems 
      
 Scalars, vectors, matrices and tensors
 ------------------------------------------
@@ -47,17 +57,17 @@ If a matrix is a two dimensional representation of data then a `tensor
 representation to any number of dimensions.  Lets say we copied our
 spreadsheet and created several new tabs then we are now working with a tensor.
 
-+------------------+-----------------------------------+---------------------------------------------------+
-| Machine Learning | Notation                          | Description                                       |
-+==================+===================================+===================================================+
-| **Scaler**       | :math:`x`                         | a single real number (ints, floats etc)           |
-+------------------+-----------------------------------+---------------------------------------------------+
-| **Vector**       | :math:`X` or :math:`X^{T}`        | a 1D array of numbers (real, binary, integer etc) |
-+------------------+-----------------------------------+---------------------------------------------------+
-| **Matrix**       | :math:`\textbf{X}_{(n \times p)}` | a 2D array of numbers                             |
-+------------------+-----------------------------------+---------------------------------------------------+
-| **Tensor**       | :math:`\hat{f}`                   | an array generalized to n dimensions              |
-+------------------+-----------------------------------+---------------------------------------------------+
++------------------+----------------------------------------------+---------------------------------------------------+
+| Machine Learning | Notation                                     | Description                                       |
++==================+==============================================+===================================================+
+| **Scaler**       | :math:`x`                                    | a single real number (ints, floats etc)           |
++------------------+----------------------------------------------+---------------------------------------------------+
+| **Vector**       | :math:`\mathbf{x}` or :math:`\mathbf{x}^{T}` | a 1D array of numbers (real, binary, integer etc) |
++------------------+----------------------------------------------+---------------------------------------------------+
+| **Matrix**       | :math:`\mathbf{X}`                           | a 2D array of numbers                             |
++------------------+----------------------------------------------+---------------------------------------------------+
+| **Tensor**       | :math:`\hat{f}`                              | an array generalized to n dimensions              |
++------------------+----------------------------------------------+---------------------------------------------------+
 
 Matrices are also tensors.  If we were working with a :math:`4 \times
 4` matrix it can be described as a tensor of rank 2.  The `rank
@@ -99,14 +109,59 @@ the formal term for the number of dimensions.
       
 |
 
+Notation
+-----------
+
+Scalers have the standard math notation
+
+   .. math::
+
+      x = 1
+
+Vectors are denoted by lower case bold letters such as
+:math:`\mathbf{x}`, and all vectors are assumed to be column vectors.
+
+
+    .. math::
+
+        \mathbf{x} =
+        \begin{pmatrix}
+        0 \\
+        1 \\
+        2 \\
+	3
+        \end{pmatrix} 
+
+      
+A superscript :math:`T` denotes the transpose of a matrix or vector.  This implies that :math:`\mathbf{x}^{T}` is a row vector.
+
+    .. math::
+
+        \mathbf{x}^{T} = 
+        \begin{pmatrix}
+        0 & 1 & 2 & 3
+        \end{pmatrix} 
+ 
+Upper-case bold letter denote.
+
+    .. math::
+
+        \mathbf{X} =
+        \begin{pmatrix}
+        0 & 0 & 1 & 0 \\
+        1 & 2 & 0 & 1 \\
+        1 & 0 & 0 & 1
+        \end{pmatrix} 
+
+	
 An introduction to NumPy and Arrays
 -----------------------------------------
 
 Sometimes we need to write concepts on paper or see them in action
-through code before we can effectively strengthen our understanding.
+through code before we can effectively establish our understanding.
 We will be learning the through a widely used Python package called
-`NumPy <numpy.scipy.org>`_ to help bring to life essentials of linear
-algebra.
+`NumPy <numpy.scipy.org>`_ to help bring to life the essentials of
+linear algebra.
 
 In order to get the most out of this resource and to ensure that you
 can actively follow along it is easiest if you install a working
@@ -119,10 +174,9 @@ Python environment.
                are minimal and you should be able to follow even
                without prior experience in Python.
 
-
 	       
 Once Python is installed you can start an interactive Python
-environment by typing the command `ipython` into a terminal.  `NumPy
+environment by typing the command ``ipython`` into a terminal.  `NumPy
 <numpy.scipy.org>`_ is the *de facto* standard for numerical computing
 in Python and it comes installed as part of the Conda bundle.  It is
 `highly optimized <http://www.scipy.org/PerformancePython>`_ and
@@ -142,8 +196,8 @@ The standard syntax for importing the package NumPy into a Python environment is
           you can copy the code that comes after the line indicator
           directly into your interpreter
 
-Arrays
-^^^^^^^^^
+Arrays and their attributes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Python is an `object-oriented
 <https://en.wikipedia.org/wiki/Object-oriented_programming>`_
@@ -151,54 +205,95 @@ programming language.  The main object in NumPy is the *homogeneous*,
 *multidimensional* array.  An `array
 <http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html>`_
 is our programmatic way to represent vectors and matrices.  An example
-is a matrix :math:`x`
+is a matrix :math:`\mathbf{X}`
 
 .. math::
 
-    x =
+    \mathbf{X} =
     \begin{pmatrix}
     1 & 2 & 3  \\
     4 & 5 & 6  \\
     7 & 8 & 9
     \end{pmatrix} 
  
-can be represented as
+and can be represented through NumPy as
 
 >>> import numpy as np
->>> x = np.array([[1,2,3],[4,5,6],[7,8,9]])
->>> x
+>>> X = np.array([[1,2,3],[4,5,6],[7,8,9]])
+>>> X
 array([[1, 2, 3],
        [4, 5, 6],
        [7, 8, 9]])
->>> x.shape
-(3, 3)
 
-The array :math:`x` has 2 dimensions.  The number of dimensions is
-referred to as **rank**.  The ndim is the same as the number of axes or the
-length of the output of x.shape
+Lets break down that code statement.  First
 
->>> x.ndim
+>>> a = [1,2,3]
+
+is a native Python data structure called a `list <https://developers.google.com/edu/python/lists>`_.  We could create a vector from this list using the NumPy array class.
+
+>>> a = np.array([1,2,3])
+
+So to create the above X matrix it is a **list of lists** where each row corresponds to a list.
+
+Because our array version of :math:`\mathbf{X}` is an object it
+contains methods and attributes.
+
+ * The methods are functions that act on our matrix
+ * the attributes are data that are related to our matrix.
+
+Lets start with some useful attributes.  The array :math:`\mathbf{X}`
+has 2 dimensions.  The number of dimensions in linear algebra
+terminology is referred to as **rank**.  We get at rank with the
+``ndim`` attribute.
+
+>>> X.ndim
 2
 
->>> x.size
+similarly we have access to the dimensions themselves through ``shape``
+
+>>> X.shape
+(3, 3)
+
+Note that the number of axes is also equal to the or the length of ``x.shape``.  To return an integer representing the total number of elements one may use ``size``.
+
+>>> X.size
 9
 
-Arrays are especially convenient because of built-in methods.
+.. warning:: If you want to work with a vector where the dimensions
+             exist explicitly you need to use double brackets.
+             Otherwise it will be a 1D matrix and sometimes it may not
+             give you the result you were looking for. 
 
->>> x.sum(axis=0)
+	     >>> np.array([1,2,3]).shape
+             (3,)
+             >>> np.array([[1,2,3]]).shape
+             (1, 3)
+
+
+Arrays and their methods
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	     
+We have seen that arrays have built in attributes that are useful.
+They also have numerous built-in methods that make them particularly
+convenient.  Note that methods always have parenthesis that may or may
+not enclose arguments.
+
+>>> X.sum(axis=0)
 array([12, 15, 18])
->>> x.sum(axis=1)
+>>> X.sum(axis=1)
 array([ 6, 15, 24]) 
 
->>> x.mean(axis=0)
+>>> X.mean(axis=0)
 array([ 4.,  5.,  6.])
->>> x.mean(axis=1)
+>>> X.mean(axis=1)
 array([ 2.,  5.,  8.])
 
-But arrays are also useful because they interact with other NumPy functions as 
-well as being the main data structure in so many other Python packages. To make a sequence of numbers, 
-similar to *range* in the Python standard library, we use 
-`arange <http://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html>`_.
+Commonly used arrays can be created with functions that are part of
+the NumPy package.  For example, to make a sequence of numbers, we can
+use `arange <http://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html>`_.
+This is similar to the standard python function `range <http://pythoncentral.io/pythons-range-function-explained>`_
+that returns a list instead of an array.  Look carefully at the
+following examples to see how it works.
 
 >>> np.arange(10)
 array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
@@ -209,12 +304,13 @@ array([ 5. ,  5.5,  6. ,  6.5,  7. ,  7.5,  8. ,  8.5,  9. ,  9.5])
 
 Also we can recreate the first matrix by **reshaping** the output of arange.
 
->>> x = np.arange(1,10).reshape(3,3)
->>> x
+>>> X = np.arange(1,10).reshape(3,3)
+>>> X
 array([[1, 2, 3],
        [4, 5, 6],
        [7, 8, 9]])
 
+In that function we created an array with values from 1-10 then we reshaped it into a 2D array with 3 columns and 3 rows.
 Another similar function to arange is `linspace <http://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html>`_
 which fills a vector with evenly spaced variables for a specified interval.
 
@@ -233,7 +329,11 @@ Visualizing linspace...
 .. plot:: linspace-example.py
    :include-source:
 
-Arrays may be made of different types of data.
+
+.. important:: Did you notice that ``arange`` starts counting at zero?  Python uses zero based indexing, so the initial element of a sequence has index 0.
+
+
+This is a good time to introduce the idea that arrays may be made of different types of data, but they can only be one data type at a given time.
 
 >>> x = np.array([1,2,3])
 >>> x.dtype
@@ -247,7 +347,8 @@ dtype('float64')
 >>> x.dtype
 dtype('float64')
 
-There are several convenience functions for making arrays that are worth mentioning:
+There are several convenience functions for making arrays that you should be aware of:
+
     * `zeros <http://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros.html>`_
     * `ones <http://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html>`_
 

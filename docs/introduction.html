@@ -97,8 +97,10 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Thinking in terms of vectors and matrices</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#so-you-may-be-asking-why">So you may be asking why?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#scalars-vectors-matrices-and-tensors">Scalars, vectors, matrices and tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notation">Notation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#an-introduction-to-numpy-and-arrays">An introduction to NumPy and Arrays</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#arrays">Arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arrays-and-their-attributes">Arrays and their attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arrays-and-their-methods">Arrays and their methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#more-resources">More resources</a></li>
 </ul>
 </li>
@@ -179,20 +181,41 @@
             
   <div class="section" id="thinking-in-terms-of-vectors-and-matrices">
 <h1>Thinking in terms of vectors and matrices<a class="headerlink" href="#thinking-in-terms-of-vectors-and-matrices" title="Permalink to this headline">¶</a></h1>
-<p>Learning objectives:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>Become familiar with linear algebra’s basic data structures: <strong>scalar</strong>, <strong>vector</strong>, <strong>matrix</strong>, <strong>tensor</strong></li>
-<li>Create, manipulate, and generally begin to get comfortable with NumPy arrays</li>
-</ol>
-</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="3%" />
+<col width="97%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2"><strong>Learning Objectives</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>Become familiar with linear algebra’s basic data structures: <strong>scalar</strong>, <strong>vector</strong>, <strong>matrix</strong>, <strong>tensor</strong></td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>Create, manipulate, and generally begin to get comfortable with NumPy arrays</td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="so-you-may-be-asking-why">
 <h2>So you may be asking why?<a class="headerlink" href="#so-you-may-be-asking-why" title="Permalink to this headline">¶</a></h2>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="_images/xkcd_ml_and_la.png"><img alt="xkcd-1838" src="_images/xkcd_ml_and_la.png" style="width: 259.7px; height: 306.95px;" /></a>
 </div>
 <p><a class="reference external" href="https://xkcd.com/1838">https://xkcd.com/1838</a></p>
-<p>One of the most important parts of the modeling process is model inference</p>
+<p>Here are just a few reasons why a solid understanding of linear algebra is <strong>crutial</strong> for a practicing data scientist</p>
+<blockquote>
+<div><ul class="simple">
+<li>linear models can concisly be written in vector notation</li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">Regularization</a> often makes use of matrix norms</li>
+<li>Matrix decompsitions are commonly used in recommender systems</li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="scalars-vectors-matrices-and-tensors">
 <h2>Scalars, vectors, matrices and tensors<a class="headerlink" href="#scalars-vectors-matrices-and-tensors" title="Permalink to this headline">¶</a></h2>
@@ -215,9 +238,9 @@ representation to any number of dimensions.  Lets say we copied our
 spreadsheet and created several new tabs then we are now working with a tensor.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="17%" />
-<col width="34%" />
-<col width="49%" />
+<col width="16%" />
+<col width="40%" />
+<col width="44%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Machine Learning</th>
@@ -231,11 +254,11 @@ spreadsheet and created several new tabs then we are now working with a tensor.<
 <td>a single real number (ints, floats etc)</td>
 </tr>
 <tr class="row-odd"><td><strong>Vector</strong></td>
-<td><span class="math">\(X\)</span> or <span class="math">\(X^{T}\)</span></td>
+<td><span class="math">\(\mathbf{x}\)</span> or <span class="math">\(\mathbf{x}^{T}\)</span></td>
 <td>a 1D array of numbers (real, binary, integer etc)</td>
 </tr>
 <tr class="row-even"><td><strong>Matrix</strong></td>
-<td><span class="math">\(\textbf{X}_{(n \times p)}\)</span></td>
+<td><span class="math">\(\mathbf{X}\)</span></td>
 <td>a 2D array of numbers</td>
 </tr>
 <tr class="row-odd"><td><strong>Tensor</strong></td>
@@ -280,13 +303,51 @@ the formal term for the number of dimensions.</p>
 <div class="line"><br /></div>
 </div>
 </div>
+<div class="section" id="notation">
+<h2>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h2>
+<p>Scalers have the standard math notation</p>
+<blockquote>
+<div><div class="math">
+\[x = 1\]</div>
+</div></blockquote>
+<p>Vectors are denoted by lower case bold letters such as
+<span class="math">\(\mathbf{x}\)</span>, and all vectors are assumed to be column vectors.</p>
+<blockquote>
+<div><div class="math">
+\[\begin{split}\mathbf{x} =
+\begin{pmatrix}
+0 \\
+1 \\
+2 \\
+3
+\end{pmatrix}\end{split}\]</div>
+</div></blockquote>
+<p>A superscript <span class="math">\(T\)</span> denotes the transpose of a matrix or vector.  This implies that <span class="math">\(\mathbf{x}^{T}\)</span> is a row vector.</p>
+<blockquote>
+<div><div class="math">
+\[\mathbf{x}^{T} =
+\begin{pmatrix}
+0 &amp; 1 &amp; 2 &amp; 3
+\end{pmatrix}\]</div>
+</div></blockquote>
+<p>Upper-case bold letter denote.</p>
+<blockquote>
+<div><div class="math">
+\[\begin{split}\mathbf{X} =
+\begin{pmatrix}
+0 &amp; 0 &amp; 1 &amp; 0 \\
+1 &amp; 2 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 0 &amp; 1
+\end{pmatrix}\end{split}\]</div>
+</div></blockquote>
+</div>
 <div class="section" id="an-introduction-to-numpy-and-arrays">
 <h2>An introduction to NumPy and Arrays<a class="headerlink" href="#an-introduction-to-numpy-and-arrays" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes we need to write concepts on paper or see them in action
-through code before we can effectively strengthen our understanding.
+through code before we can effectively establish our understanding.
 We will be learning the through a widely used Python package called
-<a class="reference external" href="numpy.scipy.org">NumPy</a> to help bring to life essentials of linear
-algebra.</p>
+<a class="reference external" href="numpy.scipy.org">NumPy</a> to help bring to life the essentials of
+linear algebra.</p>
 <p>In order to get the most out of this resource and to ensure that you
 can actively follow along it is easiest if you install a working
 Python environment.</p>
@@ -300,7 +361,7 @@ are minimal and you should be able to follow even
 without prior experience in Python.</p>
 </div>
 <p>Once Python is installed you can start an interactive Python
-environment by typing the command <cite>ipython</cite> into a terminal.  <a class="reference external" href="numpy.scipy.org">NumPy</a> is the <em>de facto</em> standard for numerical computing
+environment by typing the command <code class="docutils literal"><span class="pre">ipython</span></code> into a terminal.  <a class="reference external" href="numpy.scipy.org">NumPy</a> is the <em>de facto</em> standard for numerical computing
 in Python and it comes installed as part of the Conda bundle.  It is
 <a class="reference external" href="http://www.scipy.org/PerformancePython">highly optimized</a> and
 extremely useful for working with matrices.  The standard matrix class
@@ -319,59 +380,102 @@ by line, where each line begins with <cite>&gt;&gt;&gt;</cite>.  This means that
 you can copy the code that comes after the line indicator
 directly into your interpreter</p>
 </div>
-<div class="section" id="arrays">
-<h3>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="arrays-and-their-attributes">
+<h3>Arrays and their attributes<a class="headerlink" href="#arrays-and-their-attributes" title="Permalink to this headline">¶</a></h3>
 <p>Python is an <a class="reference external" href="https://en.wikipedia.org/wiki/Object-oriented_programming">object-oriented</a>
 programming language.  The main object in NumPy is the <em>homogeneous</em>,
 <em>multidimensional</em> array.  An <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html">array</a>
 is our programmatic way to represent vectors and matrices.  An example
-is a matrix <span class="math">\(x\)</span></p>
+is a matrix <span class="math">\(\mathbf{X}\)</span></p>
 <div class="math">
-\[\begin{split}x =
+\[\begin{split}\mathbf{X} =
 \begin{pmatrix}
 1 &amp; 2 &amp; 3  \\
 4 &amp; 5 &amp; 6  \\
 7 &amp; 8 &amp; 9
 \end{pmatrix}\end{split}\]</div>
-<p>can be represented as</p>
+<p>and can be represented through NumPy as</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span>
 <span class="go">array([[1, 2, 3],</span>
 <span class="go">       [4, 5, 6],</span>
 <span class="go">       [7, 8, 9]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">(3, 3)</span>
 </pre></div>
 </div>
-<p>The array <span class="math">\(x\)</span> has 2 dimensions.  The number of dimensions is
-referred to as <strong>rank</strong>.  The ndim is the same as the number of axes or the
-length of the output of x.shape</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">ndim</span>
+<p>Lets break down that code statement.  First</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>is a native Python data structure called a <a class="reference external" href="https://developers.google.com/edu/python/lists">list</a>.  We could create a vector from this list using the NumPy array class.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>So to create the above X matrix it is a <strong>list of lists</strong> where each row corresponds to a list.</p>
+<p>Because our array version of <span class="math">\(\mathbf{X}\)</span> is an object it
+contains methods and attributes.</p>
+<blockquote>
+<div><ul class="simple">
+<li>The methods are functions that act on our matrix</li>
+<li>the attributes are data that are related to our matrix.</li>
+</ul>
+</div></blockquote>
+<p>Lets start with some useful attributes.  The array <span class="math">\(\mathbf{X}\)</span>
+has 2 dimensions.  The number of dimensions in linear algebra
+terminology is referred to as <strong>rank</strong>.  We get at rank with the
+<code class="docutils literal"><span class="pre">ndim</span></code> attribute.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">ndim</span>
 <span class="go">2</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">size</span>
+<p>similarly we have access to the dimensions themselves through <code class="docutils literal"><span class="pre">shape</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(3, 3)</span>
+</pre></div>
+</div>
+<p>Note that the number of axes is also equal to the or the length of <code class="docutils literal"><span class="pre">x.shape</span></code>.  To return an integer representing the total number of elements one may use <code class="docutils literal"><span class="pre">size</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">size</span>
 <span class="go">9</span>
 </pre></div>
 </div>
-<p>Arrays are especially convenient because of built-in methods.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>If you want to work with a vector where the dimensions
+exist explicitly you need to use double brackets.
+Otherwise it will be a 1D matrix and sometimes it may not
+give you the result you were looking for.</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(3,)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(1, 3)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="arrays-and-their-methods">
+<h3>Arrays and their methods<a class="headerlink" href="#arrays-and-their-methods" title="Permalink to this headline">¶</a></h3>
+<p>We have seen that arrays have built in attributes that are useful.
+They also have numerous built-in methods that make them particularly
+convenient.  Note that methods always have parenthesis that may or may
+not enclose arguments.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">array([12, 15, 18])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="go">array([ 6, 15, 24])</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">array([ 4.,  5.,  6.])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="go">array([ 2.,  5.,  8.])</span>
 </pre></div>
 </div>
-<p>But arrays are also useful because they interact with other NumPy functions as
-well as being the main data structure in so many other Python packages. To make a sequence of numbers,
-similar to <em>range</em> in the Python standard library, we use
-<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html">arange</a>.</p>
+<p>Commonly used arrays can be created with functions that are part of
+the NumPy package.  For example, to make a sequence of numbers, we can
+use <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html">arange</a>.
+This is similar to the standard python function <a class="reference external" href="http://pythoncentral.io/pythons-range-function-explained">range</a>
+that returns a list instead of an array.  Look carefully at the
+following examples to see how it works.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="go">array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
@@ -381,14 +485,15 @@ similar to <em>range</em> in the Python standard library, we use
 </pre></div>
 </div>
 <p>Also we can recreate the first matrix by <strong>reshaping</strong> the output of arange.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span>
 <span class="go">array([[1, 2, 3],</span>
 <span class="go">       [4, 5, 6],</span>
 <span class="go">       [7, 8, 9]])</span>
 </pre></div>
 </div>
-<p>Another similar function to arange is <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html">linspace</a>
+<p>In that function we created an array with values from 1-10 then we reshaped it into a 2D array with 3 columns and 3 rows.
+Another similar function to arange is <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html">linspace</a>
 which fills a vector with evenly spaced variables for a specified interval.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
@@ -416,7 +521,11 @@ which fills a vector with evenly spaced variables for a specified interval.</p>
 <div class="figure">
 <img alt="_images/linspace-example.png" src="_images/linspace-example.png" />
 </div>
-<p>Arrays may be made of different types of data.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Did you notice that <code class="docutils literal"><span class="pre">arange</span></code> starts counting at zero?  Python uses zero based indexing, so the initial element of a sequence has index 0.</p>
+</div>
+<p>This is a good time to introduce the idea that arrays may be made of different types of data, but they can only be one data type at a given time.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span>
 <span class="go">dtype(&#39;int64&#39;)</span>
@@ -430,14 +539,13 @@ which fills a vector with evenly spaced variables for a specified interval.</p>
 <span class="go">dtype(&#39;float64&#39;)</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>There are several convenience functions for making arrays that are worth mentioning:</dt>
-<dd><ul class="first last simple">
+<p>There are several convenience functions for making arrays that you should be aware of:</p>
+<blockquote>
+<div><ul class="simple">
 <li><a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros.html">zeros</a></li>
 <li><a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html">ones</a></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
 <span class="go">array([[ 0.,  0.,  0.,  0.],</span>

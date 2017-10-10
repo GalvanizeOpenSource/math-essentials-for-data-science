@@ -1,14 +1,11 @@
 Statistics short-course
 ==========================
 
-Course website: `<https://galvanizeopensource.github.io/linear-algebra-primer/>`_
-
 :Version: 0.1.1
 :Authors: Galvanize
-:Web site: https://galvanizeopensource.github.io/linear-algebra-primer
-:Repo: https://github.com/gSchool/linear-algebra-primer
+:Web site: https://galvanizeopensource.github.io/linear-algebra-essentials/index.html
+:Repo: https://github.com/GalvanizeOpenSource/linear-algebra-essentials
 :Copyright: Galvanize Inc.
-:License: None public
 
 Purpose
 ---------
