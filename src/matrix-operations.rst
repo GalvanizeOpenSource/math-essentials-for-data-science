@@ -1,6 +1,6 @@
 .. probability lecture
 
-Matrix Operations
+Matrix operations
 =============================
 
 Learning objectives:
@@ -9,13 +9,12 @@ Learning objectives:
   2. Understand and be able to execute **elementwise** arithmetric operators in NumPy
   3. Be familiar with the commonly encountered matrix operations: slicing, masking and concatenation
   4. Be able to recall the output of vector-vector, matrix-vector, and matrix-matrix products
-
-
+  5. Transpose
 
 Quick reference
 ---------------------
 
-Here we provide a summary the commands that will be introduced in this section.
+Here we provide a summary the important commands that have already been introduced.
 
 +-----------------------------------+-------------------------------------------------------------+
 | NumPy command                     | Note                                                        |
@@ -30,37 +29,25 @@ Here we provide a summary the commands that will be introduced in this section.
 +-----------------------------------+-------------------------------------------------------------+
 | linspace(start,stop,steps)        | returns a evenly spaced sequence in the specificed interval |
 +-----------------------------------+-------------------------------------------------------------+
-| dot(a,b)                          | matrix multiplication                                       |
-+-----------------------------------+-------------------------------------------------------------+
-| vstack([a,b])                     | stack arrays a and b vertically                             |
-+-----------------------------------+-------------------------------------------------------------+
-| hstack([a,b])                     | stack arrays a and b horizontally                           |
-+-----------------------------------+-------------------------------------------------------------+
-| where(a>x)                        | returns elements from an array depending on condition       |
-+-----------------------------------+-------------------------------------------------------------+
-| argsort(a)                        | returns the sorted indices of an input array                | 
-+-----------------------------------+-------------------------------------------------------------+
-
 
 Dimensional requirements for matrix multiplication
 ----------------------------------------------------
 
-.. important:: In order for the matrix product (:math:`A \times B`) to exist, the number of columns in :math:`A` must equal the number of rows in :math:`B`.
+.. important:: In order for the matrix product (:math:`A \times B`) to
+               exist, the number of columns in :math:`A` must equal
+               the number of rows in :math:`B`.
 
 
 Basic properties of matrices
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-It is convention to represent vectors as column matrices.  Think of
-everything as a feature matrix a single :math:`x` is then a slice of
-that matrix.
-
+It is convention to represent vectors as column matrices.
 
 A **column matrix** in NumPy.
 
 .. math::
     
-    x =
+    \mathbf{x} =
     \begin{pmatrix}
     3  \\
     4  \\
@@ -70,29 +57,58 @@ A **column matrix** in NumPy.
 
 >>> x = np.array([[3,4,5,6]]).T
 
+.. note:: Again notice the pair of double brackets
+
 A **row matrix** in NumPy.
 
 .. math::
 
-    x =
+    \mathbf{x}^{T} =
     \begin{pmatrix}
     3 & 4 & 5 & 6
     \end{pmatrix}
 
 >>> x = np.array([[3,4,5,6]])
 
-General matrices like you saw :doc:`working with NumPy <matrix-operations>`.
+Since this is linear algebra essentials with the goal of preparing you
+for a learning experience in data science, lets introduce a running
+example that will help ground much of the notation and concepts.
+
+Machine learning can be roughly split into two types of learning problems.
+
+   * **Supervised learning** - learn a mapping from inputs :math:`\mathbf{X}` to outputs :math:`y`
+   * **Unsupervised learning** - given only :math:`\mathbf{X}`, learn interesting patterns in :math:`\mathbf{X}`
+
+An example of this is to predict housing prices, which would be a
+continuous :math:`\mathbf{y}`.  When we use a feature matrix
+:math:`\mathbf{X}` to predict :math:`\mathbf{y}` it is an example of
+**supervised learning**.  Our feature matrix would be a number of
+column vectors :math:`\mathbf{x}` horizontally stacked together to
+form :math:`\mathbf{X}`.  Examples of these features might be: the
+square footage, the distance from public transport, the average
+quality of schools and more.
+
+If we wanted to discover patterns in :math:`\mathbf{X}` then we could take an
+unsupervised approach such as clustering, which would be an example of
+**unsupervised learning**.
+
+We may access the individual elements of :math:`\mathbf{X}` through **indexing**
 
 .. math::
 
-     A_{m,n} =
+     \mathbf{X} =
     \begin{pmatrix}
-     a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
-     a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
-     \vdots  & \vdots  & \ddots & \vdots  \\
-     a_{m,1} & a_{m,2} & \cdots & a_{m,n}
+     X_{1,1} & X_{1,2} \\
+     X_{2,1} & X_{2,2} \\
     \end{pmatrix}
 
+In the above matrix we show how to explicitly access any element in
+:math:`\mathbf{X}`.  It is also quite common to refer to a generic
+element in :math:`\mathbf{X}` as :math:`\mathbf{X}_{i,j}`, where if
+you picked up on the pattern indexing occurs with
+
+    
+This has already been stated once.  But since it is important lets say it a different way. 
     
 .. note:: In order to multiply two matrices, they must be
           **conformable** such that the number of columns of the first
@@ -100,10 +116,15 @@ General matrices like you saw :doc:`working with NumPy <matrix-operations>`.
           matrix.
 
 
+When we say multiply two matrices it does not mean multiply in the sense that you might think.
+The **matrix product** of two matrices is another matrix.
 
-	       
-more more more
-	  
+If we have two vectors :math:`\mathbf{x}` and :math:`\mathbf{y}` of the same length :math:`(n)`, then the **dot product** is give by
+
+.. math:: 
+
+   \mathbf{x} \cdot \mathbf{y} = x_1y_1 + x_2y_2 + \cdots + x_ny_n$$
+
 Basic operations
 --------------------
 

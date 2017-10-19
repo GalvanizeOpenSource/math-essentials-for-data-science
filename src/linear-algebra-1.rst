@@ -9,15 +9,42 @@ Learning objectives
 transposes, dot products, determinants, and inverses
 -----------------------------------------------------
 
+Quick reference
+---------------------
+
+Here we provide a summary the important commands that have already been introduced.
+
++-----------------------------------+-------------------------------------------------------------+
+| NumPy command                     | Note                                                        |
++===================================+=============================================================+
+| a.ndim                            | returns the num. of dimensions or the **rank**              |
++-----------------------------------+-------------------------------------------------------------+
+| a.shape                           | returns the num. of rows and colums                         |
++-----------------------------------+-------------------------------------------------------------+
+| a.size                            | returns the num. of rows and colums                         |
++-----------------------------------+-------------------------------------------------------------+
+| arange(start,stop,step)           | returns a sequence vector                                   |
++-----------------------------------+-------------------------------------------------------------+
+| linspace(start,stop,steps)        | returns a evenly spaced sequence in the specificed interval |
++-----------------------------------+-------------------------------------------------------------+
+| dot(a,b)                          | matrix multiplication                                       |
++-----------------------------------+-------------------------------------------------------------+
+| vstack([a,b])                     | stack arrays a and b vertically                             |
++-----------------------------------+-------------------------------------------------------------+
+| hstack([a,b])                     | stack arrays a and b horizontally                           |
++-----------------------------------+-------------------------------------------------------------+
+| where(a>x)                        | returns elements from an array depending on condition       |
++-----------------------------------+-------------------------------------------------------------+
+| argsort(a)                        | returns the sorted indices of an input array                | 
++-----------------------------------+-------------------------------------------------------------+
+
+
 Basic properties of matrices
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-It is convention to represent vectors as column matrices.  Think of
-everything as a feature matrix a single :math:`x` is then a slice of
-that matrix.
+It is convention to represent vectors as column matrices.  
 
-
-A **column matrix** in NumPy.
+A **column matrix** 
 
 .. math::
     
@@ -29,9 +56,13 @@ A **column matrix** in NumPy.
     6  
     \end{pmatrix}
 
+when written using NumPy is as follows.
+    
 >>> x = np.array([[3,4,5,6]]).T
 
-A **row matrix** in NumPy.
+
+The ``.T`` indicates the use of a **transpose**, another matrix
+operation that we will get to shortly.  A **row matrix** is then written as:
 
 .. math::
 
@@ -41,6 +72,21 @@ A **row matrix** in NumPy.
     \end{pmatrix}
 
 >>> x = np.array([[3,4,5,6]])
+
+
+.. admonition:: Questions
+
+    1. Create a row vector and a column vector version of the numbers 1-5 and print the shape of each.
+
+    .. container:: toggle
+
+        .. container:: header
+
+            **ANSWER**
+
+        The matrix dimensions are :math:`3 \times 4`
+
+
 
 General matrices like you saw :doc:`working with NumPy <matrix-operations>`.
 
@@ -84,6 +130,7 @@ and its transpose :math:`\mathbf{x}^{T} = (x_{1}, x_{2},\ldots,x_{N})` can be ex
 (1, 3)
 
 The transpose of a :math:`n \times p` matrix is a :math:`p \times n` matrix with rows and columns interchanged
+A transpose can be thought of as the mirror image of a matrix across the main diagonal.
 
 .. math::
    
