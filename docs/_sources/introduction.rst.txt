@@ -8,7 +8,7 @@ Thinking in terms of vectors and matrices
 +----+----------------------------------------------------------------------------------------------------------------------------+
 | **Learning Objectives**                                                                                                         |
 +====+============================================================================================================================+
-| 1  |  Become familiar with linear algebra's basic data structures: **scalar**, **vector**, **matrix**, **tensor**               |
+| 1  | Become familiar with linear algebra's basic data structures: **scalar**, **vector**, **matrix**, **tensor**                |
 +----+----------------------------------------------------------------------------------------------------------------------------+
 | 2  | Create, manipulate, and generally begin to get comfortable with NumPy arrays                                               |
 +----+----------------------------------------------------------------------------------------------------------------------------+
@@ -27,7 +27,7 @@ So you may be asking why?
 
 Here are just a few reasons why a solid understanding of linear algebra is **crutial** for a practicing data scientist
 
-  * linear models can concisly be written in vector notation
+  * Linear models can concisly be written in vector notation
   * `Regularization <https://en.wikipedia.org/wiki/Regularization_(mathematics)>`_ often makes use of matrix norms 
   * Matrix decompsitions are commonly used in recommender systems 
      
@@ -310,9 +310,12 @@ array([[1, 2, 3],
        [4, 5, 6],
        [7, 8, 9]])
 
-In that function we created an array with values from 1-10 then we reshaped it into a 2D array with 3 columns and 3 rows.
-Another similar function to arange is `linspace <http://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html>`_
-which fills a vector with evenly spaced variables for a specified interval.
+In that function we created an array with values from 1-10 then we
+reshaped it into a 2D array with 3 columns and 3 rows.  Another
+similar function to arange is `linspace
+<http://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html>`_
+which fills a vector with evenly spaced variables for a specified
+interval.
 
 >>> x = np.linspace(0,5,5)
 >>> x
@@ -324,16 +327,19 @@ As a reminder you may access the Python documentation at anytime from the comman
 
     ~$ pydoc numpy.linspace
 
-Visualizing linspace...
+The following plot visualizes ``linspace``.  It is an important function, but it less important that you understand the plotting portion of the code.
 
 .. plot:: linspace-example.py
-   :include-source:
+  :include-source: 
+
+.. important:: Did you notice that ``arange`` starts counting at zero?
+               Python uses zero based indexing, so the initial element
+               of a sequence has index 0.
 
 
-.. important:: Did you notice that ``arange`` starts counting at zero?  Python uses zero based indexing, so the initial element of a sequence has index 0.
-
-
-This is a good time to introduce the idea that arrays may be made of different types of data, but they can only be one data type at a given time.
+This is a good time to introduce the idea that arrays may be made of
+different types of data, but they can only be one data type at a given
+time.
 
 >>> x = np.array([1,2,3])
 >>> x.dtype
@@ -365,11 +371,11 @@ array([[ 1.,  1.,  1.,  1.],
 
 .. admonition:: Exercise
 
-    1. Create the following array (1 line)
+    1. Create the following matrix using a NumPy array (1 line)
 
     .. math::
 
-        a =
+        A =
         \begin{pmatrix}
         1       & 2      & \cdots & 10      \\
         11      & 12     & \cdots & 20      \\
@@ -383,12 +389,11 @@ array([[ 1.,  1.,  1.,  1.],
 
             **ANSWER**
 
-	>>> import numpy as np
 	>>> a = np.arange(1,101).reshape(10,10)
 
     |
 	
-    2. Use the array object to get the rank, number of elements, rows and columns
+    2. Use the array object to get the rank, number of elements, and dimensions
 
 
     .. container:: toggle

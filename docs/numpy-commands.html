@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Linear Algebra Essentials &mdash; Linear algebra 0.1 documentation</title>
+  <title>NumPy Commands &mdash; Linear algebra 0.1 documentation</title>
   
 
   
@@ -37,8 +37,9 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Linear algebra 0.1 documentation" href="#"/>
-        <link rel="next" title="Thinking in terms of vectors and matrices" href="introduction.html"/> 
+    <link rel="top" title="Linear algebra 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Works cited" href="references.html"/>
+        <link rel="prev" title="Python Installation Guide" href="install-python.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -57,7 +58,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> Linear algebra
+            <a href="index.html" class="icon icon-home"> Linear algebra
           
 
           
@@ -95,15 +96,15 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Thinking in terms of vectors and matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix-operations.html">Matrix operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-1.html">Linear Algebra 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-2.html">Linear Algebra Part II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-1.html">Properties of matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-2.html">Cosine similarity and special matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix-decomposition.html">Matrix Decomposition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pca-and-svd.html">PCA and SVD</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendices:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install-python.html">Python Installation Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy-commands.html">NumPy Commands</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">NumPy Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">Works cited</a></li>
 </ul>
 
@@ -119,7 +120,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">Linear algebra</a>
+          <a href="index.html">Linear algebra</a>
         
       </nav>
 
@@ -147,15 +148,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">Docs</a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Linear Algebra Essentials</li>
+      <li>NumPy Commands</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/numpy-commands.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,47 +169,51 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="align-center figure">
-<a class="reference internal image-reference" href="_images/galvanize-logo.png"><img alt="galvanize-logo" src="_images/galvanize-logo.png" style="width: 669.55px; height: 167.64999999999998px;" /></a>
-</div>
-<div class="section" id="linear-algebra-essentials">
-<h1>Linear Algebra Essentials<a class="headerlink" href="#linear-algebra-essentials" title="Permalink to this headline">¶</a></h1>
-<p>If we use a transportation metaphor we might say that statistics and
-<a class="reference external" href="https://en.wikipedia.org/wiki/Machine_learning">machine learning</a>
-are the vehicles that take us to both new and familiar places.
-We could also think of programming and <a class="reference external" href="https://en.wikipedia.org/wiki/Software_engineering">software engineering</a> as the roads
-and infrastructure necessary to make travel even possible.  Linear
-algebra on the other hand aligns well with the motors and engines that
-propel our vehicles.</p>
-<div class="align-center figure">
-<a class="reference internal image-reference" href="_images/car-trunk.png"><img alt="galvanize-logo" src="_images/car-trunk.png" style="width: 224.35px; height: 109.89999999999999px;" /></a>
-</div>
-<p>Most of us seldom think about <em>what is under the hood</em> as we hum
-steadily along a nicely paved road, but success as a data scientist
-requires at least a fundamental understanding.  Here we present the
-essentials of <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_algebra">linear algebra</a> with the goal that
-you become prepared for an educational experience in data science.
-You may even come to believe that viewing math through the lens of
-matrices and vectors <strong>makes things easier</strong>.</p>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Thinking in terms of vectors and matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrix-operations.html">Matrix operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-1.html">Linear Algebra 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-2.html">Linear Algebra Part II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrix-decomposition.html">Matrix Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pca-and-svd.html">PCA and SVD</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Appendices:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="install-python.html">Python Installation Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy-commands.html">NumPy Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">Works cited</a></li>
-</ul>
-</div>
+  <div class="section" id="numpy-commands">
+<h1>NumPy Commands<a class="headerlink" href="#numpy-commands" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">NumPy command</th>
+<th class="head">Note</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>a.ndim</td>
+<td>returns the num. of dimensions or the <strong>rank</strong></td>
+</tr>
+<tr class="row-odd"><td>a.shape</td>
+<td>returns the num. of rows and colums</td>
+</tr>
+<tr class="row-even"><td>a.size</td>
+<td>returns the num. of rows and colums</td>
+</tr>
+<tr class="row-odd"><td>arange(start,stop,step)</td>
+<td>returns a sequence vector</td>
+</tr>
+<tr class="row-even"><td>linspace(start,stop,steps)</td>
+<td>returns a evenly spaced sequence in the specificed interval</td>
+</tr>
+<tr class="row-odd"><td>dot(a,b)</td>
+<td>matrix multiplication</td>
+</tr>
+<tr class="row-even"><td>vstack([a,b])</td>
+<td>stack arrays a and b vertically</td>
+</tr>
+<tr class="row-odd"><td>hstack([a,b])</td>
+<td>stack arrays a and b horizontally</td>
+</tr>
+<tr class="row-even"><td>where(a&gt;x)</td>
+<td>returns elements from an array depending on condition</td>
+</tr>
+<tr class="row-odd"><td>argsort(a)</td>
+<td>returns the sorted indices of an input array</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -221,8 +226,10 @@ matrices and vectors <strong>makes things easier</strong>.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="introduction.html" class="btn btn-neutral float-right" title="Thinking in terms of vectors and matrices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="references.html" class="btn btn-neutral float-right" title="Works cited" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="install-python.html" class="btn btn-neutral" title="Python Installation Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

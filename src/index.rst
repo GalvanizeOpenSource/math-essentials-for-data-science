@@ -52,4 +52,5 @@ matrices and vectors **makes things easier**.
    :caption: Appendices:
 
    install-python	     
+   numpy-commands
    references

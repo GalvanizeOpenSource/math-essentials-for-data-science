@@ -38,7 +38,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Linear algebra 0.1 documentation" href="index.html"/>
-        <link rel="next" title="Matrix Operations" href="matrix-operations.html"/>
+        <link rel="next" title="Matrix operations" href="matrix-operations.html"/>
         <link rel="prev" title="Linear Algebra Essentials" href="index.html"/> 
 
   
@@ -106,7 +106,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="matrix-operations.html">Matrix Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-operations.html">Matrix operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linear-algebra-1.html">Properties of matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linear-algebra-2.html">Cosine similarity and special matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix-decomposition.html">Matrix Decomposition</a></li>
@@ -115,6 +115,7 @@
 <p class="caption"><span class="caption-text">Appendices:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install-python.html">Python Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy-commands.html">NumPy Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">Works cited</a></li>
 </ul>
 
@@ -211,7 +212,7 @@
 <p>Here are just a few reasons why a solid understanding of linear algebra is <strong>crutial</strong> for a practicing data scientist</p>
 <blockquote>
 <div><ul class="simple">
-<li>linear models can concisly be written in vector notation</li>
+<li>Linear models can concisly be written in vector notation</li>
 <li><a class="reference external" href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">Regularization</a> often makes use of matrix norms</li>
 <li>Matrix decompsitions are commonly used in recommender systems</li>
 </ul>
@@ -492,9 +493,11 @@ following examples to see how it works.</p>
 <span class="go">       [7, 8, 9]])</span>
 </pre></div>
 </div>
-<p>In that function we created an array with values from 1-10 then we reshaped it into a 2D array with 3 columns and 3 rows.
-Another similar function to arange is <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html">linspace</a>
-which fills a vector with evenly spaced variables for a specified interval.</p>
+<p>In that function we created an array with values from 1-10 then we
+reshaped it into a 2D array with 3 columns and 3 rows.  Another
+similar function to arange is <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html">linspace</a>
+which fills a vector with evenly spaced variables for a specified
+interval.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
 <span class="go">array([ 0.  ,  1.25,  2.5 ,  3.75,  5.  ])</span>
@@ -504,7 +507,7 @@ which fills a vector with evenly spaced variables for a specified interval.</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>~$ pydoc numpy.linspace
 </pre></div>
 </div>
-<p>Visualizing linspace…</p>
+<p>The following plot visualizes <code class="docutils literal"><span class="pre">linspace</span></code>.  It is an important function, but it less important that you understand the plotting portion of the code.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -523,9 +526,13 @@ which fills a vector with evenly spaced variables for a specified interval.</p>
 </div>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">Did you notice that <code class="docutils literal"><span class="pre">arange</span></code> starts counting at zero?  Python uses zero based indexing, so the initial element of a sequence has index 0.</p>
+<p class="last">Did you notice that <code class="docutils literal"><span class="pre">arange</span></code> starts counting at zero?
+Python uses zero based indexing, so the initial element
+of a sequence has index 0.</p>
 </div>
-<p>This is a good time to introduce the idea that arrays may be made of different types of data, but they can only be one data type at a given time.</p>
+<p>This is a good time to introduce the idea that arrays may be made of
+different types of data, but they can only be one data type at a given
+time.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span>
 <span class="go">dtype(&#39;int64&#39;)</span>
@@ -561,10 +568,10 @@ which fills a vector with evenly spaced variables for a specified interval.</p>
 <div class="admonition-exercise admonition">
 <p class="first admonition-title">Exercise</p>
 <ol class="arabic simple">
-<li>Create the following array (1 line)</li>
+<li>Create the following matrix using a NumPy array (1 line)</li>
 </ol>
 <div class="math">
-\[\begin{split}a =
+\[\begin{split}A =
 \begin{pmatrix}
 1       &amp; 2      &amp; \cdots &amp; 10      \\
 11      &amp; 12     &amp; \cdots &amp; 20      \\
@@ -574,8 +581,7 @@ which fills a vector with evenly spaced variables for a specified interval.</p>
 <div class="toggle docutils container">
 <div class="header docutils container">
 <strong>ANSWER</strong></div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -583,7 +589,7 @@ which fills a vector with evenly spaced variables for a specified interval.</p>
 <div class="line"><br /></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Use the array object to get the rank, number of elements, rows and columns</li>
+<li>Use the array object to get the rank, number of elements, and dimensions</li>
 </ol>
 <div class="toggle docutils container">
 <div class="header docutils container">
@@ -665,7 +671,7 @@ which fills a vector with evenly spaced variables for a specified interval.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="matrix-operations.html" class="btn btn-neutral float-right" title="Matrix Operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="matrix-operations.html" class="btn btn-neutral float-right" title="Matrix operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Linear Algebra Essentials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

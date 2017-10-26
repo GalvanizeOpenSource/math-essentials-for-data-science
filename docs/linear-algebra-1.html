@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Properties of matrices &mdash; Linear algebra 0.1 documentation</title>
+  <title>Linear Algebra 1 &mdash; Linear algebra 0.1 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Linear algebra 0.1 documentation" href="index.html"/>
-        <link rel="next" title="Cosine similarity and special matrices" href="linear-algebra-2.html"/>
-        <link rel="prev" title="Matrix Operations" href="matrix-operations.html"/> 
+        <link rel="next" title="Linear Algebra Part II" href="linear-algebra-2.html"/>
+        <link rel="prev" title="Matrix operations" href="matrix-operations.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -95,10 +95,11 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Thinking in terms of vectors and matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrix-operations.html">Matrix Operations</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Properties of matrices</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#transposes-dot-products-determinants-and-inverses">transposes, dot products, determinants, and inverses</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#basic-properties-of-matrices">Basic properties of matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-operations.html">Matrix operations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Linear Algebra 1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#transposes-dot-products-determinants-and-inverses">transposes, dot products, determinants, and inverses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-reference">Quick reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#transposes">Transposes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#properties-of-a-transpose">Properties of a transpose</a></li>
@@ -110,12 +111,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-2.html">Cosine similarity and special matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-2.html">Linear Algebra Part II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix-decomposition.html">Matrix Decomposition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pca-and-svd.html">PCA and SVD</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendices:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="install-python.html">Python Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy-commands.html">NumPy Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">Works cited</a></li>
 </ul>
 
@@ -161,7 +164,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Properties of matrices</li>
+      <li>Linear Algebra 1</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -180,8 +183,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="properties-of-matrices">
-<h1>Properties of matrices<a class="headerlink" href="#properties-of-matrices" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="linear-algebra-1">
+<h1>Linear Algebra 1<a class="headerlink" href="#linear-algebra-1" title="Permalink to this headline">¶</a></h1>
 <p>Learning objectives</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -191,12 +194,57 @@
 </div></blockquote>
 <div class="section" id="transposes-dot-products-determinants-and-inverses">
 <h2>transposes, dot products, determinants, and inverses<a class="headerlink" href="#transposes-dot-products-determinants-and-inverses" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="basic-properties-of-matrices">
-<h3>Basic properties of matrices<a class="headerlink" href="#basic-properties-of-matrices" title="Permalink to this headline">¶</a></h3>
-<p>It is convention to represent vectors as column matrices.  Think of
-everything as a feature matrix a single <span class="math">\(x\)</span> is then a slice of
-that matrix.</p>
-<p>A <strong>column matrix</strong> in NumPy.</p>
+</div>
+<div class="section" id="quick-reference">
+<h2>Quick reference<a class="headerlink" href="#quick-reference" title="Permalink to this headline">¶</a></h2>
+<p>Here we provide a summary the important commands that have already been introduced.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">NumPy command</th>
+<th class="head">Note</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>a.ndim</td>
+<td>returns the num. of dimensions or the <strong>rank</strong></td>
+</tr>
+<tr class="row-odd"><td>a.shape</td>
+<td>returns the num. of rows and colums</td>
+</tr>
+<tr class="row-even"><td>a.size</td>
+<td>returns the num. of rows and colums</td>
+</tr>
+<tr class="row-odd"><td>arange(start,stop,step)</td>
+<td>returns a sequence vector</td>
+</tr>
+<tr class="row-even"><td>linspace(start,stop,steps)</td>
+<td>returns a evenly spaced sequence in the specificed interval</td>
+</tr>
+<tr class="row-odd"><td>dot(a,b)</td>
+<td>matrix multiplication</td>
+</tr>
+<tr class="row-even"><td>vstack([a,b])</td>
+<td>stack arrays a and b vertically</td>
+</tr>
+<tr class="row-odd"><td>hstack([a,b])</td>
+<td>stack arrays a and b horizontally</td>
+</tr>
+<tr class="row-even"><td>where(a&gt;x)</td>
+<td>returns elements from an array depending on condition</td>
+</tr>
+<tr class="row-odd"><td>argsort(a)</td>
+<td>returns the sorted indices of an input array</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="transposes">
+<h3>Transposes<a class="headerlink" href="#transposes" title="Permalink to this headline">¶</a></h3>
+<p>It is convention to represent vectors as column matrices.</p>
+<p>A <strong>column matrix</strong></p>
 <div class="math">
 \[\begin{split}x =
 \begin{pmatrix}
@@ -205,10 +253,11 @@ that matrix.</p>
 5  \\
 6
 \end{pmatrix}\end{split}\]</div>
+<p>when written using NumPy is as follows.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
-<p>A <strong>row matrix</strong> in NumPy.</p>
+<p>The <code class="docutils literal"><span class="pre">.T</span></code> indicates the use of a <strong>transpose</strong>, a matrix operation that you have been using already.  A <strong>row matrix</strong> is then written as:</p>
 <div class="math">
 \[x =
 \begin{pmatrix}
@@ -217,42 +266,36 @@ that matrix.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
 </pre></div>
 </div>
-<p>General matrices like you saw <a class="reference internal" href="matrix-operations.html"><span class="doc">working with NumPy</span></a>.</p>
-<div class="math">
-\[\begin{split} A_{m,n} =
-\begin{pmatrix}
- a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n} \\
- a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,n} \\
- \vdots  &amp; \vdots  &amp; \ddots &amp; \vdots  \\
- a_{m,1} &amp; a_{m,2} &amp; \cdots &amp; a_{m,n}
-\end{pmatrix}\end{split}\]</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">In order to multiply two matrices, they must be
-<strong>conformable</strong> such that the number of columns of the first
-matrix must be the same as the number of rows of the second
-matrix.</p>
+<p>Just to ensure you picked this up from the last section…</p>
+<div class="admonition-questions admonition">
+<p class="first admonition-title">Questions</p>
+<ol class="arabic">
+<li><p class="first">Create a row vector and a column vector version of the numbers 1-5 and print the shape of each.</p>
+<p><strong>Extra</strong> can you do it with <code class="docutils literal"><span class="pre">arange</span></code>?</p>
+</li>
+</ol>
+<div class="toggle last docutils container">
+<div class="header docutils container">
+<strong>ANSWER</strong></div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
-<p>A <span class="math">\(1 \times N\)</span> dimensional vector <span class="math">\(x\)</span></p>
-<div class="math">
-\[\begin{split}x =
-\begin{pmatrix}
-x_{1}  \\
-x_{2}  \\
-\vdots \\
-x_{N}
-\end{pmatrix}\end{split}\]</div>
-<p>and its transpose <span class="math">\(\mathbf{x}^{T} = (x_{1}, x_{2},\ldots,x_{N})\)</span> can be expressed in python as</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">xt</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">(3, 1)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">xt</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">(1, 3)</span>
+<p>You could write out 1-5, but here we show how to do it with NumPy builtin functions.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">column_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">column_vector</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(5, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">row_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">row_vector</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(1, 5)</span>
 </pre></div>
 </div>
-<p>The transpose of a <span class="math">\(n \times p\)</span> matrix is a <span class="math">\(p \times n\)</span> matrix with rows and columns interchanged</p>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The transpose of a <span class="math">\(n \times p\)</span> matrix is a <span class="math">\(p \times n\)</span> matrix with rows and columns interchanged
+A transpose can be thought of as the mirror image of a matrix across the main diagonal.</p>
 <div class="math">
 \[\begin{split}X^T =
 \begin{bmatrix}
@@ -279,6 +322,15 @@ x_{p1} &amp; x_{p2} &amp; \cdots &amp; x_{pn}
 \[(XY)^T = Y^TX^T\]</div>
 </li>
 </ol>
+<p>General matrices like you have already seen <a class="reference internal" href="matrix-operations.html"><span class="doc">working with NumPy</span></a>. can be written as</p>
+<div class="math">
+\[\begin{split} X_{m,n} =
+\begin{pmatrix}
+ X_{1,1} &amp; X_{1,2} &amp; \cdots &amp; X_{1,n} \\
+ X_{2,1} &amp; X_{2,2} &amp; \cdots &amp; X_{2,n} \\
+ \vdots  &amp; \vdots  &amp; \ddots &amp; \vdots  \\
+ X_{m,1} &amp; X_{m,2} &amp; \cdots &amp; X_{m,n}
+\end{pmatrix}\end{split}\]</div>
 </div>
 <div class="section" id="dot-products">
 <h2>Dot products<a class="headerlink" href="#dot-products" title="Permalink to this headline">¶</a></h2>
@@ -396,10 +448,10 @@ matrices, then <span class="math">\(XY\)</span> is invertible and</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="linear-algebra-2.html" class="btn btn-neutral float-right" title="Cosine similarity and special matrices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="linear-algebra-2.html" class="btn btn-neutral float-right" title="Linear Algebra Part II" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="matrix-operations.html" class="btn btn-neutral" title="Matrix Operations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="matrix-operations.html" class="btn btn-neutral" title="Matrix operations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

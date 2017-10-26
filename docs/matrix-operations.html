@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Matrix Operations &mdash; Linear algebra 0.1 documentation</title>
+  <title>Matrix operations &mdash; Linear algebra 0.1 documentation</title>
   
 
   
@@ -95,29 +95,27 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Thinking in terms of vectors and matrices</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Matrix Operations</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Matrix operations</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#quick-reference">Quick reference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dimensional-requirements-for-matrix-multiplication">Dimensional requirements for matrix multiplication</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#basic-properties-of-matrices">Basic properties of matrices</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#basic-operations">Basic operations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#arithmetic-operators-in-numpy-work-elementwise">Arithmetic operators in NumPy work <strong>elementwise</strong>.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-matrix-operations">Basic matrix operations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#special-addition-and-multiplication-operators">Special addition and multiplication operators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#concatenation">Concatenation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sorting-arrays">Sorting arrays</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#common-math-functions">Common math functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#basic-operations-excercise">Basic operations excercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-operations-exercise">Basic operations exercise</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#indexing-slicing-and-more">Indexing, slicing and more</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#other-important-numpy-commands">Other important NumPy commands</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#where">Where</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#printing">Printing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#copying">Copying</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#missing-data">Missing data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generating-random-numbers">Generating random numbers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#convenience-functions">Convenience functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#having-fun">Having fun</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-more-comfortable">Getting more comfortable</a></li>
 </ul>
 </li>
 </ul>
@@ -130,6 +128,7 @@
 <p class="caption"><span class="caption-text">Appendices:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install-python.html">Python Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy-commands.html">NumPy Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">Works cited</a></li>
 </ul>
 
@@ -175,7 +174,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Matrix Operations</li>
+      <li>Matrix operations</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -195,19 +194,18 @@
            <div itemprop="articleBody">
             
   <div class="section" id="matrix-operations">
-<h1>Matrix Operations<a class="headerlink" href="#matrix-operations" title="Permalink to this headline">¶</a></h1>
+<h1>Matrix operations<a class="headerlink" href="#matrix-operations" title="Permalink to this headline">¶</a></h1>
 <p>Learning objectives:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li>Understand the dimensional requirements for matrix multiplication</li>
 <li>Understand and be able to execute <strong>elementwise</strong> arithmetric operators in NumPy</li>
-<li>Be familiar with the commonly encountered matrix operations: slicing, masking and concatenation</li>
-<li>Be able to recall the output of vector-vector, matrix-vector, and matrix-matrix products</li>
+<li>Become even more comfortable with vectors and matrices in NumPy</li>
 </ol>
 </div></blockquote>
 <div class="section" id="quick-reference">
 <h2>Quick reference<a class="headerlink" href="#quick-reference" title="Permalink to this headline">¶</a></h2>
-<p>Here we provide a summary the commands that will be introduced in this section.</p>
+<p>Here we provide a summary the important commands that have already been introduced.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="36%" />
@@ -234,21 +232,6 @@
 <tr class="row-even"><td>linspace(start,stop,steps)</td>
 <td>returns a evenly spaced sequence in the specificed interval</td>
 </tr>
-<tr class="row-odd"><td>dot(a,b)</td>
-<td>matrix multiplication</td>
-</tr>
-<tr class="row-even"><td>vstack([a,b])</td>
-<td>stack arrays a and b vertically</td>
-</tr>
-<tr class="row-odd"><td>hstack([a,b])</td>
-<td>stack arrays a and b horizontally</td>
-</tr>
-<tr class="row-even"><td>where(a&gt;x)</td>
-<td>returns elements from an array depending on condition</td>
-</tr>
-<tr class="row-odd"><td>argsort(a)</td>
-<td>returns the sorted indices of an input array</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -256,16 +239,18 @@
 <h2>Dimensional requirements for matrix multiplication<a class="headerlink" href="#dimensional-requirements-for-matrix-multiplication" title="Permalink to this headline">¶</a></h2>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">In order for the matrix product (<span class="math">\(A \times B\)</span>) to exist, the number of columns in <span class="math">\(A\)</span> must equal the number of rows in <span class="math">\(B\)</span>.</p>
+<p class="last">In order for the matrix product (<span class="math">\(A \times B\)</span>) to
+exist, the number of columns in <span class="math">\(A\)</span> must equal
+the number of rows in <span class="math">\(B\)</span>.</p>
 </div>
 <div class="section" id="basic-properties-of-matrices">
 <h3>Basic properties of matrices<a class="headerlink" href="#basic-properties-of-matrices" title="Permalink to this headline">¶</a></h3>
-<p>It is convention to represent vectors as column matrices.  Think of
-everything as a feature matrix a single <span class="math">\(x\)</span> is then a slice of
-that matrix.</p>
+<p>It is convention to represent vectors as column matrices.  We are
+explicit in this representation in that we define two axes even
+through the number of columns is only one.</p>
 <p>A <strong>column matrix</strong> in NumPy.</p>
 <div class="math">
-\[\begin{split}x =
+\[\begin{split}\mathbf{x} =
 \begin{pmatrix}
 3  \\
 4  \\
@@ -275,24 +260,124 @@ that matrix.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Again notice the pair of double brackets</p>
+</div>
+<p>The <code class="docutils literal"><span class="pre">.T</span></code> indicates a <strong>transpose</strong> operation.  In the case of
+vectors we go from a rowwise representation to a columnwise one and
+vice versa.  We will spend more time on transposes in the next
+section.</p>
 <p>A <strong>row matrix</strong> in NumPy.</p>
 <div class="math">
-\[x =
+\[\mathbf{x}^{T} =
 \begin{pmatrix}
 3 &amp; 4 &amp; 5 &amp; 6
 \end{pmatrix}\]</div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
 </pre></div>
 </div>
-<p>General matrices like you saw <a class="reference internal" href="#"><span class="doc">working with NumPy</span></a>.</p>
+<p>Since this is linear algebra essentials with the goal of preparing you
+for a learning experience in data science, lets introduce a running
+example that will help ground much of the notation and concepts.</p>
+<p>Machine learning can be roughly split into two types of learning problems.</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Supervised learning</strong> - learn a mapping from inputs <span class="math">\(\mathbf{X}\)</span> to outputs <span class="math">\(y\)</span></li>
+<li><strong>Unsupervised learning</strong> - given only <span class="math">\(\mathbf{X}\)</span>, learn interesting patterns in <span class="math">\(\mathbf{X}\)</span></li>
+</ul>
+</div></blockquote>
+<p>An example of this is to predict total snowfall, which would be a
+continuous <span class="math">\(\mathbf{y}\)</span>.  When we use a feature matrix
+<span class="math">\(\mathbf{X}\)</span> to predict <span class="math">\(\mathbf{y}\)</span> it is an example of
+<strong>supervised learning</strong>.  Our feature matrix would be a number of
+column vectors <span class="math">\(\mathbf{x}\)</span> horizontally stacked together to
+form <span class="math">\(\mathbf{X}\)</span>.  Examples of these features might be: the
+elevation, latitude, average winter temperature, historical snowfall
+data and more..</p>
+<p>If we wanted to discover patterns in <span class="math">\(\mathbf{X}\)</span> then we could
+take an such as clustering, which would be an example of
+<strong>unsupervised learning</strong>.  Patterns in this case would likely
+correspond to mountain ranges and and meteorlogical or oceananic events..</p>
+<p>If we think of the features of a matrix as column vectors.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">feature1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">99</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">14</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">feature2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">feature3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">24</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+<p>We can stack them into a matrix using <code class="docutils literal"><span class="pre">hstack</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">feature1</span><span class="p">,</span><span class="n">feature2</span><span class="p">,</span><span class="n">feature3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span>
+<span class="go">array([[99,  0,  5],</span>
+<span class="go">       [45,  1,  3],</span>
+<span class="go">       [31,  1,  9],</span>
+<span class="go">       [14,  0, 24]])</span>
+</pre></div>
+</div>
+<p>There are easier ways to create matrices, such as reading directly
+from a csv file, but the ability to concatenate matrices is important.
+With <code class="docutils literal"><span class="pre">hstack</span></code> we <strong>horizontally</strong> stacked our column vectors.  The
+sister function <code class="docutils literal"><span class="pre">vstack</span></code> allows us to <strong>vertically</strong> stack vectors
+or matrices in a similar way.</p>
+<p>We may access the individual elements of <span class="math">\(\mathbf{X}\)</span> through <strong>indexing</strong></p>
 <div class="math">
-\[\begin{split} A_{m,n} =
+\[\begin{split} \mathbf{X} =
 \begin{pmatrix}
- a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n} \\
- a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,n} \\
- \vdots  &amp; \vdots  &amp; \ddots &amp; \vdots  \\
- a_{m,1} &amp; a_{m,2} &amp; \cdots &amp; a_{m,n}
+ X_{1,1} &amp; X_{1,2} \\
+ X_{2,1} &amp; X_{2,2} \\
 \end{pmatrix}\end{split}\]</div>
+<p>In the above matrix we show how to explicitly refer to any element in
+<span class="math">\(\mathbf{X}\)</span>.  It is also quite common to refer to a generic
+element in <span class="math">\(\mathbf{X}\)</span> as <span class="math">\(\mathbf{X}_{i,j}\)</span>, where if
+you picked up on the pattern indexing occurs by stating the <strong>row</strong> then the <strong>column</strong>.
+In NumPy you are following the same pattern.  Using the feature matrix created above:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">45</span>
+</pre></div>
+</div>
+<p>And if we want to access our first column vector again</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">array([99, 45, 31, 14])</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">array([99, 45, 31, 14])</span>
+</pre></div>
+</div>
+<p>We now see that an array with 2 axes is indexed and even <strong>sliced</strong>
+one axis at a time.  1D arrays can be indexed in the same way a Python
+list can.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="go">array([2, 3])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[:</span><span class="mi">10</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">array([0, 2, 4, 6, 8])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">array([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])</span>
+</pre></div>
+</div>
+<p>If we go back to the <code class="docutils literal"><span class="pre">X</span></code> matrix there are many useful functions once we are here including <code class="docutils literal"><span class="pre">mean</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">array([ 47.25,   0.5 ,  10.25])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">array([ 34.66666667,  16.33333333,  13.66666667,  12.66666667])</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="go">19.333333333333332</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">axis 0 refers to a mean with respect to the columns</p>
+</div>
+</div>
+</div>
+<div class="section" id="basic-matrix-operations">
+<h2>Basic matrix operations<a class="headerlink" href="#basic-matrix-operations" title="Permalink to this headline">¶</a></h2>
+<p>This has already been stated once.  But since it is important lets say it a different way.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">In order to multiply two matrices, they must be
@@ -300,13 +385,15 @@ that matrix.</p>
 matrix must be the same as the number of rows of the second
 matrix.</p>
 </div>
-<p>more more more</p>
+<p>When we say multiply two matrices it does not mean multiply in the sense that you might think.
+The <strong>matrix product</strong> of two matrices is another matrix.</p>
+<p>If we have two vectors <span class="math">\(\mathbf{x}\)</span> and <span class="math">\(\mathbf{y}\)</span> of the same length <span class="math">\((n)\)</span>, then the <strong>dot product</strong> is give by</p>
+<div class="math">
+\[\mathbf{x} \cdot \mathbf{y} = x_1y_1 + x_2y_2 + \cdots + x_ny_n\]</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Arithmetic operators in NumPy work <strong>elementwise</strong></p>
 </div>
-</div>
-<div class="section" id="basic-operations">
-<h2>Basic operations<a class="headerlink" href="#basic-operations" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="arithmetic-operators-in-numpy-work-elementwise">
-<h3>Arithmetic operators in NumPy work <strong>elementwise</strong>.<a class="headerlink" href="#arithmetic-operators-in-numpy-work-elementwise" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
@@ -332,6 +419,22 @@ matrix.</p>
 <span class="go">       [15, 22]])</span>
 </pre></div>
 </div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]))</span>
+</pre></div>
+</div>
+<p>The <strong>dot product</strong> is a very important concept that we will reuse many times going forward.</p>
+<div class="admonition-questions admonition">
+<p class="first admonition-title">Questions</p>
+<ol class="last arabic">
+<li><p class="first">Given the following code write the multiplication out on paper <strong>and</strong> run it Python to check your math</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If we multiply a <span class="math">\(2 \times 3\)</span> matrix with a <span class="math">\(3 \times 1\)</span> matrix, the product matrix is <span class="math">\(2 \times 1\)</span>.</p>
+<p>Write an example of this on paper with simple numbers to see if you can understand why.</p>
+</li>
+</ol>
 </div>
 <div class="section" id="special-addition-and-multiplication-operators">
 <h3>Special addition and multiplication operators<a class="headerlink" href="#special-addition-and-multiplication-operators" title="Permalink to this headline">¶</a></h3>
@@ -350,29 +453,27 @@ matrix.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="concatenation">
-<h3>Concatenation<a class="headerlink" href="#concatenation" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">])</span>
-<span class="go">array([1, 2, 3, 4, 5, 6, 7, 8, 9])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">])</span>
-<span class="go">array([[1, 2, 3],</span>
-<span class="go">       [4, 5, 6],</span>
-<span class="go">       [7, 8, 9]])</span>
-</pre></div>
-</div>
-</div>
 <div class="section" id="sorting-arrays">
 <h3>Sorting arrays<a class="headerlink" href="#sorting-arrays" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<p>NumPy has <a class="reference external" href="https://docs.scipy.org/doc/numpy-1.13.0/reference/routines.random.html">a useful submodule to create random numbers</a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
-<span class="go">array([0, 0, 1, 3, 4, 5])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">]))</span>
-<span class="go">array([3, 4, 0, 1, 2, 5])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="go">array([3, 4, 0, 1, 2, 5])</span>
+<span class="go">array([0, 1, 5, 6, 7])</span>
+</pre></div>
+</div>
+<p>We can also reshuffle the array</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">array([1, 0, 6, 5, 7])</span>
+</pre></div>
+</div>
+<p>But sometimes we do not want to change our matrix, but knowing the sorted indices may be useful and here <code class="docutils literal"><span class="pre">argsort</span></code> can be very useful.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sorted_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sorted_inds</span>
+<span class="go">array([1, 0, 3, 2, 4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">sorted_inds</span><span class="p">]</span>
+<span class="go">array([0, 1, 5, 6, 7])</span>
 </pre></div>
 </div>
 </div>
@@ -392,9 +493,10 @@ matrix.</p>
 <span class="go">4</span>
 </pre></div>
 </div>
+<p>There are <a class="reference external" href="https://docs.scipy.org/doc/numpy-1.13.0/reference/routines.math.html">so many mathematical functions available to you in NumPy</a></p>
 </div>
-<div class="section" id="basic-operations-excercise">
-<h3>Basic operations excercise<a class="headerlink" href="#basic-operations-excercise" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="basic-operations-exercise">
+<h3>Basic operations exercise<a class="headerlink" href="#basic-operations-exercise" title="Permalink to this headline">¶</a></h3>
 <div class="admonition-exercise admonition">
 <p class="first admonition-title">Exercise</p>
 <p>In the following table we have expression values for 5 genes at 4 time points.
@@ -455,45 +557,18 @@ entire gene chip.</p>
 </div>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geneList</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;A2M&quot;</span><span class="p">,</span> <span class="s2">&quot;FOS&quot;</span><span class="p">,</span> <span class="s2">&quot;BRCA2&quot;</span><span class="p">,</span><span class="s2">&quot;CPOX&quot;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">values0</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.12</span><span class="p">,</span><span class="mf">0.08</span><span class="p">,</span><span class="mf">0.06</span><span class="p">,</span><span class="mf">0.02</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">values1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.07</span><span class="p">,</span><span class="mf">0.11</span><span class="p">,</span><span class="mf">0.09</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">values2</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.03</span><span class="p">,</span><span class="mf">0.04</span><span class="p">,</span><span class="mf">0.04</span><span class="p">,</span><span class="mf">0.02</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">values3</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.09</span><span class="p">,</span><span class="mf">0.11</span><span class="p">,</span><span class="mf">0.14</span><span class="p">])</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geneList</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="s2">&quot;A2M&quot;</span><span class="p">,</span> <span class="s2">&quot;FOS&quot;</span><span class="p">,</span> <span class="s2">&quot;BRCA2&quot;</span><span class="p">,</span><span class="s2">&quot;CPOX&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values0</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.12</span><span class="p">,</span><span class="mf">0.08</span><span class="p">,</span><span class="mf">0.06</span><span class="p">,</span><span class="mf">0.02</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.07</span><span class="p">,</span><span class="mf">0.11</span><span class="p">,</span><span class="mf">0.09</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values2</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.03</span><span class="p">,</span><span class="mf">0.04</span><span class="p">,</span><span class="mf">0.04</span><span class="p">,</span><span class="mf">0.02</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values3</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([]</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.09</span><span class="p">,</span><span class="mf">0.11</span><span class="p">,</span><span class="mf">0.14</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="section" id="indexing-slicing-and-more">
-<h2>Indexing, slicing and more<a class="headerlink" href="#indexing-slicing-and-more" title="Permalink to this headline">¶</a></h2>
-<p>1D arrays can be indexed in the same way a Python list can.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
-<span class="go">array([2, 3])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[:</span><span class="mi">10</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-<span class="go">array([0, 2, 4, 6, 8])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="go">array([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])</span>
-</pre></div>
-</div>
-<p>Multidimensional arrays can have one index per axis</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
-<span class="go">array([[ 0,  1,  2,  3],</span>
-<span class="go">       [ 4,  5,  6,  7],</span>
-<span class="go">       [ 8,  9, 10, 11]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-<span class="go">11</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>                       <span class="c1"># everything in the second row</span>
-<span class="go">array([1, 5, 9])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span>                       <span class="c1"># everything in the second column</span>
-<span class="go">array([4, 5, 6, 7])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,:]</span>                     <span class="c1"># second and third rows</span>
-<span class="go">array([[ 4,  5,  6,  7],</span>
-<span class="go">       [ 8,  9, 10, 11]])</span>
-</pre></div>
-</div>
+<div class="section" id="other-important-numpy-commands">
+<h2>Other important NumPy commands<a class="headerlink" href="#other-important-numpy-commands" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="where">
 <h3>Where<a class="headerlink" href="#where" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
@@ -521,7 +596,7 @@ entire gene chip.</p>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">flat</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="nb">print</span> <span class="n">element</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go">0</span>
 <span class="go">1</span>
@@ -566,7 +641,9 @@ entire gene chip.</p>
 <span class="go">array([[  1.,   2.,   3.],</span>
 <span class="go">       [  4.,   5.,  nan],</span>
 <span class="go">       [  7.,   8.,   9.]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">columnMean</span> <span class="o">=</span> <span class="n">nanmean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">columnMean</span> <span class="o">=</span> <span class="n">nanmean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">columnMean</span>
 <span class="go">array([ 4.,  5.,  6.])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rowMean</span> <span class="o">=</span> <span class="n">nanmean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -589,19 +666,21 @@ entire gene chip.</p>
 </div>
 <div class="section" id="convenience-functions">
 <h3>Convenience functions<a class="headerlink" href="#convenience-functions" title="Permalink to this headline">¶</a></h3>
-<div class="admonition-exercise admonition">
-<p class="first admonition-title">Exercise</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">fromfunction</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<p>There are a number of convenience functions to help create matrices</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">fromfunction</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="having-fun">
-<h3>Having fun<a class="headerlink" href="#having-fun" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="getting-more-comfortable">
+<h3>Getting more comfortable<a class="headerlink" href="#getting-more-comfortable" title="Permalink to this headline">¶</a></h3>
+<p>These are some of the things that will become second nature to you once you get a little more comfortable with NumPy</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span><span class="p">,</span> <span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">xs</span>

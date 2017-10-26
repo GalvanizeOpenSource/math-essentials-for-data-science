@@ -1,4 +1,4 @@
-Properties of matrices
+Linear Algebra 1
 =============================
 
 Learning objectives
@@ -39,8 +39,8 @@ Here we provide a summary the important commands that have already been introduc
 +-----------------------------------+-------------------------------------------------------------+
 
 
-Basic properties of matrices
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Transposes
+-------------
 
 It is convention to represent vectors as column matrices.  
 
@@ -61,8 +61,7 @@ when written using NumPy is as follows.
 >>> x = np.array([[3,4,5,6]]).T
 
 
-The ``.T`` indicates the use of a **transpose**, another matrix
-operation that we will get to shortly.  A **row matrix** is then written as:
+The ``.T`` indicates the use of a **transpose**, a matrix operation that you have been using already.  A **row matrix** is then written as:
 
 .. math::
 
@@ -73,61 +72,33 @@ operation that we will get to shortly.  A **row matrix** is then written as:
 
 >>> x = np.array([[3,4,5,6]])
 
+Just to ensure you picked this up from the last section...
+
 
 .. admonition:: Questions
 
     1. Create a row vector and a column vector version of the numbers 1-5 and print the shape of each.
 
+       **Extra** can you do it with ``arange``?
+
+       
     .. container:: toggle
 
         .. container:: header
 
             **ANSWER**
+        |
+	    
+	You could write out 1-5, but here we show how to do it with NumPy builtin functions.
+	    
+        >>> column_vector = np.arange(1,6).reshape(5,1)
+        >>> column_vector.shape
+        (5, 1)
+        >>> row_vector = np.arange(1,6).reshape(1,5)
+        >>> row_vector.shape
+        (1, 5)
 
-        The matrix dimensions are :math:`3 \times 4`
-
-
-
-General matrices like you saw :doc:`working with NumPy <matrix-operations>`.
-
-.. math::
-
-     A_{m,n} =
-    \begin{pmatrix}
-     a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
-     a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
-     \vdots  & \vdots  & \ddots & \vdots  \\
-     a_{m,1} & a_{m,2} & \cdots & a_{m,n}
-    \end{pmatrix}
-
-    
-.. note:: In order to multiply two matrices, they must be
-          **conformable** such that the number of columns of the first
-          matrix must be the same as the number of rows of the second
-          matrix.
-
-
-A :math:`1 \times N` dimensional vector :math:`x` 
-
-.. math::
-
-    x =
-    \begin{pmatrix}
-    x_{1}  \\
-    x_{2}  \\
-    \vdots \\
-    x_{N}
-    \end{pmatrix} 
-
-and its transpose :math:`\mathbf{x}^{T} = (x_{1}, x_{2},\ldots,x_{N})` can be expressed in python as
-
->>> import numpy as np
->>> x = np.array([[1,2,3]]).T
->>> xt = x.T
->>> x.shape
-(3, 1)
->>> xt.shape
-(1, 3)
+|
 
 The transpose of a :math:`n \times p` matrix is a :math:`p \times n` matrix with rows and columns interchanged
 A transpose can be thought of as the mirror image of a matrix across the main diagonal.
@@ -143,7 +114,7 @@ A transpose can be thought of as the mirror image of a matrix across the main di
    \end{bmatrix}
 
 Properties of a transpose
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Let :math:`X` be an :math:`n \times p` matrix and :math:`a` a real number, then
 
@@ -160,7 +131,20 @@ Properties of a transpose
    .. math::
       (XY)^T = Y^TX^T
 
-    
+
+General matrices like you have already seen :doc:`working with NumPy <matrix-operations>`. can be written as
+
+.. math::
+
+     X_{m,n} =
+    \begin{pmatrix}
+     X_{1,1} & X_{1,2} & \cdots & X_{1,n} \\
+     X_{2,1} & X_{2,2} & \cdots & X_{2,n} \\
+     \vdots  & \vdots  & \ddots & \vdots  \\
+     X_{m,1} & X_{m,2} & \cdots & X_{m,n}
+    \end{pmatrix}
+
+      
 Dot products
 ----------------
 

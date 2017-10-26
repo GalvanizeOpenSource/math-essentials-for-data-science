@@ -1,7 +1,7 @@
 .. linear algebra, linear regression
    
 
-Cosine similarity and special matrices
+Linear Algebra Part II
 =======================================
 
 These concepts build on what we learned in part I

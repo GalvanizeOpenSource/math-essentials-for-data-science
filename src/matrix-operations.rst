@@ -7,10 +7,8 @@ Learning objectives:
 
   1. Understand the dimensional requirements for matrix multiplication
   2. Understand and be able to execute **elementwise** arithmetric operators in NumPy
-  3. Be familiar with the commonly encountered matrix operations: slicing, masking and concatenation
-  4. Be able to recall the output of vector-vector, matrix-vector, and matrix-matrix products
-  5. Transpose
-
+  3. Become even more comfortable with vectors and matrices in NumPy
+  
 Quick reference
 ---------------------
 
@@ -41,9 +39,11 @@ Dimensional requirements for matrix multiplication
 Basic properties of matrices
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-It is convention to represent vectors as column matrices.
+It is convention to represent vectors as column matrices.  We are
+explicit in this representation in that we define two axes even
+through the number of columns is only one.
 
-A **column matrix** in NumPy.
+A **column matrix** in NumPy.  
 
 .. math::
     
@@ -59,6 +59,11 @@ A **column matrix** in NumPy.
 
 .. note:: Again notice the pair of double brackets
 
+The ``.T`` indicates a **transpose** operation.  In the case of
+vectors we go from a rowwise representation to a columnwise one and
+vice versa.  We will spend more time on transposes in the next
+section.
+	  
 A **row matrix** in NumPy.
 
 .. math::
@@ -79,18 +84,40 @@ Machine learning can be roughly split into two types of learning problems.
    * **Supervised learning** - learn a mapping from inputs :math:`\mathbf{X}` to outputs :math:`y`
    * **Unsupervised learning** - given only :math:`\mathbf{X}`, learn interesting patterns in :math:`\mathbf{X}`
 
-An example of this is to predict housing prices, which would be a
+An example of this is to predict total snowfall, which would be a
 continuous :math:`\mathbf{y}`.  When we use a feature matrix
 :math:`\mathbf{X}` to predict :math:`\mathbf{y}` it is an example of
 **supervised learning**.  Our feature matrix would be a number of
 column vectors :math:`\mathbf{x}` horizontally stacked together to
 form :math:`\mathbf{X}`.  Examples of these features might be: the
-square footage, the distance from public transport, the average
-quality of schools and more.
+elevation, latitude, average winter temperature, historical snowfall
+data and more..
 
-If we wanted to discover patterns in :math:`\mathbf{X}` then we could take an
-unsupervised approach such as clustering, which would be an example of
-**unsupervised learning**.
+If we wanted to discover patterns in :math:`\mathbf{X}` then we could
+take an such as clustering, which would be an example of
+**unsupervised learning**.  Patterns in this case would likely
+correspond to mountain ranges and and meteorlogical or oceananic events..
+
+If we think of the features of a matrix as column vectors.
+
+>>> feature1 = np.array([[99,45,31,14]]).T
+>>> feature2 = np.array([[0,1,1,0]]).T
+>>> feature3 = np.array([[5,3,9,24]]).T
+
+We can stack them into a matrix using ``hstack``.
+
+>>> X = np.hstack([feature1,feature2,feature3])
+>>> X
+array([[99,  0,  5],
+       [45,  1,  3],
+       [31,  1,  9],
+       [14,  0, 24]])
+
+There are easier ways to create matrices, such as reading directly
+from a csv file, but the ability to concatenate matrices is important.
+With ``hstack`` we **horizontally** stacked our column vectors.  The
+sister function ``vstack`` allows us to **vertically** stack vectors
+or matrices in a similar way.
 
 We may access the individual elements of :math:`\mathbf{X}` through **indexing**
 
@@ -102,14 +129,54 @@ We may access the individual elements of :math:`\mathbf{X}` through **indexing**
      X_{2,1} & X_{2,2} \\
     \end{pmatrix}
 
-In the above matrix we show how to explicitly access any element in
+In the above matrix we show how to explicitly refer to any element in
 :math:`\mathbf{X}`.  It is also quite common to refer to a generic
 element in :math:`\mathbf{X}` as :math:`\mathbf{X}_{i,j}`, where if
-you picked up on the pattern indexing occurs with
+you picked up on the pattern indexing occurs by stating the **row** then the **column**.
+In NumPy you are following the same pattern.  Using the feature matrix created above:
 
-    
+>>> X[0,2]
+5
+>>> X[1,0]
+45
+
+And if we want to access our first column vector again
+
+>>> X[:,0]
+array([99, 45, 31, 14])
+
+>>> X[:,0]
+array([99, 45, 31, 14])
+
+We now see that an array with 2 axes is indexed and even **sliced**
+one axis at a time.  1D arrays can be indexed in the same way a Python
+list can.
+
+>>> a = np.arange(10)
+>>> a[2:4]
+array([2, 3])
+>>> a[:10:2]
+array([0, 2, 4, 6, 8])
+>>> a[::-1]
+array([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])
+
+If we go back to the ``X`` matrix there are many useful functions once we are here including ``mean``
+
+>>> X.mean(axis=0)
+array([ 47.25,   0.5 ,  10.25])
+>>> X.mean(axis=1)
+array([ 34.66666667,  16.33333333,  13.66666667,  12.66666667])
+
+>>> X.mean()
+19.333333333333332
+
+.. note:: axis 0 refers to a mean with respect to the columns
+
+Basic matrix operations
+-------------------------
+
 This has already been stated once.  But since it is important lets say it a different way. 
-    
+
 .. note:: In order to multiply two matrices, they must be
           **conformable** such that the number of columns of the first
           matrix must be the same as the number of rows of the second
@@ -123,14 +190,11 @@ If we have two vectors :math:`\mathbf{x}` and :math:`\mathbf{y}` of the same len
 
 .. math:: 
 
-   \mathbf{x} \cdot \mathbf{y} = x_1y_1 + x_2y_2 + \cdots + x_ny_n$$
+   \mathbf{x} \cdot \mathbf{y} = x_1y_1 + x_2y_2 + \cdots + x_ny_n
 
-Basic operations
---------------------
 
-Arithmetic operators in NumPy work **elementwise**.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+.. important:: Arithmetic operators in NumPy work **elementwise**
+	       
 >>> a = np.array([3,4,5])
 >>> b = np.ones(3)
 >>> a - b
@@ -155,6 +219,21 @@ array([[ 1,  4],
 array([[ 7, 10],
        [15, 22]])
 
+>>> np.dot(np.array([[1,2,3]]),np.array([[2,3,4]]))
+       
+The **dot product** is a very important concept that we will reuse many times going forward.
+
+.. admonition:: Questions
+
+   1. Given the following code write the multiplication out on paper **and** run it Python to check your math
+
+      >>> np.dot(np.array([[1,2,3]]),np.array([[2,3,4]]).T)
+		
+   2. If we multiply a :math:`2 \times 3` matrix with a :math:`3 \times 1` matrix, the product matrix is :math:`2 \times 1`.
+
+      Write an example of this on paper with simple numbers to see if you can understand why.
+
+
 Special addition and multiplication operators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -171,29 +250,29 @@ array([[ 25.,  25.],
 array([[ 50.,  50.],
        [ 50.,  50.]])
 
-Concatenation
-^^^^^^^^^^^^^^^^^^^
-
->>> a = np.array([1,2,3])
->>> b = np.array([4,5,6])
->>> c = np.array([7,8,9])
->>> np.hstack([a,b,c])
-array([1, 2, 3, 4, 5, 6, 7, 8, 9])
->>> np.vstack([a,b,c])
-array([[1, 2, 3],
-       [4, 5, 6],
-       [7, 8, 9]])
-
 Sorting arrays
 ^^^^^^^^^^^^^^
 
+NumPy has `a useful submodule to create random numbers <https://docs.scipy.org/doc/numpy-1.13.0/reference/routines.random.html>`_
+
+>>> x = np.random.randint(0,10,5)
 >>> x.sort()
 >>> x
-array([0, 0, 1, 3, 4, 5])
->>> x = np.array(([1,3,4,0,0,5]))
-array([3, 4, 0, 1, 2, 5])
->>> np.argsort(x)
-array([3, 4, 0, 1, 2, 5])
+array([0, 1, 5, 6, 7])
+
+We can also reshuffle the array
+
+>>> np.random.shuffle(x)
+>>> x
+array([1, 0, 6, 5, 7])
+
+But sometimes we do not want to change our matrix, but knowing the sorted indices may be useful and here ``argsort`` can be very useful.
+
+>>> sorted_inds = np.argsort(x)
+>>> sorted_inds
+array([1, 0, 3, 2, 4])
+>>> x[sorted_inds]
+array([0, 1, 5, 6, 7])
 
 Common math functions
 ^^^^^^^^^^^^^^^^^^^^^
@@ -211,7 +290,9 @@ array([ 3.14159265,  4.44288294,  5.44139809,  6.28318531])
 >>> x.max() - x.min()
 4
 
-Basic operations excercise
+There are `so many mathematical functions available to you in NumPy <https://docs.scipy.org/doc/numpy-1.13.0/reference/routines.math.html>`_
+
+Basic operations exercise
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. admonition:: Exercise
@@ -242,42 +323,17 @@ Basic operations excercise
 
 .. tip:: 
 
-   >>> geneList = np.array(["A2M", "FOS", "BRCA2","CPOX"])
-   >>> values0  = np.array([0.12,0.08,0.06,0.02])
-   >>> values1  = np.array([0.01,0.07,0.11,0.09])
-   >>> values2  = np.array([0.03,0.04,0.04,0.02])
-   >>> values3  = np.array([0.05,0.09,0.11,0.14])
+   >>> geneList = np.array([["A2M", "FOS", "BRCA2","CPOX"]])
+   >>> values0  = np.array([[0.12,0.08,0.06,0.02]])
+   >>> values1  = np.array([[0.01,0.07,0.11,0.09]])
+   >>> values2  = np.array([[0.03,0.04,0.04,0.02]])
+   >>> values3  = np.array([]0.05,0.09,0.11,0.14]])
 
-Indexing, slicing and more
------------------------------
 
-1D arrays can be indexed in the same way a Python list can.
+Other important NumPy commands
+-----------------------------------
 
->>> a = np.arange(10)
->>> a[2:4]
-array([2, 3])
->>> a[:10:2]
-array([0, 2, 4, 6, 8])
->>> a[::-1]
-array([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])
-
-Multidimensional arrays can have one index per axis
-
->>> x = np.arange(12).reshape(3,4)
->>> x
-array([[ 0,  1,  2,  3],
-       [ 4,  5,  6,  7],
-       [ 8,  9, 10, 11]])
->>> x[2,3]
-11
->>> x[:,1]                       # everything in the second row
-array([1, 5, 9])
->>> x[1,:]                       # everything in the second column
-array([4, 5, 6, 7])
->>> x[1:3,:]                     # second and third rows
-array([[ 4,  5,  6,  7],
-       [ 8,  9, 10, 11]])
-
+   
 Where
 ^^^^^
 
@@ -304,7 +360,7 @@ Printing
 [ 8  9 10 11]
 
 >>> for element in x.flat:
-...     print element
+...     print(element)
 ... 
 0
 1
@@ -320,7 +376,7 @@ Printing
 11
 
 Copying
-^^^^^^^
+^^^^^^^^^
 
 >>> a = np.array(['a','b','c'])
 >>> b = a
@@ -346,6 +402,7 @@ Missing data
 array([[  1.,   2.,   3.],
        [  4.,   5.,  nan],
        [  7.,   8.,   9.]])
+       
 >>> columnMean = nanmean(a,axis=0)
 >>> columnMean
 array([ 4.,  5.,  6.])
@@ -368,16 +425,20 @@ There are many other useful functions in `random <http://docs.scipy.org/doc/nump
 Convenience functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. admonition:: Exercise
+There are a number of convenience functions to help create matrices
 
-   >>> print np.ones((3,2)), '\n'
-   >>> print np.zeros((3,2)), '\n'
-   >>> print np.eye(3), '\n'
-   >>> print np.diag([1,2,3]), '\n'
-   >>> print np.fromfunction(lambda i, j: (i-2)**2+(j-2)**2, (5,5))
+.. tip:: 
 
-Having fun
-^^^^^^^^^^^^^^^
+   >>> np.ones((3,2))
+   >>> np.zeros((3,2))
+   >>> np.eye(3)
+   >>> np.diag([1,2,3])
+   >>> np.fromfunction(lambda i, j: (i-2)**2+(j-2)**2, (5,5))
+
+Getting more comfortable
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+These are some of the things that will become second nature to you once you get a little more comfortable with NumPy
 
 >>> n, nrows, ncols = 100, 10, 6
 >>> xs = np.random.normal(n, 15, size=(nrows, ncols)).astype('int')
