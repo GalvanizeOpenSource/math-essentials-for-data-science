@@ -396,17 +396,16 @@ Missing data
 ^^^^^^^^^^^^
 
 >>> import numpy as np
->>> from scipy.stats import nanmean 
 >>> a = np.array([[1,2,3],[4,5,np.nan],[7,8,9]])
 >>> a
 array([[  1.,   2.,   3.],
        [  4.,   5.,  nan],
        [  7.,   8.,   9.]])
        
->>> columnMean = nanmean(a,axis=0)
+>>> columnMean = np.nanmean(a,axis=0)
 >>> columnMean
 array([ 4.,  5.,  6.])
->>> rowMean = nanmean(a,axis=1)
+>>> rowMean = np.nanmean(a,axis=1)
 >>> rowMean
 array([ 2. ,  4.5,  8. ])
 
