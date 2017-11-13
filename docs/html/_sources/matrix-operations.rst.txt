@@ -221,8 +221,35 @@ array([[ 7, 10],
 
 >>> np.dot(np.array([[1,2,3]]),np.array([[2,3,4]]))
        
-The **dot product** is a very important concept that we will reuse many times going forward.
+The **dot product** is a very important concept that we will reuse many times going forward.  The dot product is generally written as
 
+.. math::
+
+   a^{T} b
+
+when you write ``np.dot`` the NumPy package will sometime assume you mean to do this such as in the case of the above example.
+
+>>> np.dot(np.array([1,2,3,4]), np.array([3,4,5,6]))
+50
+>>> np.dot(np.array([[1,2,3,4]]), np.array([[3,4,5,6]]).T)
+array([[50]])
+
+The dot product is an essential building block of **matrix
+multiplication**. The table below shows that when we multiply two
+matrices the result is a table of dot products for pairs of vectors
+making up the entries of each matrix.
+   
+Figuring out the shape of a matrix that gets
+
+.. figure:: matrix-multiplication.png
+   :scale: 65%
+   :align: center
+   :alt: galvanize-logo
+   :figclass: align-center
+
+`<https://en.wikipedia.org/wiki/Matrix_multiplication>`_
+
+	      
 .. admonition:: Questions
 
    1. Given the following code write the multiplication out on paper **and** run it Python to check your math
@@ -233,6 +260,7 @@ The **dot product** is a very important concept that we will reuse many times go
 
       Write an example of this on paper with simple numbers to see if you can understand why.
 
+`Khan academy video on dot products <https://www.youtube.com/watch?v=KDHuWxy53uM>`_
 
 Special addition and multiplication operators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -333,7 +361,6 @@ Basic operations exercise
 Other important NumPy commands
 -----------------------------------
 
-   
 Where
 ^^^^^
 
@@ -396,17 +423,16 @@ Missing data
 ^^^^^^^^^^^^
 
 >>> import numpy as np
->>> from scipy.stats import nanmean 
 >>> a = np.array([[1,2,3],[4,5,np.nan],[7,8,9]])
 >>> a
 array([[  1.,   2.,   3.],
        [  4.,   5.,  nan],
        [  7.,   8.,   9.]])
        
->>> columnMean = nanmean(a,axis=0)
+>>> columnMean = np.nanmean(a,axis=0)
 >>> columnMean
 array([ 4.,  5.,  6.])
->>> rowMean = nanmean(a,axis=1)
+>>> rowMean = np.nanmean(a,axis=1)
 >>> rowMean
 array([ 2. ,  4.5,  8. ])
 

@@ -97,13 +97,13 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Thinking in terms of vectors and matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix-operations.html">Matrix operations</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Linear Algebra 1</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#transposes-dot-products-determinants-and-inverses">transposes, dot products, determinants, and inverses</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#quick-reference">Quick reference</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#transposes">Transposes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transposes-dot-products-determinants-and-inversesd">transposes, dot products, determinants, and inversesd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-reference">Quick reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transposes">Transposes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#properties-of-a-transpose">Properties of a transpose</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#properties-of-a-transpose">Properties of a transpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dot-products">Dot products</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#more-on-dot-products">More on dot products</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrix-determinant">Matrix determinant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrix-inverse">Matrix inverse</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#properties-of-inverse">Properties of Inverse</a></li>
@@ -185,15 +185,29 @@
             
   <div class="section" id="linear-algebra-1">
 <h1>Linear Algebra 1<a class="headerlink" href="#linear-algebra-1" title="Permalink to this headline">¶</a></h1>
-<p>Learning objectives</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>transpose, dot products, inverse matrices</li>
-<li>matrix inversions and determinants</li>
-</ol>
-</div></blockquote>
-<div class="section" id="transposes-dot-products-determinants-and-inverses">
-<h2>transposes, dot products, determinants, and inverses<a class="headerlink" href="#transposes-dot-products-determinants-and-inverses" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="3%" />
+<col width="97%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2"><strong>Learning Objectives</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>Develop an intuition for <strong>matrix transpose</strong></td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>Become familiar with the notion of a <strong>determinant</strong></td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>Become familiar with the process of a <a href="#id1"><span class="problematic" id="id2">**</span></a>matrix inverse*</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="transposes-dot-products-determinants-and-inversesd">
+<h2>transposes, dot products, determinants, and inversesd<a class="headerlink" href="#transposes-dot-products-determinants-and-inversesd" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="quick-reference">
 <h2>Quick reference<a class="headerlink" href="#quick-reference" title="Permalink to this headline">¶</a></h2>
@@ -241,9 +255,14 @@
 </tr>
 </tbody>
 </table>
+</div>
 <div class="section" id="transposes">
-<h3>Transposes<a class="headerlink" href="#transposes" title="Permalink to this headline">¶</a></h3>
-<p>It is convention to represent vectors as column matrices.</p>
+<h2>Transposes<a class="headerlink" href="#transposes" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>matrix transpose</strong> is an operation that Takes an <span class="math">\(m \times
+n\)</span> matrix and turns into an <span class="math">\(n \times m\)</span> matrix where the rows
+of the original matrix are the columns in the transposed matrix, and
+visa versa.</p>
+<p>Recall that it is convention to represent vectors as column matrices.</p>
 <p>A <strong>column matrix</strong></p>
 <div class="math">
 \[\begin{split}x =
@@ -253,7 +272,7 @@
 5  \\
 6
 \end{pmatrix}\end{split}\]</div>
-<p>when written using NumPy is as follows.</p>
+<p>and when written using NumPy is as follows.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
@@ -266,7 +285,7 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
 </pre></div>
 </div>
-<p>Just to ensure you picked this up from the last section…</p>
+<p>Just to ensure you <em>really know</em> this…</p>
 <div class="admonition-questions admonition">
 <p class="first admonition-title">Questions</p>
 <ol class="arabic">
@@ -280,7 +299,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>You could write out 1-5, but here we show how to do it with NumPy builtin functions.</p>
+<p>You could write out 1-5, but here we show how to do it with <code class="docutils literal"><span class="pre">arange</span></code> and the array function <code class="docutils literal"><span class="pre">.reshape</span></code>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">column_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">column_vector</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(5, 1)</span>
@@ -294,7 +313,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>The transpose of a <span class="math">\(n \times p\)</span> matrix is a <span class="math">\(p \times n\)</span> matrix with rows and columns interchanged
+<p>The transpose of a <span class="math">\(n \times m\)</span> matrix is a <span class="math">\(m \times n\)</span> matrix with rows and columns interchanged
 A transpose can be thought of as the mirror image of a matrix across the main diagonal.</p>
 <div class="math">
 \[\begin{split}X^T =
@@ -304,15 +323,19 @@ x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2n} \\
 \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
 x_{p1} &amp; x_{p2} &amp; \cdots &amp; x_{pn}
 \end{bmatrix}\end{split}\]</div>
-</div>
-</div>
 <div class="section" id="properties-of-a-transpose">
-<h2>Properties of a transpose<a class="headerlink" href="#properties-of-a-transpose" title="Permalink to this headline">¶</a></h2>
+<h3>Properties of a transpose<a class="headerlink" href="#properties-of-a-transpose" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
-<li><p class="first">Let <span class="math">\(X\)</span> be an <span class="math">\(n \times p\)</span> matrix and <span class="math">\(a\)</span> a real number, then</p>
+<li><p class="first">Let <span class="math">\(X\)</span> be an <span class="math">\(n \times m\)</span> matrix and <span class="math">\(a\)</span> a real number, then</p>
 <div class="math">
 \[(cX)^T = cX^T\]</div>
 </li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">((</span><span class="n">X</span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
 <li><p class="first">Let <span class="math">\(X\)</span> and <span class="math">\(Y\)</span> be <span class="math">\(n \times p\)</span> matrices, then</p>
 <div class="math">
 \[(X \pm Y)^T = X^T \pm Y^T\]</div>
@@ -322,18 +345,13 @@ x_{p1} &amp; x_{p2} &amp; \cdots &amp; x_{pn}
 \[(XY)^T = Y^TX^T\]</div>
 </li>
 </ol>
-<p>General matrices like you have already seen <a class="reference internal" href="matrix-operations.html"><span class="doc">working with NumPy</span></a>. can be written as</p>
-<div class="math">
-\[\begin{split} X_{m,n} =
-\begin{pmatrix}
- X_{1,1} &amp; X_{1,2} &amp; \cdots &amp; X_{1,n} \\
- X_{2,1} &amp; X_{2,2} &amp; \cdots &amp; X_{2,n} \\
- \vdots  &amp; \vdots  &amp; \ddots &amp; \vdots  \\
- X_{m,1} &amp; X_{m,2} &amp; \cdots &amp; X_{m,n}
-\end{pmatrix}\end{split}\]</div>
 </div>
-<div class="section" id="dot-products">
-<h2>Dot products<a class="headerlink" href="#dot-products" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="more-on-dot-products">
+<h2>More on dot products<a class="headerlink" href="#more-on-dot-products" title="Permalink to this headline">¶</a></h2>
+<p>Dot products are a concept that will come up over and over in machine
+learning so just to be sure that you grasp it lets review
+and expand on the concept some.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -352,7 +370,7 @@ x_{p1} &amp; x_{p2} &amp; \cdots &amp; x_{pn}
 </pre></div>
 </div>
 <p>If we have two vectors <span class="math">\(\mathbf{x}\)</span> and <span class="math">\(\mathbf{y}\)</span>
-of the same length <span class="math">\(n\)</span>, then the <strong>dot product</strong> is give by</p>
+of the same length <span class="math">\(n\)</span>, then the <strong>dot product</strong> is given by</p>
 <div class="math">
 \[\mathbf{x} \cdot \mathbf{y} = x_1 y_1 + x_2 y_2 + \cdots + x_ny_n\]</div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
@@ -360,7 +378,14 @@ of the same length <span class="math">\(n\)</span>, then the <strong>dot product
 <span class="go">20</span>
 </pre></div>
 </div>
-<p>If <span class="math">\(\mathbf{x} \cdot \mathbf{y} = 0\)</span> then <span class="math">\(x\)</span> and <span class="math">\(y\)</span> are <strong>orthogonal</strong> (aligns with the intuitive notion of perpindicular)</p>
+<p>or more explicitly
+&gt;&gt;&gt; np.dot(np.array([[1,2,3,4]]), np.array([[4,3,2,1]]).T)
+array([[20]])</p>
+<p>One aspect of dot product that we have not mentioned is how dot
+products (and vectors for that matter) can be thought of as lines in
+geometric space.  If <span class="math">\(\mathbf{x} \cdot \mathbf{y} = 0\)</span> then
+<span class="math">\(x\)</span> and <span class="math">\(y\)</span> are <strong>orthogonal</strong> (aligns with the intuitive
+notion of perpindicular)</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
@@ -382,21 +407,48 @@ x_1y_1 + x_2y_2 + \cdots + x_ny_n\end{split}\]</div>
 </div>
 <div class="section" id="matrix-determinant">
 <h2>Matrix determinant<a class="headerlink" href="#matrix-determinant" title="Permalink to this headline">¶</a></h2>
-<p>The determinant of a 2-D array [[a, b], [c, d]] is ad - bc:</p>
+<p>The determinant of a 2-D array is <span class="math">\(ad - bc\)</span>:</p>
+<div class="math">
+\[\begin{split}x =
+\begin{bmatrix}
+a &amp; b \\
+c &amp; d \\
+\end{bmatrix}\end{split}\]</div>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Determinant">https://en.wikipedia.org/wiki/Determinant</a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="go">-2.0</span>
 </pre></div>
 </div>
+<p>The determinant is a useful value that can be computed for a <strong>square
+matrix</strong>.  Just as the name implies a square matrix is any matrix with
+an equal number of rows and columns.  Matrices are sometimes used as
+the engines to describe processes.  Each step of the process may be
+considered a transition or transformation and the determinant in these
+cases serves as a scaling factor for the transformation.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_matrix">https://en.wikipedia.org/wiki/Stochastic_matrix</a></p>
 </div>
 <div class="section" id="matrix-inverse">
 <h2>Matrix inverse<a class="headerlink" href="#matrix-inverse" title="Permalink to this headline">¶</a></h2>
+<p>To talk about matrix inversion we need to first introduce the
+<strong>identity matrix</strong>.  An identity matrix is a matrix that does not
+change any vector when we multiply that vector by that matrix.  We
+construct one of these matrices by setting all of the entries along
+the main diagonal to 1, while leaving all of the other entries at
+zero.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">array([[ 1.,  0.,  0.,  0.],</span>
+<span class="go">       [ 0.,  1.,  0.,  0.],</span>
+<span class="go">       [ 0.,  0.,  1.,  0.],</span>
+<span class="go">       [ 0.,  0.,  0.,  1.]])</span>
+</pre></div>
+</div>
 <p>The inverse of a square <span class="math">\(n \times n\)</span> matrix <span class="math">\(X\)</span> is an <span class="math">\(n \times n\)</span> matrix <span class="math">\(X^{-1}\)</span> such that</p>
 <div class="math">
 \[X^{-1}X = XX^{-1} = I\]</div>
-<p>Where <span class="math">\(I\)</span> is the identity matrix, an <span class="math">\(n \times n\)</span> diagonal matrix with 1’s along the diagonal.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p>Where <span class="math">\(I\)</span> is the identity matrix.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
 <p class="last">If such a matrix exists, then <span class="math">\(X\)</span> is said to be
 <strong>invertible</strong> or <strong>nonsingular</strong> otherwise <span class="math">\(X\)</span> is
 said to be <strong>noninvertible</strong> or <strong>singular</strong></p>
@@ -417,6 +469,9 @@ said to be <strong>noninvertible</strong> or <strong>singular</strong></p>
 </pre></div>
 </div>
 <p>Because <span class="math">\(AA^{-1} = A^{-1}A = I\)</span>.</p>
+<p>When <span class="math">\(A^{-1}\)</span> exists, several different algorithms exist for
+finding it in closed form.  The identify matrix is useful for solving
+systems of linear equations as we will see in the next section.</p>
 <div class="section" id="properties-of-inverse">
 <h3>Properties of Inverse<a class="headerlink" href="#properties-of-inverse" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">

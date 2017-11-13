@@ -38,7 +38,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Linear algebra 0.1 documentation" href="index.html"/>
-        <link rel="next" title="Properties of matrices" href="linear-algebra-1.html"/>
+        <link rel="next" title="Linear Algebra 1" href="linear-algebra-1.html"/>
         <link rel="prev" title="Thinking in terms of vectors and matrices" href="introduction.html"/> 
 
   
@@ -120,8 +120,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-1.html">Properties of matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-2.html">Cosine similarity and special matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-1.html">Linear Algebra 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-2.html">Linear Algebra Part II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix-decomposition.html">Matrix Decomposition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pca-and-svd.html">PCA and SVD</a></li>
 </ul>
@@ -422,7 +422,25 @@ The <strong>matrix product</strong> of two matrices is another matrix.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]))</span>
 </pre></div>
 </div>
-<p>The <strong>dot product</strong> is a very important concept that we will reuse many times going forward.</p>
+<p>The <strong>dot product</strong> is a very important concept that we will reuse many times going forward.  The dot product is generally written as</p>
+<div class="math">
+\[a^{T} b\]</div>
+<p>when you write <code class="docutils literal"><span class="pre">np.dot</span></code> the NumPy package will sometime assume you mean to do this such as in the case of the above example.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]))</span>
+<span class="go">50</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="go">array([[50]])</span>
+</pre></div>
+</div>
+<p>The dot product is an essential building block of <strong>matrix
+multiplication</strong>. The table below shows that when we multiply two
+matrices the result is a table of dot products for pairs of vectors
+making up the entries of each matrix.</p>
+<p>Figuring out the shape of a matrix that gets</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/matrix-multiplication.png"><img alt="galvanize-logo" src="_images/matrix-multiplication.png" style="width: 156.0px; height: 156.0px;" /></a>
+</div>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_multiplication">https://en.wikipedia.org/wiki/Matrix_multiplication</a></p>
 <div class="admonition-questions admonition">
 <p class="first admonition-title">Questions</p>
 <ol class="last arabic">
@@ -436,6 +454,7 @@ The <strong>matrix product</strong> of two matrices is another matrix.</p>
 </li>
 </ol>
 </div>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=KDHuWxy53uM">Khan academy video on dot products</a></p>
 <div class="section" id="special-addition-and-multiplication-operators">
 <h3>Special addition and multiplication operators<a class="headerlink" href="#special-addition-and-multiplication-operators" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
@@ -635,7 +654,6 @@ entire gene chip.</p>
 <div class="section" id="missing-data">
 <h3>Missing data<a class="headerlink" href="#missing-data" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">nanmean</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <span class="go">array([[  1.,   2.,   3.],</span>
@@ -643,10 +661,10 @@ entire gene chip.</p>
 <span class="go">       [  7.,   8.,   9.]])</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">columnMean</span> <span class="o">=</span> <span class="n">nanmean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">columnMean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">columnMean</span>
 <span class="go">array([ 4.,  5.,  6.])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rowMean</span> <span class="o">=</span> <span class="n">nanmean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rowMean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rowMean</span>
 <span class="go">array([ 2. ,  4.5,  8. ])</span>
 </pre></div>
@@ -730,7 +748,7 @@ entire gene chip.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="linear-algebra-1.html" class="btn btn-neutral float-right" title="Properties of matrices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="linear-algebra-1.html" class="btn btn-neutral float-right" title="Linear Algebra 1" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="introduction.html" class="btn btn-neutral" title="Thinking in terms of vectors and matrices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

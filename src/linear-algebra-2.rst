@@ -6,13 +6,15 @@ Linear Algebra Part II
 
 These concepts build on what we learned in part I
 
-Goals
-^^^^^^^^^
-
-Using NumPy build an intuition for basic linear algebra concepts:
-
-  1. Norms and other special matrices
-  2. Orthogonal Matrices
++----+----------------------------------------------------------------------------------------------------------------------------+
+| **Learning Objectives**                                                                                                         |
++====+============================================================================================================================+
+| 1  | Understand some applications of and basic fundamentals of **norms**                                                        |
++----+----------------------------------------------------------------------------------------------------------------------------+
+| 2  | Extend the concept of a norm to cosign similarity                                                                          |
++----+----------------------------------------------------------------------------------------------------------------------------+
+| 3  | Develop a familiarity with systems of equations and their linear algebra shorthand                                         |
++----+----------------------------------------------------------------------------------------------------------------------------+
 
 Norms and other special matrices
 ---------------------------------
@@ -112,8 +114,6 @@ and hence, has solution
 
 .. math::
    \mathbf{x} = A^{-1}\mathbf{b}
-
-
 
        
 Additional Properties of Matrices

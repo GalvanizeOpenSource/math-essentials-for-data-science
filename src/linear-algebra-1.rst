@@ -1,13 +1,19 @@
 Linear Algebra 1
 =============================
 
-Learning objectives
 
-  1. transpose, dot products, inverse matrices
-  2. matrix inversions and determinants 
++----+----------------------------------------------------------------------------------------------------------------------------+
+| **Learning Objectives**                                                                                                         |
++====+============================================================================================================================+
+| 1  | Develop an intuition for **matrix transpose**                                                                              |
++----+----------------------------------------------------------------------------------------------------------------------------+
+| 2  | Become familiar with the notion of a **determinant**                                                                       |
++----+----------------------------------------------------------------------------------------------------------------------------+
+| 3  | Become familiar with the process of a **matrix inverse*                                                                    |
++----+----------------------------------------------------------------------------------------------------------------------------+
 
-transposes, dot products, determinants, and inverses
------------------------------------------------------
+transposes, dot products, determinants, and inversesd
+-------------------------------------------------------
 
 Quick reference
 ---------------------
@@ -42,7 +48,12 @@ Here we provide a summary the important commands that have already been introduc
 Transposes
 -------------
 
-It is convention to represent vectors as column matrices.  
+A **matrix transpose** is an operation that Takes an :math:`m \times
+n` matrix and turns into an :math:`n \times m` matrix where the rows
+of the original matrix are the columns in the transposed matrix, and
+visa versa.
+
+Recall that it is convention to represent vectors as column matrices.  
 
 A **column matrix** 
 
@@ -56,7 +67,7 @@ A **column matrix**
     6  
     \end{pmatrix}
 
-when written using NumPy is as follows.
+and when written using NumPy is as follows.
     
 >>> x = np.array([[3,4,5,6]]).T
 
@@ -72,7 +83,7 @@ The ``.T`` indicates the use of a **transpose**, a matrix operation that you hav
 
 >>> x = np.array([[3,4,5,6]])
 
-Just to ensure you picked this up from the last section...
+Just to ensure you *really know* this...
 
 
 .. admonition:: Questions
@@ -87,9 +98,10 @@ Just to ensure you picked this up from the last section...
         .. container:: header
 
             **ANSWER**
+	
         |
-	    
-	You could write out 1-5, but here we show how to do it with NumPy builtin functions.
+	
+	You could write out 1-5, but here we show how to do it with ``arange`` and the array function ``.reshape``.
 	    
         >>> column_vector = np.arange(1,6).reshape(5,1)
         >>> column_vector.shape
@@ -100,7 +112,7 @@ Just to ensure you picked this up from the last section...
 
 |
 
-The transpose of a :math:`n \times p` matrix is a :math:`p \times n` matrix with rows and columns interchanged
+The transpose of a :math:`n \times m` matrix is a :math:`m \times n` matrix with rows and columns interchanged
 A transpose can be thought of as the mirror image of a matrix across the main diagonal.
 
 .. math::
@@ -116,11 +128,14 @@ A transpose can be thought of as the mirror image of a matrix across the main di
 Properties of a transpose
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Let :math:`X` be an :math:`n \times p` matrix and :math:`a` a real number, then
+1. Let :math:`X` be an :math:`n \times m` matrix and :math:`a` a real number, then
 
    .. math::
       (cX)^T = cX^T
 
+>>> np.array_equal((X*a).T,(X.T)*a)
+True
+      
 2. Let :math:`X` and :math:`Y` be :math:`n \times p` matrices, then
 
    .. math::
@@ -130,23 +145,13 @@ Properties of a transpose
 
    .. math::
       (XY)^T = Y^TX^T
-
-
-General matrices like you have already seen :doc:`working with NumPy <matrix-operations>`. can be written as
-
-.. math::
-
-     X_{m,n} =
-    \begin{pmatrix}
-     X_{1,1} & X_{1,2} & \cdots & X_{1,n} \\
-     X_{2,1} & X_{2,2} & \cdots & X_{2,n} \\
-     \vdots  & \vdots  & \ddots & \vdots  \\
-     X_{m,1} & X_{m,2} & \cdots & X_{m,n}
-    \end{pmatrix}
-
       
-Dot products
-----------------
+More on dot products
+------------------------------------
+
+Dot products are a concept that will come up over and over in machine
+learning so just to be sure that you grasp it lets review 
+and expand on the concept some.
 
 >>> x = np.array([1,2,3,4])
 
@@ -169,7 +174,7 @@ Multiplying a vector by a constant multiplies each term by the constant
 [ 4  8 12 16]
 
 If we have two vectors :math:`\mathbf{x}` and :math:`\mathbf{y}`
-of the same length :math:`n`, then the **dot product** is give by
+of the same length :math:`n`, then the **dot product** is given by
 
 .. math::
   \mathbf{x} \cdot \mathbf{y} = x_1 y_1 + x_2 y_2 + \cdots + x_ny_n
@@ -178,7 +183,15 @@ of the same length :math:`n`, then the **dot product** is give by
 >>> np.dot(x,y)
 20
 
-If :math:`\mathbf{x} \cdot \mathbf{y} = 0` then :math:`x` and :math:`y` are **orthogonal** (aligns with the intuitive notion of perpindicular)
+or more explicitly
+>>> np.dot(np.array([[1,2,3,4]]), np.array([[4,3,2,1]]).T)
+array([[20]])
+
+One aspect of dot product that we have not mentioned is how dot
+products (and vectors for that matter) can be thought of as lines in
+geometric space.  If :math:`\mathbf{x} \cdot \mathbf{y} = 0` then
+:math:`x` and :math:`y` are **orthogonal** (aligns with the intuitive
+notion of perpindicular)
 
 >>> w = np.array([1, 2])
 >>> v = np.array([-2, 1])
@@ -204,23 +217,55 @@ same length :math:`n`, then the **dot product** is give by matrix multiplication
 Matrix determinant
 --------------------
 
-The determinant of a 2-D array [[a, b], [c, d]] is ad - bc:
+The determinant of a 2-D array is :math:`ad - bc`:
+
+.. math::
+
+    x =
+    \begin{bmatrix}
+    a & b \\
+    c & d \\  
+    \end{bmatrix}
+ 
+`<https://en.wikipedia.org/wiki/Determinant>`_
 
 >>> a = np.array([[1, 2], [3, 4]])
 >>> np.linalg.det(a)
 -2.0
 
+The determinant is a useful value that can be computed for a **square
+matrix**.  Just as the name implies a square matrix is any matrix with
+an equal number of rows and columns.  Matrices are sometimes used as
+the engines to describe processes.  Each step of the process may be
+considered a transition or transformation and the determinant in these
+cases serves as a scaling factor for the transformation.
+
+`<https://en.wikipedia.org/wiki/Stochastic_matrix>`_
+
 Matrix inverse
 ----------------
+
+To talk about matrix inversion we need to first introduce the
+**identity matrix**.  An identity matrix is a matrix that does not
+change any vector when we multiply that vector by that matrix.  We
+construct one of these matrices by setting all of the entries along
+the main diagonal to 1, while leaving all of the other entries at
+zero.
+
+>>> np.eye(4)
+array([[ 1.,  0.,  0.,  0.],
+       [ 0.,  1.,  0.,  0.],
+       [ 0.,  0.,  1.,  0.],
+       [ 0.,  0.,  0.,  1.]])
 
 The inverse of a square :math:`n \times n` matrix :math:`X` is an :math:`n \times n` matrix :math:`X^{-1}` such that
 
 .. math::
    X^{-1}X = XX^{-1} = I
 
-Where :math:`I` is the identity matrix, an :math:`n \times n` diagonal matrix with 1's along the diagonal.
+Where :math:`I` is the identity matrix.
 
-.. note:: If such a matrix exists, then :math:`X` is said to be
+.. important:: If such a matrix exists, then :math:`X` is said to be
           **invertible** or **nonsingular** otherwise :math:`X` is
           said to be **noninvertible** or **singular**
 
@@ -239,7 +284,10 @@ array([[ 1.,  0.],
 
 Because :math:`AA^{-1} = A^{-1}A = I`.
 
-       
+When :math:`A^{-1}` exists, several different algorithms exist for
+finding it in closed form.  The identify matrix is useful for solving
+systems of linear equations as we will see in the next section.
+
 Properties of Inverse
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -260,5 +308,3 @@ Properties of Inverse
       (X^T)^{-1} = (X^{-1})^T
 
        
-
-

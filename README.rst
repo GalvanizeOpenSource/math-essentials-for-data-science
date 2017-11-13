@@ -1,10 +1,11 @@
-Statistics short-course
+Linear Algebra Essentials
 ==========================
 
 :Version: 0.1.1
 :Authors: Galvanize
-:Web site: https://galvanizeopensource.github.io/linear-algebra-essentials/index.html
-:Repo: https://github.com/GalvanizeOpenSource/linear-algebra-essentials
+:Open version: https://galvanizeopensource.github.io/linear-algebra-essentials/index.html
+:Galvanize version: TBD	       
+:Source: https://github.com/GalvanizeOpenSource/linear-algebra-essentials
 :Copyright: Galvanize Inc.
 
 Purpose
