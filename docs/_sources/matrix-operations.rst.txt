@@ -357,7 +357,6 @@ Basic operations exercise
    >>> values2  = np.array([[0.03,0.04,0.04,0.02]])
    >>> values3  = np.array([]0.05,0.09,0.11,0.14]])
 
-
 Other important NumPy commands
 -----------------------------------
 

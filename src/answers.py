@@ -37,6 +37,7 @@ print(["%s = %s"%(tp,time_means[t]) for t, tp in enumerate(column_names)])
 ########################################################
 ## which gene has the maximum mean expression value?
 ########################################################
+
 print("\nQuestion 4")
 gene_means = X.mean(axis=1)
 gene_mean_ind = np.argmax(gene_means)

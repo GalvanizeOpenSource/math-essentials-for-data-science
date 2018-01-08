@@ -18,8 +18,7 @@ If there is an old version of anaconda you can remove it with
 		
    ~$ rm -rf ~/anaconda*
    
-Download the image or install script from https://www.continuum.io/downloads
-
+Download the image or install script from https://www.anaconda.com/download/
 
 On Ubuntu
 ^^^^^^^^^^^^
@@ -46,6 +45,21 @@ Answer yes to the path adding question
 2. restart terminal
 
 
+On Windows
+^^^^^^^^^^^^^^^^^^^
+
+1. Ensure that you install the ``Anaconda installer for Windows`` for Python 3
+
+2. Double-click the .exe file
+
+3. Follow the instructions on the screen
+
+If you are unsure about any setting, accept the defaults. You can change them later.
+When installation is finished, from the Start menu, open the Anaconda Prompt.
+
+https://conda.io/docs/user-guide/install/windows.html
+
+   
 Then run this to create a working python 2 environment
 -----------------------------------------------------------
 

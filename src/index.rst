@@ -1,4 +1,4 @@
-.. linear algebra essentials main file
+.. math essentials main file
 
 .. figure:: galvanize-logo.png
    :scale: 35%
@@ -6,7 +6,7 @@
    :alt: galvanize-logo
    :figclass: align-center
 
-Linear Algebra Essentials
+Mathematical Essentials of Data Science
 =============================================
 
 If we use a transportation metaphor we might say that statistics and
@@ -34,18 +34,32 @@ you become prepared for an educational experience in data science.
 You may even come to believe that viewing math through the lens of
 matrices and vectors **makes things easier**.
 
+.. important:: The principal focus of this contents is to introduce
+   numeric computing and **linear algebra** through Python.  A portion
+   of the second day will provide a basis for the **calculus** that
+   you will need as a data scientist.
+
+
 .. toctree::
    :maxdepth: 1
-   :caption: Contents:
+   :caption: Day 1:
 
    introduction
    matrix-operations
    linear-algebra-1
    linear-algebra-2
+
+|
+   
+.. toctree::
+   :maxdepth: 1
+   :caption: Day 2:
+
    matrix-decomposition
    pca-and-svd
+   calculus-1
 
-..
+|
    
 .. toctree::
    :maxdepth: 1

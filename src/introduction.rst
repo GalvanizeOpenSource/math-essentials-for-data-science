@@ -97,7 +97,7 @@ the formal term for the number of dimensions.
 
     |
 	
-    2. Given a spreadsheet that has 3 tabs and each tab has 10 rows with 5 columns how might we represent that data with a tensor?
+    2. Given a spreadsheet that has 4 tabs and each tab has 2 rows with 3 columns how might we represent that data with a tensor?
 
     .. container:: toggle
 
@@ -105,8 +105,22 @@ the formal term for the number of dimensions.
 
             **ANSWER**
 
-        The tensor would be of rank 3 and have the following dimensions :math:`10 \times 5 \times 3`
-      
+        The tensor would be of rank 3 and have the following
+        dimensions :math:`2 \times 3 \times 4`.  In NumPy this is
+        written as a :math:`4 \times 2 \times 3`.  You will soon be
+        working with NumPy and you can refer back to this example.
+
+	>>> x = np.array([[[ 0,  1,  2],
+	                   [ 3,  4,  5]],
+                          [[ 9, 10, 11],
+                           [15, 16, 17]],
+                          [[ 2, 10, 8],
+                           [5, 4, 9]],
+                          [[18, 19, 20],
+                           [24, 25, 26]]])
+        >>> print(x.shape)
+	(4, 2, 3)
+	
 |
 
 Notation

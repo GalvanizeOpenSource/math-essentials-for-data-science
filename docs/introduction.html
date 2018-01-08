@@ -39,7 +39,7 @@
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="math essentials 0.1 documentation" href="index.html"/>
         <link rel="next" title="Matrix operations" href="matrix-operations.html"/>
-        <link rel="prev" title="Linear Algebra Essentials" href="index.html"/> 
+        <link rel="prev" title="Mathematical Essentials of Data Science" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -92,7 +92,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">Day 1:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Thinking in terms of vectors and matrices</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#so-you-may-be-asking-why">So you may be asking why?</a></li>
@@ -107,10 +107,14 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="matrix-operations.html">Matrix operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-1.html">Linear Algebra 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-1.html">Linear Algebra I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linear-algebra-2.html">Linear Algebra Part II</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Day 2:</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="matrix-decomposition.html">Matrix Decomposition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pca-and-svd.html">PCA and SVD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calculus-1.html">Calculus 1</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendices:</span></p>
 <ul>
@@ -292,12 +296,27 @@ the formal term for the number of dimensions.</p>
 <div class="line"><br /></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Given a spreadsheet that has 3 tabs and each tab has 10 rows with 5 columns how might we represent that data with a tensor?</li>
+<li>Given a spreadsheet that has 4 tabs and each tab has 2 rows with 3 columns how might we represent that data with a tensor?</li>
 </ol>
 <div class="toggle last docutils container">
 <div class="header docutils container">
 <strong>ANSWER</strong></div>
-<p>The tensor would be of rank 3 and have the following dimensions <span class="math">\(10 \times 5 \times 3\)</span></p>
+<p>The tensor would be of rank 3 and have the following
+dimensions <span class="math">\(2 \times 3 \times 4\)</span>.  In NumPy this is
+written as a <span class="math">\(4 \times 2 \times 3\)</span>.  You will soon be
+working with NumPy and you can refer back to this example.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">],</span>
+<span class="go">                   [ 3,  4,  5]],</span>
+<span class="go">                  [[ 9, 10, 11],</span>
+<span class="go">                   [15, 16, 17]],</span>
+<span class="go">                  [[ 2, 10, 8],</span>
+<span class="go">                   [5, 4, 9]],</span>
+<span class="go">                  [[18, 19, 20],</span>
+<span class="go">                   [24, 25, 26]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">(4, 2, 3)</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="line-block">
@@ -674,7 +693,7 @@ time.</p>
         <a href="matrix-operations.html" class="btn btn-neutral float-right" title="Matrix operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Linear Algebra Essentials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="Mathematical Essentials of Data Science" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
