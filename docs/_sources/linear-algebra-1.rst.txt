@@ -12,7 +12,8 @@ Linear Algebra 1
 | 3  | Become familiar with the process of a **matrix inverse*                                                                    |
 +----+----------------------------------------------------------------------------------------------------------------------------+
 
-transposes, dot products, determinants, and inversesd
+
+transposes, dot products, determinants, and inverses
 -------------------------------------------------------
 
 Quick reference

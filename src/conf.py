@@ -55,7 +55,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Linear algebra'
+project = 'math essentials'
 copyright = '2017, Galvanize DSI'
 author = 'Galvanize DS'
 
@@ -111,7 +111,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'workshop'
+htmlhelp_basename = 'math-essentials'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -138,7 +138,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'workshop.tex', 'workshop Documentation',
+    (master_doc, 'math-essentials-for-data-science.tex', 'Mathematical essentials for data science',
      'Galvanize DSI', 'manual'),
 ]
 

@@ -1,11 +1,11 @@
-Linear Algebra Essentials
-==========================
+Mathematical Essentials for Data Science
+===========================================
 
-:Version: 0.1.1
+:Version: 1.0
 :Authors: Galvanize
-:Open version: https://galvanizeopensource.github.io/linear-algebra-essentials/index.html
+:Open version: https://galvanizeopensource.github.io/math-essentials-for-data-science/index.html
 :Galvanize version: TBD	       
-:Source: https://github.com/GalvanizeOpenSource/linear-algebra-essentials
+:Source: https://github.com/GalvanizeOpenSource/math-essentials-for-data-science
 :Copyright: Galvanize Inc.
 
 Purpose
