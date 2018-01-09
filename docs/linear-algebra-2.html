@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Linear Algebra Part II &mdash; math essentials 0.1 documentation</title>
+  <title>Linear Algebra Part II &mdash; math essentials 1.0 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="math essentials 0.1 documentation" href="index.html"/>
+    <link rel="top" title="math essentials 1.0 documentation" href="index.html"/>
         <link rel="next" title="Matrix Decomposition" href="matrix-decomposition.html"/>
         <link rel="prev" title="Linear Algebra I" href="linear-algebra-1.html"/> 
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.1
+                1.0
               </div>
             
           
@@ -196,7 +196,7 @@
 <td>Understand some applications of and basic fundamentals of <strong>norms</strong></td>
 </tr>
 <tr class="row-odd"><td>2</td>
-<td>Extend the concept of a norm to cosign similarity</td>
+<td>Extend the concept of a norm to cosine similarity</td>
 </tr>
 <tr class="row-even"><td>3</td>
 <td>Develop a familiarity with systems of equations and their linear algebra shorthand</td>
@@ -205,6 +205,7 @@
 </table>
 <div class="section" id="norms-and-other-special-matrices">
 <h2>Norms and other special matrices<a class="headerlink" href="#norms-and-other-special-matrices" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes it is necessary to quantify the size of a vector. There is a specific function called a called a norm that serves this purpose.</p>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="_images/vector.png"><img alt="vector" src="_images/vector.png" style="width: 293.25px; height: 261.75px;" /></a>
 </div>
@@ -218,17 +219,31 @@
 <span class="go">5.47722557505</span>
 </pre></div>
 </div>
-<p>The norm squared of a vector is just the vector dot product with itself</p>
+<p>The norm shown above is also known as Frobenius norm. The Frobenius norm, sometimes also called the Euclidean norm (a term unfortunately also used for the vector -norm), is matrix norm of an matrix defined as the square root of the sum of the absolute squares of its elements.  The following is a generalized way to write many types of norms.</p>
+<div class="math">
+\[||\mathbf{x}||_{p} =  \left( \sum_{i} |x_i|^{p} \right)^{\frac{1}{p}}\]</div>
+<p>Norm are used to map vectors to non-negative values.  Using intuition
+the Euclidean norm of a vector measures the distance from the origin
+of the Euclidean space (vector tail), to a point in that space (vector
+tip).  There are many nice properties of the Euclidean norm.  The norm
+squared of a vector is just the vector dot product with itself</p>
 <div class="math">
 \[||x||^2 = x \cdot x\]</div>
-<p>print(np.linalg.norm(x)**2)
-print(np.dot(x,x))</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
+<span class="go">30</span>
+<span class="go">30</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
 <p>The distance between two vectors is the norm of the difference.</p>
 <div class="math">
 \[d(x,y) = ||x-y||\]</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
 <span class="go">4.472</span>
 </pre></div>
+</div>
 </div>
 <p><strong>Cosine Similarity</strong> is the cosine of the angle between the two vectors give by</p>
 <div class="math">
@@ -351,7 +366,7 @@ a_{m1}x_1 + \cdots + a_{mn}x_n &amp;= b_m
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Galvanize DSI.
+        &copy; Copyright 2018, Galvanize DS.
 
     </p>
   </div>
@@ -373,7 +388,7 @@ a_{m1}x_1 + \cdots + a_{mn}x_n &amp;= b_m
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.1',
+            VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

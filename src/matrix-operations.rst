@@ -192,7 +192,6 @@ If we have two vectors :math:`\mathbf{x}` and :math:`\mathbf{y}` of the same len
 
    \mathbf{x} \cdot \mathbf{y} = x_1y_1 + x_2y_2 + \cdots + x_ny_n
 
-
 .. important:: Arithmetic operators in NumPy work **elementwise**
 	       
 >>> a = np.array([3,4,5])
@@ -227,7 +226,7 @@ The **dot product** is a very important concept that we will reuse many times go
 
    a^{T} b
 
-when you write ``np.dot`` the NumPy package will sometime assume you mean to do this such as in the case of the above example.
+when you write ``np.dot`` the NumPy package will sometimes assume that you mean to do this such as in the case of the above example.
 
 >>> np.dot(np.array([1,2,3,4]), np.array([3,4,5,6]))
 50
@@ -238,8 +237,33 @@ The dot product is an essential building block of **matrix
 multiplication**. The table below shows that when we multiply two
 matrices the result is a table of dot products for pairs of vectors
 making up the entries of each matrix.
+
+First think about this in terms of square matrices and see if you can identify the pattern.
+
+
+Perform matrix multiplication on a square matrix.  This is how it works---code the pattern.
+
+
+.. math::
    
-Figuring out the shape of a matrix that gets
+    \begin{pmatrix}
+    a & b \\
+    c & d \\
+    \end{pmatrix}
+    \times 
+    \begin{pmatrix}
+    e & f \\
+    g & h \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    ae+bg & af+bh \\
+    ce+dg & cf+dh \\
+    \end{pmatrix}
+
+| 
+
+Once you see what is happening this figure can help you understand how the pattern generalizes to different shap matrices.  Figuring out the shape of a matrix that gets
 
 .. figure:: matrix-multiplication.png
    :scale: 65%
@@ -249,7 +273,9 @@ Figuring out the shape of a matrix that gets
 
 `<https://en.wikipedia.org/wiki/Matrix_multiplication>`_
 
-	      
+.. important:: There is a pattern to figure out the size fo the resulting matrix.
+	  result = Num Rows in 1st matrix :math:`\times` Num Columns in 2nd Matrix
+
 .. admonition:: Questions
 
    1. Given the following code write the multiplication out on paper **and** run it Python to check your math
@@ -264,6 +290,8 @@ Figuring out the shape of a matrix that gets
 
 Special addition and multiplication operators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Like in regular Python there is a special operator.  
 
 >>> a = np.zeros((2,2),dtype='float')
 >>> a += 5

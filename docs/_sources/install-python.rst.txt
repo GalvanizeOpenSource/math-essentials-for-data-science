@@ -99,4 +99,4 @@ Keeping conda up-to-date
 .. code-block:: bash
 
     ~$ conda update conda
-    ~$ conda updata --all
+    ~$ conda update --all

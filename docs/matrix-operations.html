@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Matrix operations &mdash; math essentials 0.1 documentation</title>
+  <title>Matrix operations &mdash; math essentials 1.0 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="math essentials 0.1 documentation" href="index.html"/>
+    <link rel="top" title="math essentials 1.0 documentation" href="index.html"/>
         <link rel="next" title="Linear Algebra I" href="linear-algebra-1.html"/>
         <link rel="prev" title="Thinking in terms of vectors and matrices" href="introduction.html"/> 
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.1
+                1.0
               </div>
             
           
@@ -429,7 +429,7 @@ The <strong>matrix product</strong> of two matrices is another matrix.</p>
 <p>The <strong>dot product</strong> is a very important concept that we will reuse many times going forward.  The dot product is generally written as</p>
 <div class="math">
 \[a^{T} b\]</div>
-<p>when you write <code class="docutils literal"><span class="pre">np.dot</span></code> the NumPy package will sometime assume you mean to do this such as in the case of the above example.</p>
+<p>when you write <code class="docutils literal"><span class="pre">np.dot</span></code> the NumPy package will sometimes assume that you mean to do this such as in the case of the above example.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]))</span>
 <span class="go">50</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
@@ -440,11 +440,36 @@ The <strong>matrix product</strong> of two matrices is another matrix.</p>
 multiplication</strong>. The table below shows that when we multiply two
 matrices the result is a table of dot products for pairs of vectors
 making up the entries of each matrix.</p>
-<p>Figuring out the shape of a matrix that gets</p>
+<p>First think about this in terms of square matrices and see if you can identify the pattern.</p>
+<p>Perform matrix multiplication on a square matrix.  This is how it works—code the pattern.</p>
+<div class="math">
+\[\begin{split}\begin{pmatrix}
+a &amp; b \\
+c &amp; d \\
+\end{pmatrix}
+\times
+\begin{pmatrix}
+e &amp; f \\
+g &amp; h \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+ae+bg &amp; af+bh \\
+ce+dg &amp; cf+dh \\
+\end{pmatrix}\end{split}\]</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Once you see what is happening this figure can help you understand how the pattern generalizes to different shap matrices.  Figuring out the shape of a matrix that gets</p>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="_images/matrix-multiplication.png"><img alt="galvanize-logo" src="_images/matrix-multiplication.png" style="width: 156.0px; height: 156.0px;" /></a>
 </div>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_multiplication">https://en.wikipedia.org/wiki/Matrix_multiplication</a></p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">There is a pattern to figure out the size fo the resulting matrix.
+result = Num Rows in 1st matrix <span class="math">\(\times\)</span> Num Columns in 2nd Matrix</p>
+</div>
 <div class="admonition-questions admonition">
 <p class="first admonition-title">Questions</p>
 <ol class="last arabic">
@@ -461,6 +486,7 @@ making up the entries of each matrix.</p>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=KDHuWxy53uM">Khan academy video on dot products</a></p>
 <div class="section" id="special-addition-and-multiplication-operators">
 <h3>Special addition and multiplication operators<a class="headerlink" href="#special-addition-and-multiplication-operators" title="Permalink to this headline">¶</a></h3>
+<p>Like in regular Python there is a special operator.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">+=</span> <span class="mi">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
@@ -764,7 +790,7 @@ entire gene chip.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Galvanize DSI.
+        &copy; Copyright 2018, Galvanize DS.
 
     </p>
   </div>
@@ -786,7 +812,7 @@ entire gene chip.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.1',
+            VERSION:'1.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
