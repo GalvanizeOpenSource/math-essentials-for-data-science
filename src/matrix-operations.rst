@@ -527,3 +527,5 @@ Extracting lower triangular, diagonal and upper triangular matrices
 >>> print np.diag(np.diag(a)), '\n'
 >>> print np.triu(a, 1)
 
+
+   * :download:`../notebooks/breakout1.ipynb`
