@@ -108,31 +108,21 @@
 <li class="toctree-l3"><a class="reference internal" href="#basic-operations-exercise">Basic operations exercise</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#other-important-numpy-commands">Other important NumPy commands</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#where">Where</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#printing">Printing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#copying">Copying</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#missing-data">Missing data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#generating-random-numbers">Generating random numbers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#convenience-functions">Convenience functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#getting-more-comfortable">Getting more comfortable</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="linear-algebra-1.html">Linear Algebra I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linear-algebra-2.html">Linear Algebra Part II</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Day 2:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="linear-algebra-2.html">Linear Algebra Part II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix-decomposition.html">Matrix Decomposition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pca-and-svd.html">PCA and SVD</a></li>
-<li class="toctree-l1"><a class="reference internal" href="calculus-1.html">Calculus 1</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendices:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install-python.html">Python Installation Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="numpy-commands.html">NumPy Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra-numpy.html">Other important NumPy commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">Works cited</a></li>
 </ul>
 
@@ -596,179 +586,30 @@ entire gene chip.</p>
 </tr>
 </tbody>
 </table>
-<ol class="last arabic simple">
-<li>create a single array for the data (4x4)</li>
-<li>find the mean expression value <em>per gene</em></li>
-<li>find the mean expression value <em>per time point</em></li>
-<li>which gene has the maximum mean expression value?</li>
-<li>sort the gene names by the max expression value</li>
+<ol class="arabic simple">
+<li>Create a single array for the data (4x4)</li>
+<li>Find the mean expression value <em>per gene</em></li>
+<li>Find the mean expression value <em>per time point</em></li>
+</ol>
+<p><strong>Extra Credit</strong></p>
+<ol class="last arabic simple" start="4">
+<li>Which gene has the maximum mean expression value?</li>
+<li>Sort the gene names by the max expression value</li>
 </ol>
 </div>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geneList</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="s2">&quot;A2M&quot;</span><span class="p">,</span> <span class="s2">&quot;FOS&quot;</span><span class="p">,</span> <span class="s2">&quot;BRCA2&quot;</span><span class="p">,</span><span class="s2">&quot;CPOX&quot;</span><span class="p">]])</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geneList</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="s2">&quot;A2M&quot;</span><span class="p">,</span> <span class="s2">&quot;FOS&quot;</span><span class="p">,</span> <span class="s2">&quot;BRCA2&quot;</span><span class="p">,</span><span class="s2">&quot;CPOX&quot;</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">values0</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.12</span><span class="p">,</span><span class="mf">0.08</span><span class="p">,</span><span class="mf">0.06</span><span class="p">,</span><span class="mf">0.02</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">values1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.07</span><span class="p">,</span><span class="mf">0.11</span><span class="p">,</span><span class="mf">0.09</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">values2</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.03</span><span class="p">,</span><span class="mf">0.04</span><span class="p">,</span><span class="mf">0.04</span><span class="p">,</span><span class="mf">0.02</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">values3</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([]</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.09</span><span class="p">,</span><span class="mf">0.11</span><span class="p">,</span><span class="mf">0.14</span><span class="p">]])</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="other-important-numpy-commands">
-<h2>Other important NumPy commands<a class="headerlink" href="#other-important-numpy-commands" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="where">
-<h3>Where<a class="headerlink" href="#where" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="n">a</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">]</span>
-<span class="go">array([2, 2, 2, 3, 3, 3])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="n">a</span><span class="o">==</span><span class="mi">3</span><span class="p">]</span>
-<span class="go">array([3, 3, 3])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">a</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">(array([0, 1, 2, 3, 4, 5]),)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">a</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="go">array([0, 1, 2, 3, 4, 5])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="mi">9</span><span class="p">)</span>
-<span class="go">(array([], dtype=int64),)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="printing">
-<h3>Printing<a class="headerlink" href="#printing" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="nb">print</span> <span class="n">row</span>
-<span class="gp">...</span>
-<span class="go">[0 1 2 3]</span>
-<span class="go">[4 5 6 7]</span>
-<span class="go">[ 8  9 10 11]</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">flat</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-<span class="gp">...</span>
-<span class="go">0</span>
-<span class="go">1</span>
-<span class="go">2</span>
-<span class="go">3</span>
-<span class="go">4</span>
-<span class="go">5</span>
-<span class="go">6</span>
-<span class="go">7</span>
-<span class="go">8</span>
-<span class="go">9</span>
-<span class="go">10</span>
-<span class="go">11</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="copying">
-<h3>Copying<a class="headerlink" href="#copying" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
-<span class="go">array([&#39;a&#39;, &#39;z&#39;, &#39;c&#39;],</span>
-<span class="go">      dtype=&#39;|S1&#39;)</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
-<span class="go">array([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;],</span>
-<span class="go">      dtype=&#39;|S1&#39;)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="missing-data">
-<h3>Missing data<a class="headerlink" href="#missing-data" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
-<span class="go">array([[  1.,   2.,   3.],</span>
-<span class="go">       [  4.,   5.,  nan],</span>
-<span class="go">       [  7.,   8.,   9.]])</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">columnMean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">columnMean</span>
-<span class="go">array([ 4.,  5.,  6.])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rowMean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rowMean</span>
-<span class="go">array([ 2. ,  4.5,  8. ])</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="generating-random-numbers">
-<h3>Generating random numbers<a class="headerlink" href="#generating-random-numbers" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>      <span class="c1"># random integers from a closed interval</span>
-<span class="go">array([2, 8, 3, 7, 8])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>        <span class="c1"># random numbers from a Gaussian</span>
-<span class="go">array([ 1.44660159, -0.35625249, -2.09994545,  0.7626487 ,  0.36353648])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>       <span class="c1"># random numbers from a uniform distribution</span>
-<span class="go">array([ 0.07477679,  0.36409135,  1.42847035,  1.61242304,  0.54228665])</span>
-</pre></div>
-</div>
-<p>There are many other useful functions in <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.random.html">random</a></p>
-</div>
-<div class="section" id="convenience-functions">
-<h3>Convenience functions<a class="headerlink" href="#convenience-functions" title="Permalink to this headline">¶</a></h3>
-<p>There are a number of convenience functions to help create matrices</p>
-<div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">fromfunction</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="getting-more-comfortable">
-<h3>Getting more comfortable<a class="headerlink" href="#getting-more-comfortable" title="Permalink to this headline">¶</a></h3>
-<p>These are some of the things that will become second nature to you once you get a little more comfortable with NumPy</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span><span class="p">,</span> <span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">xs</span>
-<span class="go">array([[ 84, 108,  96,  93,  82, 115],</span>
-<span class="go">[ 87,  70,  96, 132, 111, 108],</span>
-<span class="go">[ 96,  85, 120,  72,  62,  66],</span>
-<span class="go">[112,  86,  98,  86,  74,  98],</span>
-<span class="go">[ 75,  91, 116, 105,  82, 122],</span>
-<span class="go">[ 95, 119,  84,  89,  93,  87],</span>
-<span class="go">[118, 113,  94,  89,  67, 107],</span>
-<span class="go">[120, 105,  85, 100, 131, 120],</span>
-<span class="go">[ 91, 137, 103,  94, 115,  92],</span>
-<span class="go">[ 73,  98,  81, 106, 128,  75]])</span>
-</pre></div>
-</div>
-<p>Index it with a list of integers</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
-</pre></div>
-</div>
-<p>Boolean indexing</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">xs</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-<p>What does this do?</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">xs</span><span class="p">[</span><span class="n">xs</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-</pre></div>
-</div>
-<p>Extracting lower triangular, diagonal and upper triangular matrices</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">tril</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">a</span><span class="p">)),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-<blockquote>
-<div><ul class="simple">
+<ul class="last simple">
 <li><a class="reference download internal" href="_downloads/breakout1.ipynb" download=""><code class="xref download docutils literal"><span class="pre">../notebooks/breakout1.ipynb</span></code></a></li>
 </ul>
-</div></blockquote>
+</div>
 </div>
 </div>
 </div>

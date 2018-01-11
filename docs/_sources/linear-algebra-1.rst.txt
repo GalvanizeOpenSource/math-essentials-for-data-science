@@ -185,6 +185,7 @@ of the same length :math:`n`, then the **dot product** is given by
 20
 
 or more explicitly
+
 >>> np.dot(np.array([[1,2,3,4]]), np.array([[4,3,2,1]]).T)
 array([[20]])
 
@@ -215,6 +216,20 @@ same length :math:`n`, then the **dot product** is give by matrix multiplication
    x_1y_1 + x_2y_2 + \cdots + x_ny_n
 
 
+.. important:: The dot product also called the **inner product** is just matrix multiplication of a :math:`1 \times n` vector with an :math:`n \times 1` vector.
+
+	       .. math::
+
+		  \mathbf{x}^{T} \mathbf{y}
+
+               We can also specify the **outter product** of two vectors as just the opposite
+
+
+	       .. math::
+
+		  \mathbf{x} \mathbf{y}^{T}
+
+   
 Matrix determinant
 --------------------
 

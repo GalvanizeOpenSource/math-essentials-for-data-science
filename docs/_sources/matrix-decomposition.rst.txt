@@ -3,10 +3,10 @@
 Matrix Decomposition
 =============================
 
-The idea of **Matrix decomposition** also known as **matrix factorization** is that 
+The idea of **Matrix decomposition** also known as **matrix factorization**
 
-more more
-
+* Matrix decompositions are an important step in solving linear systems in a computationally efficient manner
+* Numerous decomposition exist examples include: Cholesky Decomposition, LU Decomposition, QR decompositon and Eigendecomposition
 
 Eigendecomposition
 ------------------------
@@ -33,6 +33,6 @@ array([[ 1.,  0.,  0.],
        [ 0.,  1.,  0.],
        [ 0.,  0.,  1.]])
 
-Eigenvectors and eigenvalues will play a huge roll in matrix methods later in the course (PCA, SVD, NMF).
+Eigenvectors and eigenvalues are important mathematical identities that play many roles across a range of disciplines
 
 

@@ -47,7 +47,6 @@ matrices and vectors **makes things easier**.
    introduction
    matrix-operations
    linear-algebra-1
-   linear-algebra-2
 
 |
    
@@ -55,16 +54,21 @@ matrices and vectors **makes things easier**.
    :maxdepth: 1
    :caption: Day 2:
 
+   linear-algebra-2	     
    matrix-decomposition
    pca-and-svd
-   calculus-1
 
 |
-   
+
+
 .. toctree::
    :maxdepth: 1
    :caption: Appendices:
 
+   helpful-math
+   calculus-1
+   sympy
    install-python	     
    numpy-commands
+   extra-numpy
    references

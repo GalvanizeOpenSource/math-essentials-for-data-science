@@ -19,7 +19,7 @@ These concepts build on what we learned in part I
 Norms and other special matrices
 ---------------------------------
 
-Sometimes it is necessary to quantify the size of a vector. There is a specific function called a called a norm that serves this purpose. 
+Sometimes it is necessary to quantify the size of a vector. There is a specific function called a `called a norm <https://en.wikipedia.org/wiki/Norm_(mathematics)>`_ that serves this purpose. 
 
 .. figure:: vector.png
    :scale: 75%
@@ -27,7 +27,7 @@ Sometimes it is necessary to quantify the size of a vector. There is a specific 
    :alt: vector
    :figclass: align-center
 
-The norm of a vector :math:`\mathbf{x}` is defined by
+Here is an example of norm of a vector :math:`\mathbf{x}` is defined by
 
 .. math::
    ||\mathbf{x}|| = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}
@@ -38,16 +38,23 @@ The norm of a vector :math:`\mathbf{x}` is defined by
 5.47722557505
 5.47722557505
 
-The norm shown above is also known as Frobenius norm. The Frobenius norm, sometimes also called the Euclidean norm (a term unfortunately also used for the vector -norm), is matrix norm of an matrix defined as the square root of the sum of the absolute squares of its elements.  The following is a generalized way to write many types of norms.
+The norm shown above is also known as Frobenius norm. The Frobenius
+norm, sometimes also called the Euclidean norm (a term unfortunately
+also used for the vector-norm), is norm of an matrix defined as the
+**square root of the sum of the absolute squares of its elements**.  The
+following is a generalized way to write many types of norms.
 
 .. math::
    ||\mathbf{x}||_{p} =  \left( \sum_{i} |x_i|^{p} \right)^{\frac{1}{p}}
 
-Norm are used to map vectors to non-negative values.  Using intuition
-the Euclidean norm of a vector measures the distance from the origin
-of the Euclidean space (vector tail), to a point in that space (vector
-tip).  There are many nice properties of the Euclidean norm.  The norm
-squared of a vector is just the vector dot product with itself
+
+
+* Norms are used to map vectors to non-negative values
+* The Euclidean norm (where :math:`p=2` ) of a vector measures the distance from the origin in Euclidean space
+
+
+There are many nice properties of the Euclidean norm.  The norm squared of a vector is just the vector
+dot product with itself
 
 .. math::
 

@@ -93,10 +93,13 @@
             
             
               <p class="caption"><span class="caption-text">Day 1:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Thinking in terms of vectors and matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix-operations.html">Matrix operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linear-algebra-1.html">Linear Algebra I</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Day 2:</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Linear Algebra Part II</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#norms-and-other-special-matrices">Norms and other special matrices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#special-matrices">Special matrices</a></li>
@@ -104,17 +107,17 @@
 <li class="toctree-l2"><a class="reference internal" href="#additional-properties-of-matrices">Additional Properties of Matrices</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">Day 2:</span></p>
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="matrix-decomposition.html">Matrix Decomposition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pca-and-svd.html">PCA and SVD</a></li>
-<li class="toctree-l1"><a class="reference internal" href="calculus-1.html">Calculus 1</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendices:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="helpful-math.html">Helpful math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calculus-1.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sympy.html">Symbolic computing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install-python.html">Python Installation Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="numpy-commands.html">NumPy Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra-numpy.html">Other important NumPy commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">Works cited</a></li>
 </ul>
 
@@ -205,11 +208,11 @@
 </table>
 <div class="section" id="norms-and-other-special-matrices">
 <h2>Norms and other special matrices<a class="headerlink" href="#norms-and-other-special-matrices" title="Permalink to this headline">¶</a></h2>
-<p>Sometimes it is necessary to quantify the size of a vector. There is a specific function called a called a norm that serves this purpose.</p>
+<p>Sometimes it is necessary to quantify the size of a vector. There is a specific function called a <a class="reference external" href="https://en.wikipedia.org/wiki/Norm_(mathematics)">called a norm</a> that serves this purpose.</p>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="_images/vector.png"><img alt="vector" src="_images/vector.png" style="width: 293.25px; height: 261.75px;" /></a>
 </div>
-<p>The norm of a vector <span class="math">\(\mathbf{x}\)</span> is defined by</p>
+<p>Here is an example of norm of a vector <span class="math">\(\mathbf{x}\)</span> is defined by</p>
 <div class="math">
 \[||\mathbf{x}|| = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}\]</div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
@@ -219,14 +222,19 @@
 <span class="go">5.47722557505</span>
 </pre></div>
 </div>
-<p>The norm shown above is also known as Frobenius norm. The Frobenius norm, sometimes also called the Euclidean norm (a term unfortunately also used for the vector -norm), is matrix norm of an matrix defined as the square root of the sum of the absolute squares of its elements.  The following is a generalized way to write many types of norms.</p>
+<p>The norm shown above is also known as Frobenius norm. The Frobenius
+norm, sometimes also called the Euclidean norm (a term unfortunately
+also used for the vector-norm), is norm of an matrix defined as the
+<strong>square root of the sum of the absolute squares of its elements</strong>.  The
+following is a generalized way to write many types of norms.</p>
 <div class="math">
 \[||\mathbf{x}||_{p} =  \left( \sum_{i} |x_i|^{p} \right)^{\frac{1}{p}}\]</div>
-<p>Norm are used to map vectors to non-negative values.  Using intuition
-the Euclidean norm of a vector measures the distance from the origin
-of the Euclidean space (vector tail), to a point in that space (vector
-tip).  There are many nice properties of the Euclidean norm.  The norm
-squared of a vector is just the vector dot product with itself</p>
+<ul class="simple">
+<li>Norms are used to map vectors to non-negative values</li>
+<li>The Euclidean norm (where <span class="math">\(p=2\)</span> ) of a vector measures the distance from the origin in Euclidean space</li>
+</ul>
+<p>There are many nice properties of the Euclidean norm.  The norm squared of a vector is just the vector
+dot product with itself</p>
 <div class="math">
 \[||x||^2 = x \cdot x\]</div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
