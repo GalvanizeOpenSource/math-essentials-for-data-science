@@ -42,34 +42,34 @@ Here we provide a summary the important commands that have already been introduc
 +-----------------------------------+-------------------------------------------------------------+
 | where(a>x)                        | returns elements from an array depending on condition       |
 +-----------------------------------+-------------------------------------------------------------+
-| argsort(a)                        | returns the sorted indices of an input array                | 
+| argsort(a)                        | returns the sorted indices of an input array                |
 +-----------------------------------+-------------------------------------------------------------+
 
 
 Transposes
 -------------
 
-A **matrix transpose** is an operation that Takes an :math:`m \times
+A **matrix transpose** is an operation that takes an :math:`m \times
 n` matrix and turns into an :math:`n \times m` matrix where the rows
 of the original matrix are the columns in the transposed matrix, and
 visa versa.
 
-Recall that it is convention to represent vectors as column matrices.  
+Recall that it is convention to represent vectors as column matrices.
 
-A **column matrix** 
+A **column matrix**
 
 .. math::
-    
+
     x =
     \begin{pmatrix}
     3  \\
     4  \\
     5  \\
-    6  
+    6
     \end{pmatrix}
 
 and when written using NumPy is as follows.
-    
+
 >>> x = np.array([[3,4,5,6]]).T
 
 
@@ -93,17 +93,17 @@ Just to ensure you *really know* this...
 
        **Extra** can you do it with ``arange``?
 
-       
+
     .. container:: toggle
 
         .. container:: header
 
             **ANSWER**
-	
+
         |
-	
+
 	You could write out 1-5, but here we show how to do it with ``arange`` and the array function ``.reshape``.
-	    
+
         >>> column_vector = np.arange(1,6).reshape(5,1)
         >>> column_vector.shape
         (5, 1)
@@ -117,7 +117,7 @@ The transpose of a :math:`n \times m` matrix is a :math:`m \times n` matrix with
 A transpose can be thought of as the mirror image of a matrix across the main diagonal.
 
 .. math::
-   
+
    X^T =
    \begin{bmatrix}
    x_{11} & x_{12} & \cdots & x_{1n} \\
@@ -136,7 +136,7 @@ Properties of a transpose
 
 >>> np.array_equal((X*a).T,(X.T)*a)
 True
-      
+
 2. Let :math:`X` and :math:`Y` be :math:`n \times p` matrices, then
 
    .. math::
@@ -146,12 +146,12 @@ True
 
    .. math::
       (XY)^T = Y^TX^T
-      
+
 More on dot products
 ------------------------------------
 
 Dot products are a concept that will come up over and over in machine
-learning so just to be sure that you grasp it lets review 
+learning so just to be sure that you grasp it lets review
 and expand on the concept some.
 
 >>> x = np.array([1,2,3,4])
@@ -189,11 +189,11 @@ or more explicitly
 >>> np.dot(np.array([[1,2,3,4]]), np.array([[4,3,2,1]]).T)
 array([[20]])
 
-One aspect of dot product that we have not mentioned is how dot
+One aspect of the dot product that we have not mentioned is how dot
 products (and vectors for that matter) can be thought of as lines in
 geometric space.  If :math:`\mathbf{x} \cdot \mathbf{y} = 0` then
 :math:`x` and :math:`y` are **orthogonal** (aligns with the intuitive
-notion of perpindicular)
+notion of perpendicular)
 
 >>> w = np.array([1, 2])
 >>> v = np.array([-2, 1])
@@ -201,7 +201,7 @@ notion of perpindicular)
 0
 
 If we have two vectors :math:`\mathbf{x}` and :math:`\mathbf{y}` of the
-same length :math:`n`, then the **dot product** is give by matrix multiplication
+same length :math:`n`, then the **dot product** is given by matrix multiplication
 
 .. math::
 
@@ -216,20 +216,20 @@ same length :math:`n`, then the **dot product** is give by matrix multiplication
    x_1y_1 + x_2y_2 + \cdots + x_ny_n
 
 
-.. important:: The dot product also called the **inner product** is just matrix multiplication of a :math:`1 \times n` vector with an :math:`n \times 1` vector.
+.. important:: The dot product, also called the **inner product**, is just matrix multiplication of a :math:`1 \times n` vector with an :math:`n \times 1` vector.
 
 	       .. math::
 
 		  \mathbf{x}^{T} \mathbf{y}
 
-               We can also specify the **outter product** of two vectors as just the opposite
+               We can also specify the **outer product** of two vectors as just the opposite
 
 
 	       .. math::
 
 		  \mathbf{x} \mathbf{y}^{T}
 
-   
+
 Matrix determinant
 --------------------
 
@@ -240,9 +240,9 @@ The determinant of a 2-D array is :math:`ad - bc`:
     x =
     \begin{bmatrix}
     a & b \\
-    c & d \\  
+    c & d \\
     \end{bmatrix}
- 
+
 `<https://en.wikipedia.org/wiki/Determinant>`_
 
 >>> a = np.array([[1, 2], [3, 4]])
@@ -282,7 +282,7 @@ The inverse of a square :math:`n \times n` matrix :math:`X` is an :math:`n \time
 Where :math:`I` is the identity matrix.
 
 .. important:: If such a matrix exists, then :math:`X` is said to be
-          **invertible** or **nonsingular** otherwise :math:`X` is
+          **invertible** or **nonsingular**, otherwise :math:`X` is
           said to be **noninvertible** or **singular**
 
 >>> A = np.array([[-4,-2],[5,5]])
@@ -311,16 +311,14 @@ Properties of Inverse
 
    .. math::
       (X^{-1})^{-1} = X
-   
+
 2. If :math:`X` and :math:`Y` are both :math:`n \times n` invertible
    matrices, then :math:`XY` is invertible and
 
    .. math::
       (XY)^{-1} = Y^{-1}X^{-1}
-   
+
 3. If :math:`X` is invertible, then :math:`X^T` is invertible and
 
    .. math::
       (X^T)^{-1} = (X^{-1})^T
-
-       

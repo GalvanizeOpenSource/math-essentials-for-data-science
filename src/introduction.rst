@@ -12,7 +12,7 @@ Thinking in terms of vectors and matrices
 +----+----------------------------------------------------------------------------------------------------------------------------+
 | 2  | Create, manipulate, and generally begin to get comfortable with NumPy arrays                                               |
 +----+----------------------------------------------------------------------------------------------------------------------------+
-     
+
 So you may be asking why?
 ---------------------------
 
@@ -25,16 +25,16 @@ So you may be asking why?
 `https://xkcd.com/1838 <https://xkcd.com/1838>`_
 
 
-Here are just a few reasons why a solid understanding of linear algebra is **crutial** for a practicing data scientist
+Here are just a few reasons why a solid understanding of linear algebra is **crucial** for a practicing data scientist
 
-  * Linear models can concisly be written in vector notation
-  * `Regularization <https://en.wikipedia.org/wiki/Regularization_(mathematics)>`_ often makes use of matrix norms 
-  * Matrix decompsitions are commonly used in recommender systems 
-     
+  * Linear models can concisely be written in vector notation
+  * `Regularization <https://en.wikipedia.org/wiki/Regularization_(mathematics)>`_ often makes use of matrix norms
+  * Matrix decompositions are commonly used in recommender systems
+
 Scalars, vectors, matrices and tensors
 ------------------------------------------
 
-Without knowing anything about vectors or matrices there is already a
+Without knowing anything about vectors or matrices, there is already a
 good chance that you have some intuition for these concepts. Think of
 a spreadsheet with rows and columns.  Within a given cell there exists
 some value---lets call it a `scalar
@@ -46,7 +46,7 @@ concept of a `vector
 specifically, this is referred to as a **column vector**.  The
 elements of a row are accordingly referred to as a **row vector**.
 
-We collectively refer to the columns and rows as `matrix
+We collectively refer to the columns and rows as a `matrix
 <https://en.wikipedia.org/wiki/Matrix_(mathematics)>`_.
 
 .. note::
@@ -60,7 +60,7 @@ spreadsheet and created several new tabs then we are now working with a tensor.
 +------------------+----------------------------------------------+---------------------------------------------------+
 | Machine Learning | Notation                                     | Description                                       |
 +==================+==============================================+===================================================+
-| **Scaler**       | :math:`x`                                    | a single real number (ints, floats etc)           |
+| **Scalar**       | :math:`x`                                    | a single real number (ints, floats etc)           |
 +------------------+----------------------------------------------+---------------------------------------------------+
 | **Vector**       | :math:`\mathbf{x}` or :math:`\mathbf{x}^{T}` | a 1D array of numbers (real, binary, integer etc) |
 +------------------+----------------------------------------------+---------------------------------------------------+
@@ -76,7 +76,7 @@ the formal term for the number of dimensions.
 
 .. admonition:: Questions
 
-    1. So what are the dimensions of the following matrix
+    1. So what are the dimensions of the following matrix?
 
     .. math::
 
@@ -85,8 +85,8 @@ the formal term for the number of dimensions.
         0 & 0 & 1 & 0 \\
         1 & 2 & 0 & 1 \\
         1 & 0 & 0 & 1
-        \end{pmatrix} 
- 
+        \end{pmatrix}
+
     .. container:: toggle
 
         .. container:: header
@@ -96,7 +96,7 @@ the formal term for the number of dimensions.
         The matrix dimensions are :math:`3 \times 4`
 
     |
-	
+
     2. Given a spreadsheet that has 4 tabs and each tab has 2 rows with 3 columns how might we represent that data with a tensor?
 
     .. container:: toggle
@@ -120,13 +120,13 @@ the formal term for the number of dimensions.
                            [24, 25, 26]]])
         >>> print(x.shape)
 	(4, 2, 3)
-	
+
 |
 
 Notation
 -----------
 
-Scalers have the standard math notation
+Scalars have the standard math notation
 
    .. math::
 
@@ -144,18 +144,18 @@ Vectors are denoted by lower case bold letters such as
         1 \\
         2 \\
 	3
-        \end{pmatrix} 
+        \end{pmatrix}
 
-      
+
 A superscript :math:`T` denotes the transpose of a matrix or vector.  This implies that :math:`\mathbf{x}^{T}` is a row vector.
 
     .. math::
 
-        \mathbf{x}^{T} = 
+        \mathbf{x}^{T} =
         \begin{pmatrix}
         0 & 1 & 2 & 3
-        \end{pmatrix} 
- 
+        \end{pmatrix}
+
 Upper-case bold letter denote.
 
     .. math::
@@ -165,9 +165,9 @@ Upper-case bold letter denote.
         0 & 0 & 1 & 0 \\
         1 & 2 & 0 & 1 \\
         1 & 0 & 0 & 1
-        \end{pmatrix} 
+        \end{pmatrix}
 
-	
+
 An introduction to NumPy and Arrays
 -----------------------------------------
 
@@ -188,7 +188,7 @@ Python environment.
                are minimal and you should be able to follow even
                without prior experience in Python.
 
-	       
+
 Once Python is installed you can start an interactive Python
 environment by typing the command ``ipython`` into a terminal.  `NumPy
 <numpy.scipy.org>`_ is the *de facto* standard for numerical computing
@@ -228,8 +228,8 @@ is a matrix :math:`\mathbf{X}`
     1 & 2 & 3  \\
     4 & 5 & 6  \\
     7 & 8 & 9
-    \end{pmatrix} 
- 
+    \end{pmatrix}
+
 and can be represented through NumPy as
 
 >>> import numpy as np
@@ -274,9 +274,9 @@ Note that the number of axes is also equal to the or the length of ``x.shape``. 
 9
 
 .. warning:: If you want to work with a vector where the dimensions
-             exist explicitly you need to use double brackets.
+             exist explicitly, you need to use double brackets.
              Otherwise it will be a 1D matrix and sometimes it may not
-             give you the result you were looking for. 
+             give you the result you were looking for.
 
 	     >>> np.array([1,2,3]).shape
              (3,)
@@ -286,7 +286,7 @@ Note that the number of axes is also equal to the or the length of ``x.shape``. 
 
 Arrays and their methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-	     
+
 We have seen that arrays have built in attributes that are useful.
 They also have numerous built-in methods that make them particularly
 convenient.  Note that methods always have parenthesis that may or may
@@ -295,7 +295,7 @@ not enclose arguments.
 >>> X.sum(axis=0)
 array([12, 15, 18])
 >>> X.sum(axis=1)
-array([ 6, 15, 24]) 
+array([ 6, 15, 24])
 
 >>> X.mean(axis=0)
 array([ 4.,  5.,  6.])
@@ -344,7 +344,7 @@ As a reminder you may access the Python documentation at anytime from the comman
 The following plot visualizes ``linspace``.  It is an important function, but it less important that you understand the plotting portion of the code.
 
 .. plot:: linspace-example.py
-  :include-source: 
+  :include-source:
 
 .. important:: Did you notice that ``arange`` starts counting at zero?
                Python uses zero based indexing, so the initial element
@@ -394,7 +394,7 @@ array([[ 1.,  1.,  1.,  1.],
         1       & 2      & \cdots & 10      \\
         11      & 12     & \cdots & 20      \\
         \vdots  & \ddots & \ddots & \vdots  \\
-        91      & 92     & \cdots & 100 
+        91      & 92     & \cdots & 100
         \end{pmatrix}
 
     .. container:: toggle
@@ -406,7 +406,7 @@ array([[ 1.,  1.,  1.,  1.],
 	>>> a = np.arange(1,101).reshape(10,10)
 
     |
-	
+
     2. Use the array object to get the rank, number of elements, and dimensions
 
 
@@ -422,7 +422,7 @@ array([[ 1.,  1.,  1.,  1.],
         Dimensions: (10, 10)
 
     |
-	
+
     3. Get the mean of the rows and columns
 
     .. container:: toggle
@@ -430,15 +430,15 @@ array([[ 1.,  1.,  1.,  1.],
         .. container:: header
 
             **ANSWER**
-       
+
         >>> print("Row means: {}".format(a.mean(axis=1)))
         Row means: [  5.5  15.5  25.5  35.5  45.5  55.5  65.5  75.5  85.5  95.5]
 
 	>>> print("Column means: {}".format(a.mean(axis=0)))
         Column means: [ 46.  47.  48.  49.  50.  51.  52.  53.  54.  55.]
 
-    |	
-	
+    |
+
     4. How do you create a vector that has exactly 50 points and spans the range 11 to 23?
 
     .. container:: toggle
@@ -450,13 +450,13 @@ array([[ 1.,  1.,  1.,  1.],
         >>> b = np.linspace(11,23,50)
 
     |
-	
+
     5. [extra] If you want a peak at whats to come see what happens when you do the following
-       
-        * np.log(a) 
+
+        * np.log(a)
         * np.cumsum(a)
         * np.power(a,2)
-   
+
 More resources
 ^^^^^^^^^^^^^^^^^^^^^^
 

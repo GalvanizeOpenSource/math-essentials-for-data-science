@@ -8,7 +8,7 @@ Learning objectives:
   1. Understand the dimensional requirements for matrix multiplication
   2. Understand and be able to execute **elementwise** arithmetric operators in NumPy
   3. Become even more comfortable with vectors and matrices in NumPy
-  
+
 Quick reference
 ---------------------
 
@@ -43,16 +43,16 @@ It is convention to represent vectors as column matrices.  We are
 explicit in this representation in that we define two axes even
 through the number of columns is only one.
 
-A **column matrix** in NumPy.  
+A **column matrix** in NumPy.
 
 .. math::
-    
+
     \mathbf{x} =
     \begin{pmatrix}
     3  \\
     4  \\
     5  \\
-    6  
+    6
     \end{pmatrix}
 
 >>> x = np.array([[3,4,5,6]]).T
@@ -63,7 +63,7 @@ The ``.T`` indicates a **transpose** operation.  In the case of
 vectors we go from a rowwise representation to a columnwise one and
 vice versa.  We will spend more time on transposes in the next
 section.
-	  
+
 A **row matrix** in NumPy.
 
 .. math::
@@ -96,7 +96,7 @@ data and more..
 If we wanted to discover patterns in :math:`\mathbf{X}` then we could
 take an such as clustering, which would be an example of
 **unsupervised learning**.  Patterns in this case would likely
-correspond to mountain ranges and and meteorlogical or oceananic events..
+correspond to mountain ranges and meteorological or oceanic events.
 
 If we think of the features of a matrix as column vectors.
 
@@ -175,7 +175,7 @@ array([ 34.66666667,  16.33333333,  13.66666667,  12.66666667])
 Basic matrix operations
 -------------------------
 
-This has already been stated once.  But since it is important lets say it a different way. 
+This has already been stated once.  But since it is important lets say it a different way.
 
 .. note:: In order to multiply two matrices, they must be
           **conformable** such that the number of columns of the first
@@ -186,21 +186,21 @@ This has already been stated once.  But since it is important lets say it a diff
 When we say multiply two matrices it does not mean multiply in the sense that you might think.
 The **matrix product** of two matrices is another matrix.
 
-If we have two vectors :math:`\mathbf{x}` and :math:`\mathbf{y}` of the same length :math:`(n)`, then the **dot product** is give by
+If we have two vectors :math:`\mathbf{x}` and :math:`\mathbf{y}` of the same length :math:`(n)`, then the **dot product** is given by
 
-.. math:: 
+.. math::
 
    \mathbf{x} \cdot \mathbf{y} = x_1y_1 + x_2y_2 + \cdots + x_ny_n
 
 .. important:: Arithmetic operators in NumPy work **elementwise**
-	       
+
 >>> a = np.array([3,4,5])
 >>> b = np.ones(3)
 >>> a - b
 array([ 2.,  3.,  4.])
 
-Something that can be tricky for people familar with other programming languages is that the * operator
-**does not** carry out a matrix product.  This is done with the 
+Something that can be tricky for people familiar with other programming languages is that the * operator
+**does not** carry out a matrix product.  This is done with the
 `dot <http://docs.scipy.org/doc/numpy/reference/generated/numpy.dot.html>`_ function.
 
 >>> a = np.array([[1,2],[3,4]])
@@ -219,7 +219,7 @@ array([[ 7, 10],
        [15, 22]])
 
 >>> np.dot(np.array([[1,2,3]]),np.array([[2,3,4]]))
-       
+
 The **dot product** is a very important concept that we will reuse many times going forward.  The dot product is generally written as
 
 .. math::
@@ -235,7 +235,7 @@ array([[50]])
 
 The dot product is an essential building block of **matrix
 multiplication**. The table below shows that when we multiply two
-matrices the result is a table of dot products for pairs of vectors
+matrices. The result is a table of dot products for pairs of vectors
 making up the entries of each matrix.
 
 First think about this in terms of square matrices and see if you can identify the pattern.
@@ -245,12 +245,12 @@ Perform matrix multiplication on a square matrix.  This is how it works---code t
 
 
 .. math::
-   
+
     \begin{pmatrix}
     a & b \\
     c & d \\
     \end{pmatrix}
-    \times 
+    \times
     \begin{pmatrix}
     e & f \\
     g & h \\
@@ -261,9 +261,9 @@ Perform matrix multiplication on a square matrix.  This is how it works---code t
     ce+dg & cf+dh \\
     \end{pmatrix}
 
-| 
+|
 
-Once you see what is happening this figure can help you understand how the pattern generalizes to different shap matrices.  Figuring out the shape of a matrix that gets
+Once you see what is happening this figure can help you understand how the pattern generalizes to different shape matrices. 
 
 .. figure:: matrix-multiplication.png
    :scale: 65%
@@ -273,7 +273,7 @@ Once you see what is happening this figure can help you understand how the patte
 
 `<https://en.wikipedia.org/wiki/Matrix_multiplication>`_
 
-.. important:: There is a pattern to figure out the size fo the resulting matrix.
+.. important:: There is a pattern to figure out the size of the resulting matrix.
 	  result = Num Rows in 1st matrix :math:`\times` Num Columns in 2nd Matrix
 
 .. admonition:: Questions
@@ -281,7 +281,7 @@ Once you see what is happening this figure can help you understand how the patte
    1. Given the following code write the multiplication out on paper **and** run it Python to check your math
 
       >>> np.dot(np.array([[1,2,3]]),np.array([[2,3,4]]).T)
-		
+
    2. If we multiply a :math:`2 \times 3` matrix with a :math:`3 \times 1` matrix, the product matrix is :math:`2 \times 1`.
 
       Write an example of this on paper with simple numbers to see if you can understand why.
@@ -291,7 +291,7 @@ Once you see what is happening this figure can help you understand how the patte
 Special addition and multiplication operators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Like in regular Python there is a special operator.  
+Like in regular Python there is a special operator.
 
 >>> a = np.zeros((2,2),dtype='float')
 >>> a += 5
@@ -334,7 +334,7 @@ Common math functions
 ^^^^^^^^^^^^^^^^^^^^^
 
 >>> x = np.arange(1,5)
->>> np.sqrt(x) * np.pi 
+>>> np.sqrt(x) * np.pi
 array([ 3.14159265,  4.44288294,  5.44139809,  6.28318531])
 >>> 2**4
 16
@@ -354,10 +354,10 @@ Basic operations exercise
 .. admonition:: Exercise
 
    In the following table we have expression values for 5 genes at 4 time points.
-   These are completely made up data.  Although, some of the questions can be 
-   easily answered by looking at the data, microarray data generally come in much 
-   larger tables and if you can figure it out here the same code will work for an 
-   entire gene chip.  
+   These are completely made up data.  Although, some of the questions can be
+   easily answered by looking at the data, microarray data generally come in much
+   larger tables and if you can figure it out here the same code will work for an
+   entire gene chip.
 
    +------------+----------+----------+---------+----------+
    | Gene name  | 4h       | 12h      | 24h     | 48h      |
@@ -375,12 +375,12 @@ Basic operations exercise
    2. Find the mean expression value *per gene*
    3. Find the mean expression value *per time point*
 
-   **Extra Credit**   
-      
+   **Extra Credit**
+
    4. Which gene has the maximum mean expression value?
    5. Sort the gene names by the max expression value
 
-.. tip:: 
+.. tip::
 
    >>> geneList = np.array([["A2M", "FOS", "BRCA2","CPOX"]])
    >>> values0  = np.array([[0.12,0.08,0.06,0.02]])
