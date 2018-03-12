@@ -263,7 +263,7 @@ Perform matrix multiplication on a square matrix.  This is how it works---code t
 
 |
 
-Once you see what is happening this figure can help you understand how the pattern generalizes to different shape matrices. 
+Once you see what is happening this figure can help you understand how the pattern generalizes to different shape matrices.
 
 .. figure:: matrix-multiplication.png
    :scale: 65%
@@ -386,7 +386,7 @@ Basic operations exercise
    >>> values0  = np.array([[0.12,0.08,0.06,0.02]])
    >>> values1  = np.array([[0.01,0.07,0.11,0.09]])
    >>> values2  = np.array([[0.03,0.04,0.04,0.02]])
-   >>> values3  = np.array([]0.05,0.09,0.11,0.14]])
+   >>> values3  = np.array([[0.05,0.09,0.11,0.14]])
 
 
 
